@@ -1658,9 +1658,13 @@ pre .javascript .function {
 .footer-right {
   float: right;
 }
+.footer-center {
+  float: center;
+}
 .share {
-  padding: 0px 75px 30px 40px;
-  margin-bottom: 15px;
+  padding: 0px 75px 0px 40px;
+  margin-bottom: 5px;
+  float: right;
 }
 .back_home {
   float: right;
