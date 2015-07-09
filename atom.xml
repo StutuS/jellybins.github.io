@@ -5,7 +5,7 @@
   <subtitle><![CDATA[一介码农，一只程序猿]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="jellybins.github.io//"/>
-  <updated>2015-07-09T02:51:20.889Z</updated>
+  <updated>2015-07-09T02:53:10.842Z</updated>
   <id>jellybins.github.io//</id>
   
   <author>
@@ -19,10 +19,10 @@
     <title><![CDATA[Hello World]]></title>
     <link href="jellybins.github.io/2015/07/09/hello-world/"/>
     <id>jellybins.github.io/2015/07/09/hello-world/</id>
-    <published>2015-07-09T02:51:20.889Z</published>
-    <updated>2015-07-09T02:51:20.889Z</updated>
+    <published>2015-07-09T02:53:10.842Z</published>
+    <updated>2015-07-09T02:53:10.842Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Hello_World">Hello World</h2>]]></content>
+]]></content>
     <summary type="html">
     <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
     </summary>
