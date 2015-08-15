@@ -5,7 +5,7 @@
   <subtitle><![CDATA[一介码农，一只程序猿]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2015-07-10T02:17:26.068Z</updated>
+  <updated>2015-08-15T09:54:46.405Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -20,12 +20,23 @@
     <link href="http://jellybins.github.io/2013/07/13/hello-world/"/>
     <id>http://jellybins.github.io/2013/07/13/hello-world/</id>
     <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2015-07-10T02:17:26.068Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+    <updated>2015-08-15T09:54:46.405Z</updated>
+    <content type="html"><![CDATA[<h1 id="Hello_World">Hello World</h1><hr>
+<p>������̬���ʹ������þ��ˣ�����ȴ����û��ô����������׼�������ǳ����е�ʱ��������һ�£���֮ǰWordPress�Ĳ��Ķ�ת�ƹ������������ڱȽ���ʱ���ˡ�</p>
+<h2 id="Ϊʲô��JellyBins">Ϊʲô��JellyBins</h2><p>��Ϊһ����ũ����һƪ���͵ı��⵱Ȼ����Hello World�������Ǹ���ũת���鷨�ҵ�Ц��һ����֮ǰ���ھ��������˸򲩿ͣ�����Ҳδ���Ĵ���ǰЩ�쿴������˵������Ҫ��ʽ��Ӫ�ر������ˣ�Ȼ�������ҵÌ�˿��˵ֻ����Ѱ����֮��������Ҳһֱ�������½�һ�򲩿�վ�㣬�úõļ�¼�Լ��ɳ���һ�С�Ȼ��ѡ�������ѵı�GFWǽ����WordPress����֮�����ľ���վ�����������⣬��ʵһֱ����Jelly�����������ѱ�ע���������ֹ��̵�����ԭ��ֻ�ܷ�����Ȼ�����ݵ�ʱ��ͻ�����룬��ũӦ�ú�Binary�йء�Ȼ�����뵽JellyBin������Ҫע����ʱ����ʾ�Ǳ������ƣ�Ȼ�����뵽��һ��Ӧ�ø��ܶ�Binary�йأ����Ǿ���������JellyBins��</p>
+<h2 id="Ҫ��¼ʲô">Ҫ��¼ʲô</h2><blockquote>
+<ul>
+<li>����֪ʶ��ѧϰ�ʼ�</li>
+<li>�����ռǣ����ģ���������</li>
+</ul>
+</blockquote>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    <![CDATA[<h1 id="Hello_World">Hello World</h1><hr>
+<p>������̬���ʹ������þ��ˣ�����ȴ����û��ô����������׼�������ǳ����е�ʱ��������һ�£���֮ǰWordPress�Ĳ��Ķ�ת�ƹ]]>
     </summary>
+    
+      <category term="����" scheme="http://jellybins.github.io/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/"/>
     
   </entry>
   
