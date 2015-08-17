@@ -5,7 +5,7 @@
   <subtitle><![CDATA[一介码农，一只程序猿]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2015-08-17T06:35:55.940Z</updated>
+  <updated>2015-08-17T06:41:35.795Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jellybins.github.io/2013/07/13/hello-world/"/>
     <id>http://jellybins.github.io/2013/07/13/hello-world/</id>
     <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2015-08-17T06:35:55.940Z</updated>
+    <updated>2015-08-17T06:41:35.795Z</updated>
     <content type="html"><![CDATA[<h2 id="你好_世界！">你好 世界！</h2><p>这个静态博客搭起来好久了，但是还从来没动过，本来准备抽个非常空闲的时间来整理一下，把之前WordPress的博文都转移过来，看来现在比较是时候了。</p>
 <h2 id="为什么是JellyBins">为什么是JellyBins</h2><p>作为一个码农，第一篇博客的标题当然该是Hello World，就像那个码农转行书法家的笑话一样。之前有用京东云擎部署WordPress搭了个博客，但是没怎么打理。<br>前些天看到新闻说京东云要正式运营关闭试用了，然后对于我等屌丝来说只能另寻其它免费之所，所以也自然而然的选择了真正的WordPress网站，虽然被GFW墙掉了。<br>随之而来的就是站点的名称问题，其实一直想用Jelly，但是无奈已被注册或者名字过短等种种原因只能放弃。后来午休的时候突发奇想，码农应该和Binary（二进制码）有关。<br>然后就想到了JellyBin，还跟谷歌的安卓果冻豆系统JellyBean谐音，瞬间感觉高大上，结果要注册的时候提示是保留名称，纠结了，再后来想到这一生应该跟很多Binary有关，<br>于是就有了现在JellyBins（请原谅我的放荡不羁爱自由）。之后再搭建这个静态博客的时候也就延续使用了这个名字，所以现在的站点链接是：<a href="http://jellybins.github.io">http://jellybins.github.io</a> 。</p>
 ]]></content>
