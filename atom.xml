@@ -5,7 +5,7 @@
   <subtitle><![CDATA[一介码农，一只程序猿]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2015-08-17T07:50:37.013Z</updated>
+  <updated>2015-08-17T10:06:30.681Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[SQLServer创建登录用户错误]]></title>
+    <link href="http://jellybins.github.io/2015/08/17/SQLServer%E5%88%9B%E5%BB%BA%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E9%94%99%E8%AF%AF/"/>
+    <id>http://jellybins.github.io/2015/08/17/SQLServer创建登录用户错误/</id>
+    <published>2015-08-17T09:42:19.000Z</published>
+    <updated>2015-08-17T10:06:30.681Z</updated>
+    <content type="html"><![CDATA[<h2 id="错误描述">错误描述</h2><p>在Microsoft SQLServer 还原数据库后，要创建登录该数据库的用户结果提示“错误15023:当前数据库中已存在用户或角色”或“用户、组或角色 在当前数据库中已存在”。</p>
+<h2 id="原因及解决办法">原因及解决办法</h2><ul>
+<li>原因：<br>SQLServer中登录用户名与数据库用户用户名的区别。登录用户名用于用户身份验证，而数据库用户用户名用于数据库访问和权限验证。登录用户通过安全识别符 (SID) 与数据库用户关联。将数据库恢复到其他服务器时，数据库中包含一组用户和权限，但可能没有相应的登录用户或者登录所关联的用户可能不是相同的用户。这种情况被称为存在“孤立用户”。</li>
+<li>解决办法：<br>调用系统存储过程sp_change_users_login，具体用法如下：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">Use</span> 数据库名</span><br><span class="line"><span class="keyword">Go</span></span><br><span class="line">sp_change_users_login <span class="string">'update_one'</span>, <span class="string">'用户名'</span>,<span class="string">'用户名'</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>其中数据库名为存在孤立用户的数据库，update_one是存储过程的参数，表示只处理一个用户，前一个用户名是数据库用户，后一个用户名是用来数据库登录，以上这个SQL命令表示将数据库用户用户名与服务器登录用户名重新连接起来。这样就可以正常使用数据库了。</p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="错误描述">错误描述</h2><p>在Microsoft SQLServer 还原数据库后，要创建登录该数据库的用户结果提示“错误15023:当前数据库中已存在用户或角色”或“用户、组或角色 在当前数据库中已存在”。</p>
+<h2 id="原因及解决办法">原因]]>
+    </summary>
+    
+      <category term="数据库" scheme="http://jellybins.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hexo在GitHub上搭建静态博客]]></title>
+    <link href="http://jellybins.github.io/2015/08/17/Hexo%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://jellybins.github.io/2015/08/17/Hexo在GitHub上搭建静态博客/</id>
+    <published>2015-08-17T08:32:23.000Z</published>
+    <updated>2015-08-17T08:32:23.994Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Hibernate实体关系判断]]></title>
