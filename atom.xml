@@ -5,7 +5,7 @@
   <subtitle><![CDATA[一介码农，一只程序猿]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2015-08-17T10:06:30.681Z</updated>
+  <updated>2015-08-17T10:08:22.172Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title><![CDATA[SQLServer创建登录用户错误]]></title>
-    <link href="http://jellybins.github.io/2015/08/17/SQLServer%E5%88%9B%E5%BB%BA%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E9%94%99%E8%AF%AF/"/>
-    <id>http://jellybins.github.io/2015/08/17/SQLServer创建登录用户错误/</id>
-    <published>2015-08-17T09:42:19.000Z</published>
-    <updated>2015-08-17T10:06:30.681Z</updated>
+    <link href="http://jellybins.github.io/2014/08/17/SQLServer%E5%88%9B%E5%BB%BA%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E9%94%99%E8%AF%AF/"/>
+    <id>http://jellybins.github.io/2014/08/17/SQLServer创建登录用户错误/</id>
+    <published>2014-08-17T09:42:19.000Z</published>
+    <updated>2015-08-17T10:08:22.172Z</updated>
     <content type="html"><![CDATA[<h2 id="错误描述">错误描述</h2><p>在Microsoft SQLServer 还原数据库后，要创建登录该数据库的用户结果提示“错误15023:当前数据库中已存在用户或角色”或“用户、组或角色 在当前数据库中已存在”。</p>
 <h2 id="原因及解决办法">原因及解决办法</h2><ul>
 <li>原因：<br>SQLServer中登录用户名与数据库用户用户名的区别。登录用户名用于用户身份验证，而数据库用户用户名用于数据库访问和权限验证。登录用户通过安全识别符 (SID) 与数据库用户关联。将数据库恢复到其他服务器时，数据库中包含一组用户和权限，但可能没有相应的登录用户或者登录所关联的用户可能不是相同的用户。这种情况被称为存在“孤立用户”。</li>
@@ -42,10 +42,10 @@
   
   <entry>
     <title><![CDATA[Hexo在GitHub上搭建静态博客]]></title>
-    <link href="http://jellybins.github.io/2015/08/17/Hexo%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://jellybins.github.io/2015/08/17/Hexo在GitHub上搭建静态博客/</id>
-    <published>2015-08-17T08:32:23.000Z</published>
-    <updated>2015-08-17T08:32:23.994Z</updated>
+    <link href="http://jellybins.github.io/2014/08/12/Hexo%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://jellybins.github.io/2014/08/12/Hexo在GitHub上搭建静态博客/</id>
+    <published>2014-08-12T08:32:23.000Z</published>
+    <updated>2015-08-17T10:09:46.882Z</updated>
     <content type="html"></content>
     <summary type="html">
     
