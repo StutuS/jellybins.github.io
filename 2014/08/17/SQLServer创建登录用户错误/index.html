@@ -15,7 +15,7 @@
 <meta property="og:description" content="错误描述在Microsoft SQLServer 还原数据库后，要创建登录该数据库的用户结果提示“错误15023:当前数据库中已存在用户或角色”或“用户、组或角色 在当前数据库中已存在”。
 原因及解决办法
 原因：SQLServer中登录用户名与数据库用户用户名的区别。登录用户名用于用户身份验证，而数据库用户用户名用于数据库访问和权限验证。登录用户通过安全识别符 (SID) 与数据库用户关联。将数据">
-<meta property="og:updated_time" content="2015-08-17T10:08:22.172Z">
+<meta property="og:updated_time" content="2015-08-18T00:24:33.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLServer创建登录用户错误">
 <meta name="twitter:description" content="错误描述在Microsoft SQLServer 还原数据库后，要创建登录该数据库的用户结果提示“错误15023:当前数据库中已存在用户或角色”或“用户、组或角色 在当前数据库中已存在”。
@@ -212,7 +212,7 @@
         <h2 id="错误描述">错误描述</h2><p>在Microsoft SQLServer 还原数据库后，要创建登录该数据库的用户结果提示“错误15023:当前数据库中已存在用户或角色”或“用户、组或角色 在当前数据库中已存在”。</p>
 <h2 id="原因及解决办法">原因及解决办法</h2><ul>
 <li>原因：<br>SQLServer中登录用户名与数据库用户用户名的区别。登录用户名用于用户身份验证，而数据库用户用户名用于数据库访问和权限验证。登录用户通过安全识别符 (SID) 与数据库用户关联。将数据库恢复到其他服务器时，数据库中包含一组用户和权限，但可能没有相应的登录用户或者登录所关联的用户可能不是相同的用户。这种情况被称为存在“孤立用户”。</li>
-<li>解决办法：<br>调用系统存储过程sp_change_users_login，具体用法如下：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">Use</span> 数据库名</span><br><span class="line"><span class="keyword">Go</span></span><br><span class="line">sp_change_users_login <span class="string">'update_one'</span>, <span class="string">'用户名'</span>,<span class="string">'用户名'</span></span></span><br></pre></td></tr></table></figure>
+<li>解决办法：<br>调用系统存储过程sp_change_users_login，具体用法如下：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> 数据库名</span><br><span class="line"><span class="keyword">go</span></span><br><span class="line">sp_change_users_login <span class="string">'update_one'</span>, <span class="string">'用户名'</span>,<span class="string">'用户名'</span></span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -228,8 +228,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2014/08/12/Hexo在GitHub上搭建静态博客/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hexo在GitHub上搭建静态博客</div>
+    <a href="/2013/08/17/HIBERNATE实体关系配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hibernate实体关系判断</div>
       <strong class="article-nav-caption">></strong>
     </a>
   

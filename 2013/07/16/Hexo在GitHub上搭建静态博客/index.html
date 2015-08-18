@@ -5,16 +5,34 @@
   
   <title>Hexo在GitHub上搭建静态博客 | JellyBin&#39;s博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java js arcgis dojo">
+  <meta name="description" content="当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。
+工欲善其事 必先利其器
+
+Git客户端(博客部署)
+GitHub for Windows（已更名为GitHub Desktop） 下载
+
+GitHub for Windows是先下载安装器，然后运行安装器在线安装，如果在线安装过程中出现下载进度不动或">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo在GitHub上搭建静态博客">
-<meta property="og:url" content="http://jellybins.github.io/2014/08/12/Hexo在GitHub上搭建静态博客/index.html">
+<meta property="og:url" content="http://jellybins.github.io/2013/07/16/Hexo在GitHub上搭建静态博客/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
-<meta property="og:description" content="java js arcgis dojo">
-<meta property="og:updated_time" content="2015-08-17T10:09:46.882Z">
+<meta property="og:description" content="当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。
+工欲善其事 必先利其器
+
+Git客户端(博客部署)
+GitHub for Windows（已更名为GitHub Desktop） 下载
+
+GitHub for Windows是先下载安装器，然后运行安装器在线安装，如果在线安装过程中出现下载进度不动或">
+<meta property="og:updated_time" content="2015-08-18T03:15:49.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo在GitHub上搭建静态博客">
-<meta name="twitter:description" content="java js arcgis dojo">
+<meta name="twitter:description" content="当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。
+工欲善其事 必先利其器
+
+Git客户端(博客部署)
+GitHub for Windows（已更名为GitHub Desktop） 下载
+
+GitHub for Windows是先下载安装器，然后运行安装器在线安装，如果在线安装过程中出现下载进度不动或">
   
     <link rel="alternative" href="/atom.xml" title="JellyBin&#39;s博客" type="application/atom+xml">
   
@@ -169,8 +187,8 @@
       <div class="body-wrap"><article id="post-Hexo在GitHub上搭建静态博客" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/08/12/Hexo在GitHub上搭建静态博客/" class="article-date">
-  	<time datetime="2014-08-12T08:32:23.000Z" itemprop="datePublished">2014-08-12</time>
+      <a href="/2013/07/16/Hexo在GitHub上搭建静态博客/" class="article-date">
+  	<time datetime="2013-07-16T08:32:23.000Z" itemprop="datePublished">2013-07-16</time>
 </a>
     </div>
   
@@ -192,6 +210,10 @@
       <div class="article-info article-info-post">
         
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/杂文/">杂文</a>
+	</div>
+
 
         <div class="clearfix"></div>
       </div>
@@ -199,7 +221,67 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。</p>
+<h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><hr>
+<ol>
+<li><p>Git客户端(博客部署)</p>
+<p><a href="https://windows.github.com/" target="_blank" rel="external">GitHub for Windows（已更名为GitHub Desktop） 下载</a></p>
+<blockquote>
+<p>GitHub for Windows是先下载安装器，然后运行安装器在线安装，如果在线安装过程中出现下载进度不动或下载不成功的情况，恭喜你被墙了，请自行查找科学上网方法，设置为系统全局代理后再尝试。</p>
+</blockquote>
+</li>
+<li><p>Node.js(Hexo依赖)</p>
+<p><a href="https://nodejs.org/" target="_blank" rel="external">Node.js 下载</a></p>
+<blockquote>
+<p>Node.js安装完成后会自动添加环境变量，如果在步骤3中使用npm命令提示不存在，则请自行在环境变量Path中添加如下内容（默认Node.js安装目录为C:\Program Files\nodejs）：<br><strong>;C:\Program Files\nodejs\node_modules\npm</strong></p>
+</blockquote>
+</li>
+<li><p>Hexo(博客框架，使用Markdown解析文章)</p>
+<p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo 官网（无需下载）</a></p>
+<blockquote>
+<p>完成上述步骤后，双击桌面上的Git Shell，输入如下npm命令回车执行等待安装完成即可：<br><strong>npm install -g hexo-cli</strong></p>
+</blockquote>
+</li>
+<li><p>创建Hexo工作空间</p>
+<blockquote>
+<p>安装 Hexo 完成后，在磁盘任意位置建立文件夹比如D:/hexo,双击桌面上Git Shell，通过CD命令切换到该目录后执行如下两行命令初始化该工作空间并安装hexo所有插件：<br><strong>hexo init</strong><br><strong>npm install</strong></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="创建博客容身之所">创建博客容身之所</h2><ul>
+<li>注册GitHub账号</li>
+</ul>
+<ol>
+<li><p>登录<a href="https://github.com/" target="_blank" rel="external">GitHub</a>，选择Sign Up注册GitHub账户，注意此处注册的账号名称决定将来访问你的博客的路径。比如你注册的账号用户名为jellybins（以下部分也用该示例），则将来访问你博客的路径为<a href="http://jellybins.github.io。" target="_blank" rel="external">http://jellybins.github.io。</a></p>
+</li>
+<li><p>创建GitHub博客仓储，注册完成后登录GitHub选择New Repository，创建名称为jellybins.github.io的Repository(jellybins为示例，必须保证Repository名称中该部分和注册账户名称一致)。</p>
+</li>
+<li><p>首次创建后等待几分钟左右审核，之后即可访问静态主页如<a href="http://jellybins.github.io（jellybins为示例）" target="_blank" rel="external">http://jellybins.github.io（jellybins为示例）</a> 。</p>
+</li>
+</ol>
+<ul>
+<li>登录GitHub for Windows，部署博客内容至GitHub</li>
+</ul>
+<ol>
+<li><p>双击击桌面上GitHub 图标，登录上述注册的GitHub账户，程序会自动设置GitHub全局变量并添加SSH访问密钥。</p>
+</li>
+<li><p>进入Hexo工作空间目录中，用记事本等文本编辑器打开_config.yml文件，更改deploy项内容如下（注意上述键和值之间有空格，格式不正确会导致部署失败，jellybins为示例，请更改为自己注册的账户名）：</p>
+<blockquote>
+<p><strong>deploy:<br>type: git<br>repo: git@github.com:jellybins/jellybins.github.io.git</strong></p>
+</blockquote>
+</li>
+<li><p>双击桌面上Git Shell图标，通过CD命令切换到Hexo工作空间目录，然后执行如下命令完成博客部署至GitHub</p>
+<blockquote>
+<p><strong>hexo clean<br>hexo generate<br>hexo server（可选命令——本地<a href="http://localhost:4000端口预览博客效果，快捷键Ctrl+C停止预览）" target="_blank" rel="external">http://localhost:4000端口预览博客效果，快捷键Ctrl+C停止预览）</a><br>hexo deploy</strong></p>
+</blockquote>
+</li>
+</ol>
+<ol>
+<li>以后每次完成新博客文章要发布时，重新执行步骤3各命令即可，然后访问博客地址<a href="http://jellybins.github.io查看效果（jellybins为示例）。" target="_blank" rel="external">http://jellybins.github.io查看效果（jellybins为示例）。</a></li>
+</ol>
+<h2 id="博客设置及主题更换">博客设置及主题更换</h2><p>待续</p>
+<h2 id="博客文章发布">博客文章发布</h2><p>待续</p>
+
       
     </div>
     
@@ -208,18 +290,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/08/17/SQLServer创建登录用户错误/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2013/08/17/HIBERNATE实体关系配置/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          SQLServer创建登录用户错误
+          Hibernate实体关系判断
         
       </div>
     </a>
   
   
-    <a href="/2013/08/17/HIBERNATE实体关系配置/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hibernate实体关系判断</div>
+    <a href="/2013/07/13/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -246,7 +328,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Hexo在GitHub上搭建静态博客" data-title="Hexo在GitHub上搭建静态博客" data-url="http://jellybins.github.io/2014/08/12/Hexo在GitHub上搭建静态博客/"></div>
+	<div class="ds-thread" data-thread-key="Hexo在GitHub上搭建静态博客" data-title="Hexo在GitHub上搭建静态博客" data-url="http://jellybins.github.io/2013/07/16/Hexo在GitHub上搭建静态博客/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
