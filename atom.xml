@@ -105,7 +105,7 @@
     <link href="http://jellybins.github.io/2013/07/16/%E4%BD%BF%E7%94%A8Hexo%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
     <id>http://jellybins.github.io/2013/07/16/使用Hexo在GitHub上搭建静态博客/</id>
     <published>2013-07-16T08:32:23.000Z</published>
-    <updated>2015-08-18T03:29:49.279Z</updated>
+    <updated>2015-08-18T07:45:28.656Z</updated>
     <content type="html"><![CDATA[<p>当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。</p>
 <h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><ol>
 <li><p>Git客户端(博客部署)</p>
@@ -164,9 +164,45 @@
 <li><p>访问博客地址<a href="http://jellybins.github.io查看效果（jellybins为示例）。" target="_blank" rel="external">http://jellybins.github.io查看效果（jellybins为示例）。</a></p>
 </li>
 </ol>
-<h2 id="博客设置及主题更换">博客设置及主题更换</h2><p>待续</p>
-<h2 id="博客文章发布">博客文章发布</h2><p>待续</p>
-]]></content>
+<h2 id="博客设置及主题更换">博客设置及主题更换</h2><ol>
+<li><p>进入Hexo工作空间目录，用记事本或EditPlus等文本编辑工具打开_config.yml文件。</p>
+</li>
+<li><p>各参数作用：</p>
+<ul>
+<li>title        网站标题</li>
+<li>subtitle       网站副标题</li>
+<li>description  网站描述</li>
+<li>author       您的名字</li>
+<li>language     网站使用的语言</li>
+<li>theme        当前主题名称（通过更改该名称更改博客使用的主题）</li>
+<li>deploy       部署配置（上面将博客部署至GitHub已提到）</li>
+</ul>
+</li>
+<li><p>上述各参数的值在书写时一定要注意每项参数冒号后要有一个英文空格符，然后再填写该项的值。</p>
+</li>
+<li><p>更改主题方法：</p>
+<p>a. 从<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">该链接</a>选择你想要使用的Hexo主题。</p>
+<p>b. 双击Git Shell图标，CD命令切换至Hexo工作空间目录后，执行如下命令（以yilia主题为例）:</p>
+<blockquote>
+<p><strong>git clone <a href="https://github.com/litten/hexo-theme-yilia.git" target="_blank" rel="external">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia</strong></p>
+</blockquote>
+<p>c. 修改_config.yml文件的theme值如下：</p>
+<blockquote>
+<p><strong>theme: yilia</strong>(注意参数与值之间空格)</p>
+</blockquote>
+<p>d. 当主题有更新时，双击Git Shell图标，通过CD命令进入Hexo工作空间/themes/yilia目录后执行如下命令更新主题：</p>
+<blockquote>
+<p><strong>git pull</strong></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="博客文章发布">博客文章发布</h2><pre><code>1. 创建新文章,双击Git Shell图标，CD命令切换至Hexo工作空间目录后,执行如下命令：
+&gt; <span class="keyword">*</span><span class="keyword">*</span>hexo new 新文章标题<span class="keyword">*</span><span class="keyword">*</span>
+
+2. 执行完上述命令会在hexo工作空间的source/_posts目录下生成<span class="string">"新文章标题.md"</span>的文件，此时用记事本等文本编辑器工具打开文件，使用markdown语法编辑文章即可。
+
+3. 编辑完成后保存上述文件，执行部署博客内容至GitHub操作中步骤3各命令后博客文章发布完成。
+</code></pre>]]></content>
     <summary type="html">
     <![CDATA[<p>当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。</p>
 <h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><ol>
