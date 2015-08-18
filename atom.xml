@@ -105,10 +105,9 @@
     <link href="http://jellybins.github.io/2013/07/16/Hexo%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
     <id>http://jellybins.github.io/2013/07/16/Hexo在GitHub上搭建静态博客/</id>
     <published>2013-07-16T08:32:23.000Z</published>
-    <updated>2015-08-18T03:20:01.965Z</updated>
+    <updated>2015-08-18T03:21:45.790Z</updated>
     <content type="html"><![CDATA[<p>当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。</p>
-<h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><hr>
-<ol>
+<h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><ol>
 <li><p>Git客户端(博客部署)</p>
 <p><a href="https://windows.github.com/" target="_blank" rel="external">GitHub for Windows（已更名为GitHub Desktop） 下载</a></p>
 <blockquote>
@@ -170,9 +169,8 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p>当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。</p>
-<h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><hr>
-<ol>
-<li><p>Git客]]>
+<h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><ol>
+<li><p>Git客户端(博客]]>
     </summary>
     
       <category term="杂文" scheme="http://jellybins.github.io/categories/%E6%9D%82%E6%96%87/"/>
