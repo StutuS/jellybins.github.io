@@ -230,6 +230,145 @@
 
 
   
+    <article id="post-查看Ubuntu版本号" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/08/19/查看Ubuntu版本号/" class="article-date">
+  	<time datetime="2013-08-19T07:04:45.000Z" itemprop="datePublished">2013-08-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/08/19/查看Ubuntu版本号/">查看Ubuntu版本号</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="方法一：">方法一：</h2><p>在终端中执行下列指令：</p>
+<blockquote>
+<p><strong>cat /etc/issue</strong></p>
+</blockquote>
+<p>可以查看当前正在运行的 Ubuntu 的版本号。其输出结果类似下面的内容：</p>
+<blockquote>
+<p>Ubuntu 14.04.2 LTS</p>
+</blockquote>
+<h2 id="方法二：">方法二：</h2><p>使用 lsb_release 命令也可以查看 Ubuntu 的版本号，与方法一相比，内容更为详细。执行指令如下：</p>
+<blockquote>
+<p><strong>lsb_release -a</strong></p>
+</blockquote>
+<p>将输出结果：</p>
+<blockquote>
+<p>Distributor ID: Ubuntu<br>Description: Ubuntu 14.04.2 LTS<br>Release: 14.04<br>Codename: trusty</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Linux/">Linux</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-apt-get-upgrade和dist-upgrade的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/08/17/apt-get-upgrade和dist-upgrade的区别/" class="article-date">
+  	<time datetime="2013-08-17T07:24:41.000Z" itemprop="datePublished">2013-08-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/08/17/apt-get-upgrade和dist-upgrade的区别/">apt-get upgrade和dist-upgrade的区别</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Debian/Ubuntu Linux使用apt升级时都是执行如下命令:</p>
+<blockquote>
+<p><strong>apt-get update<br>apt-get upgrade（或）apt-get dist-upgrade</strong></p>
+</blockquote>
+<p>但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.</p>
+<ul>
+<li><p><strong>upgrade</strong>：系统将现有的Package升级，如果有相依性的问题，而此相依性需要安装其它新的Package或影响到其它Package的相依性时，此Package就不会被升级，会保留下来。</p>
+</li>
+<li><p><strong>dist-upgrade</strong>：可以聪明的解决相依性的问题，如果有相依性问题，需要安装/移除新的Package，就会试着去安装/移除它(所以通常这个会被认为是有点风险的升级)。</p>
+</li>
+<li><p><strong>总结</strong>：apt-get upgrade 和 apt-get dist-upgrade 本质上是没有什么不同的。只不过，dist-upgrade会识别出当依赖关系改变的情形并作出处理，而upgrade对此情形不处理。</p>
+</li>
+<li><p><strong>示例</strong>：如软件包 a 原先依赖 b c d，但是在源里面可能已经升级了，现在是 a 依赖 b c e。这种情况下，dist-upgrade 会删除 d 安装 e，并把 a 软件包升级，而 upgrade 会认为<br>依赖关系改变而拒绝升级 a 软件包。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Linux/">Linux</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-HIBERNATE实体关系配置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -311,6 +450,75 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/Hibernate/">Hibernate</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-从Ubuntu-LTS版本升级至普通版本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/08/15/从Ubuntu-LTS版本升级至普通版本/" class="article-date">
+  	<time datetime="2013-08-15T07:08:45.000Z" itemprop="datePublished">2013-08-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/08/15/从Ubuntu-LTS版本升级至普通版本/">从Ubuntu LTS版本升级至普通版本</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="以Ubuntu_14-04_LTS版本升级至14-10_普通版本为例">以Ubuntu 14.04 LTS版本升级至14.10 普通版本为例</h2><ol>
+<li><p>首先更新一下系统：</p>
+<blockquote>
+<p><strong>sudo apt-get update<br>sudo apt-get dist-upgrade</strong></p>
+</blockquote>
+</li>
+<li><p>接下来，需要安装更新管理器的核心：</p>
+<blockquote>
+<p><strong>sudo apt-get install update-manager-core<br>sudo do-release-upgrade -d</strong></p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>命令解释：do-release-upgrade 命令是帮助我们寻找最新的稳定版本，而 -d 参数意思是包括非稳定版本。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Linux/">Linux</a>
 	</div>
 
 
@@ -448,7 +656,7 @@
 <h2 id="博客文章发布">博客文章发布</h2><ol>
 <li><p>创建新文章,双击Git Shell图标，CD命令切换至Hexo工作空间目录后,执行如下命令：</p>
 <blockquote>
-<p><strong>hexo new 新文章标题</strong></p>
+<p><strong>hexo new ‘新文章标题’</strong>(如文章标题不含空格则引号可省略)</p>
 </blockquote>
 </li>
 <li><p>执行完上述命令会在hexo工作空间/source/_posts目录下生成”新文章标题.md”的文件，此时用记事本等文本编辑器工具打开文件，使用markdown语法编辑文章即可。</p>
