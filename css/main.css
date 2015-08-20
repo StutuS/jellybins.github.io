@@ -1070,8 +1070,8 @@ body {
 .links-of-author a:before {
   display: inline-block;
   vertical-align: middle;
-  width: 8px;
-  height: 8px;
+  height: 10px;
+  margin: 10px;
 }
 .sidebar-nav {
   margin: 0;
