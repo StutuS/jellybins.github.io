@@ -761,7 +761,7 @@ body {
   width: 700px;
 }
 .main {
-  padding-bottom: 150px;
+  padding-bottom: 120px;
 }
 .main-inner {
   margin: 0 auto;
@@ -778,7 +778,7 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
-  min-height: 50px;
+  min-height: 20px;
 }
 .footer-inner {
   margin: 20px auto;
@@ -1061,7 +1061,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #284750;
+  background: #ecff86;
 }
 .sidebar-nav {
   margin: 0;
@@ -1150,7 +1150,7 @@ body {
   border: none;
 }
 .footer-inner {
-  text-align: center !important;
+  text-align: center;
 }
 .with-love {
   display: inline-block;
@@ -2186,7 +2186,7 @@ ul li {
 }
 .footer-inner {
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .footer-inner {
