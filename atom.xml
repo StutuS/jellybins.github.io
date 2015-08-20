@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   
   <title><![CDATA[JellyBin's博客]]></title>
-  <subtitle><![CDATA[一介码农，一只程序猿]]></subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2015-08-18T00:24:33.985Z</updated>
+  <updated>2015-08-20T02:39:29.052Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jellybins.github.io/2014/08/17/SQLServer%E5%88%9B%E5%BB%BA%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E9%94%99%E8%AF%AF/"/>
     <id>http://jellybins.github.io/2014/08/17/SQLServer创建登录用户错误/</id>
     <published>2014-08-17T09:42:19.000Z</published>
-    <updated>2015-08-18T00:24:33.985Z</updated>
+    <updated>2015-08-20T02:39:29.052Z</updated>
     <content type="html"><![CDATA[<h2 id="错误描述">错误描述</h2><p>在Microsoft SQLServer 还原数据库后，要创建登录该数据库的用户结果提示“错误15023:当前数据库中已存在用户或角色”或“用户、组或角色 在当前数据库中已存在”。</p>
 <h2 id="原因及解决办法">原因及解决办法</h2><ul>
 <li>原因：<br>SQLServer中登录用户名与数据库用户用户名的区别。登录用户名用于用户身份验证，而数据库用户用户名用于数据库访问和权限验证。登录用户通过安全识别符 (SID) 与数据库用户关联。将数据库恢复到其他服务器时，数据库中包含一组用户和权限，但可能没有相应的登录用户或者登录所关联的用户可能不是相同的用户。这种情况被称为存在“孤立用户”。</li>
@@ -36,6 +36,10 @@
 <h2 id="原因及解决办法">原因]]>
     </summary>
     
+      <category term="SQLServer" scheme="http://jellybins.github.io/tags/SQLServer/"/>
+    
+      <category term="创建用户错误" scheme="http://jellybins.github.io/tags/%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E9%94%99%E8%AF%AF/"/>
+    
       <category term="数据库" scheme="http://jellybins.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
@@ -45,8 +49,8 @@
     <link href="http://jellybins.github.io/2013/09/21/%E5%8E%9F%E7%A0%81%EF%BC%8C%E5%8F%8D%E7%A0%81%EF%BC%8C%E8%A1%A5%E7%A0%81%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/"/>
     <id>http://jellybins.github.io/2013/09/21/原码，反码，补码详解（转）/</id>
     <published>2013-09-21T08:34:59.000Z</published>
-    <updated>2015-08-19T08:59:16.421Z</updated>
-    <content type="html"><![CDATA[<p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当选择字节后转换为十进制时，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。</p>
+    <updated>2015-08-20T02:42:50.825Z</updated>
+    <content type="html"><![CDATA[<p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当选择字节后转换为十进制时，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。<br><a id="more"></a></p>
 <h2 id="一-_机器数和真值">一. 机器数和真值</h2><p>在学习原码, 反码和补码之前， 需要先了解机器数和真值的概念。</p>
 <ol>
 <li><p>机器数</p>
@@ -139,8 +143,13 @@
 <p>Ps：<a href="http://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html" target="_blank" rel="external">原文</a> 下面还有讲解原反补码的再深入的第四部分这里就不做摘要了。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上]]>
+    <![CDATA[<p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当选择字节后转换为十进制时，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。<br>]]>
+    
     </summary>
+    
+      <category term="二进制" scheme="http://jellybins.github.io/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
+    
+      <category term="原反补码" scheme="http://jellybins.github.io/tags/%E5%8E%9F%E5%8F%8D%E8%A1%A5%E7%A0%81/"/>
     
       <category term="计算机基础" scheme="http://jellybins.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
     
@@ -151,7 +160,7 @@
     <link href="http://jellybins.github.io/2013/08/19/%E6%9F%A5%E7%9C%8BUbuntu%E7%89%88%E6%9C%AC%E5%8F%B7/"/>
     <id>http://jellybins.github.io/2013/08/19/查看Ubuntu版本号/</id>
     <published>2013-08-19T07:04:45.000Z</published>
-    <updated>2015-08-19T07:30:00.259Z</updated>
+    <updated>2015-08-20T02:40:00.544Z</updated>
     <content type="html"><![CDATA[<h2 id="方法一：">方法一：</h2><p>在终端中执行下列指令：</p>
 <blockquote>
 <p><strong>cat /etc/issue</strong></p>
@@ -177,6 +186,10 @@
 <p>可以查看当前正在运行的 Ubuntu 的版本号。其输出结果]]>
     </summary>
     
+      <category term="Ubuntu" scheme="http://jellybins.github.io/tags/Ubuntu/"/>
+    
+      <category term="版本号查看" scheme="http://jellybins.github.io/tags/%E7%89%88%E6%9C%AC%E5%8F%B7%E6%9F%A5%E7%9C%8B/"/>
+    
       <category term="Linux" scheme="http://jellybins.github.io/categories/Linux/"/>
     
   </entry>
@@ -186,12 +199,12 @@
     <link href="http://jellybins.github.io/2013/08/18/apt-get-upgrade%E5%92%8Cdist-upgrade%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
     <id>http://jellybins.github.io/2013/08/18/apt-get-upgrade和dist-upgrade的区别/</id>
     <published>2013-08-18T07:24:41.000Z</published>
-    <updated>2015-08-19T07:41:01.738Z</updated>
+    <updated>2015-08-20T02:41:08.812Z</updated>
     <content type="html"><![CDATA[<p>Debian/Ubuntu Linux使用apt升级时都是执行如下命令:</p>
 <blockquote>
 <p><strong>apt-get update<br>apt-get upgrade（或）apt-get dist-upgrade</strong></p>
 </blockquote>
-<p>但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.</p>
+<p>但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.<br><a id="more"></a> </p>
 <ul>
 <li><p><strong>upgrade</strong>：系统将现有的Package升级，如果有相依性的问题，而此相依性需要安装其它新的Package或影响到其它Package的相依性时，此Package就不会被升级，会保留下来。</p>
 </li>
@@ -207,8 +220,16 @@
     <![CDATA[<p>Debian/Ubuntu Linux使用apt升级时都是执行如下命令:</p>
 <blockquote>
 <p><strong>apt-get update<br>apt-get upgrade（或）apt-get dist-upgrade</strong></p>
-</]]>
+</blockquote>
+<p>但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.<br>]]>
+    
     </summary>
+    
+      <category term="Ubuntu" scheme="http://jellybins.github.io/tags/Ubuntu/"/>
+    
+      <category term="命令行" scheme="http://jellybins.github.io/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
+    
+      <category term="系统升级" scheme="http://jellybins.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7/"/>
     
       <category term="Linux" scheme="http://jellybins.github.io/categories/Linux/"/>
     
@@ -219,9 +240,8 @@
     <link href="http://jellybins.github.io/2013/08/17/HIBERNATE%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E9%85%8D%E7%BD%AE/"/>
     <id>http://jellybins.github.io/2013/08/17/HIBERNATE实体关系配置/</id>
     <published>2013-08-17T07:01:41.000Z</published>
-    <updated>2015-08-17T07:50:37.013Z</updated>
-    <content type="html"><![CDATA[<p>在使用hibernate配置实体间关系时，对于我总有个解不开的魔咒——思考两个实体间到底是一对一、一对多还是多对多的时候我总爱从指定的唯一个体出发来思考。比如学生和班级是很明显的一对多关系，但是从具体的个体出发，具体的某个学生只有一个具体的班级跟他相对应，变成了一对一关系然后就配置错误了，每次配置的时候都会跟自己强调千万要注意，但还是不长脑子，然后就在我要放弃治疗的时候突然在草稿上摸索出了这个关系总结的表格（让头脑比较清醒的淫们贱笑了哈，就当这是还算正确的歪理邪说好了），都是从固定个体出发，经我初步验证是正确的。</p>
-<p>比如还是上面的例子——（学生和班级）</p>
+    <updated>2015-08-20T02:37:54.501Z</updated>
+    <content type="html"><![CDATA[<p>在使用hibernate配置实体间关系时，对于我总有个解不开的魔咒——思考两个实体间到底是一对一、一对多还是多对多的时候我总爱从指定的唯一个体出发来思考。比如学生和班级是很明显的一对多关系，但是从具体的个体出发，具体的某个学生只有一个具体的班级跟他相对应，变成了一对一关系然后就配置错误了，每次配置的时候都会跟自己强调千万要注意，但还是不长脑子，然后就在我要放弃治疗的时候突然在草稿上摸索出了这个关系总结的表格（让头脑比较清醒的淫们贱笑了哈，就当这是还算正确的歪理邪说好了），都是从固定个体出发，经我初步验证是正确的。<br><a id="more"></a><br>比如还是上面的例子——（学生和班级）</p>
 <ol>
 <li>固定的学生到班级 （正向） 一对一 （固定学生存在一个班级）</li>
 <li>固定班级到学生 （反向） 多对一 （固定班级有多个学生）</li>
@@ -267,8 +287,13 @@
 </table>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>在使用hibernate配置实体间关系时，对于我总有个解不开的魔咒——思考两个实体间到底是一对一、一对多还是多对多的时候我总爱从指定的唯一个体出发来思考。比如学生和班级是很明显的一对多关系，但是从具体的个体出发，具体的某个学生只有一个具体的班级跟他相对应，变成了一对一关系然]]>
+    <![CDATA[<p>在使用hibernate配置实体间关系时，对于我总有个解不开的魔咒——思考两个实体间到底是一对一、一对多还是多对多的时候我总爱从指定的唯一个体出发来思考。比如学生和班级是很明显的一对多关系，但是从具体的个体出发，具体的某个学生只有一个具体的班级跟他相对应，变成了一对一关系然后就配置错误了，每次配置的时候都会跟自己强调千万要注意，但还是不长脑子，然后就在我要放弃治疗的时候突然在草稿上摸索出了这个关系总结的表格（让头脑比较清醒的淫们贱笑了哈，就当这是还算正确的歪理邪说好了），都是从固定个体出发，经我初步验证是正确的。<br>]]>
+    
     </summary>
+    
+      <category term="Hibernate" scheme="http://jellybins.github.io/tags/Hibernate/"/>
+    
+      <category term="ORM配置" scheme="http://jellybins.github.io/tags/ORM%E9%85%8D%E7%BD%AE/"/>
     
       <category term="Hibernate" scheme="http://jellybins.github.io/categories/Hibernate/"/>
     
@@ -279,7 +304,7 @@
     <link href="http://jellybins.github.io/2013/08/15/%E4%BB%8EUbuntu-LTS%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E8%87%B3%E6%99%AE%E9%80%9A%E7%89%88%E6%9C%AC/"/>
     <id>http://jellybins.github.io/2013/08/15/从Ubuntu-LTS版本升级至普通版本/</id>
     <published>2013-08-15T07:08:45.000Z</published>
-    <updated>2015-08-19T07:26:47.666Z</updated>
+    <updated>2015-08-20T02:40:56.728Z</updated>
     <content type="html"><![CDATA[<h2 id="以Ubuntu_14-04_LTS版本升级至14-10_普通版本为例">以Ubuntu 14.04 LTS版本升级至14.10 普通版本为例</h2><ol>
 <li><p>首先更新一下系统：</p>
 <blockquote>
@@ -303,6 +328,12 @@
 <p><strong>sudo ap]]>
     </summary>
     
+      <category term="Ubuntu" scheme="http://jellybins.github.io/tags/Ubuntu/"/>
+    
+      <category term="命令行" scheme="http://jellybins.github.io/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
+    
+      <category term="系统升级" scheme="http://jellybins.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7/"/>
+    
       <category term="Linux" scheme="http://jellybins.github.io/categories/Linux/"/>
     
   </entry>
@@ -312,7 +343,7 @@
     <link href="http://jellybins.github.io/2013/07/16/%E4%BD%BF%E7%94%A8Hexo%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
     <id>http://jellybins.github.io/2013/07/16/使用Hexo在GitHub上搭建静态博客/</id>
     <published>2013-07-16T08:32:23.000Z</published>
-    <updated>2015-08-19T07:28:01.585Z</updated>
+    <updated>2015-08-20T02:41:53.227Z</updated>
     <content type="html"><![CDATA[<p>当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。</p>
 <h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><ol>
 <li><p>Git客户端(博客部署)</p>
@@ -339,6 +370,7 @@
 </blockquote>
 </li>
 </ol>
+<a id="more"></a>
 <h2 id="创建博客容身之所">创建博客容身之所</h2><ul>
 <li>注册GitHub账号</li>
 </ul>
@@ -418,8 +450,36 @@
     <summary type="html">
     <![CDATA[<p>当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。</p>
 <h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><ol>
-<li><p>Git客户端(博客]]>
+<li><p>Git客户端(博客部署)</p>
+<p><a href="https://windows.github.com/">GitHub for Windows（已更名为GitHub Desktop） 下载</a></p>
+<blockquote>
+<p>GitHub for Windows是先下载安装器，然后运行安装器在线安装，如果在线安装过程中出现下载进度不动或下载不成功的情况，恭喜你被墙了，请自行查找科学上网方法，设置为系统全局代理后再尝试。</p>
+</blockquote>
+</li>
+<li><p>Node.js(Hexo依赖)</p>
+<p><a href="https://nodejs.org/">Node.js 下载</a></p>
+<blockquote>
+<p>Node.js安装完成后会自动添加环境变量，如果在步骤3中使用npm命令提示不存在，则请自行在环境变量Path中添加如下内容（默认Node.js安装目录为C:\Program Files\nodejs）：<br><strong>;C:\Program Files\nodejs\node_modules\npm</strong></p>
+</blockquote>
+</li>
+<li><p>Hexo(博客框架，使用Markdown解析文章)</p>
+<p><a href="https://hexo.io/zh-cn/">Hexo 官网（无需下载）</a></p>
+<blockquote>
+<p>完成上述步骤后，双击桌面上的Git Shell，输入如下npm命令回车执行等待安装完成即可：<br><strong>npm install -g hexo-cli</strong></p>
+</blockquote>
+</li>
+<li><p>创建Hexo工作空间</p>
+<blockquote>
+<p>安装 Hexo 完成后，在磁盘任意位置建立文件夹比如D:/hexo,双击桌面上Git Shell，通过CD命令切换到该目录后执行如下两行命令初始化该工作空间并安装hexo所有插件：<br><strong>hexo init</strong><br><strong>npm install</strong></p>
+</blockquote>
+</li>
+</ol>]]>
+    
     </summary>
+    
+      <category term="Hexo" scheme="http://jellybins.github.io/tags/Hexo/"/>
+    
+      <category term="静态博客搭建" scheme="http://jellybins.github.io/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
       <category term="杂文" scheme="http://jellybins.github.io/categories/%E6%9D%82%E6%96%87/"/>
     
@@ -430,7 +490,7 @@
     <link href="http://jellybins.github.io/2013/07/13/hello-world/"/>
     <id>http://jellybins.github.io/2013/07/13/hello-world/</id>
     <published>2013-07-13T12:46:25.000Z</published>
-    <updated>2015-08-19T00:59:08.828Z</updated>
+    <updated>2015-08-20T02:36:13.459Z</updated>
     <content type="html"><![CDATA[<h2 id="你好_世界！">你好 世界！</h2><p>这个静态博客搭起来好久了，但是还从来没动过，本来准备抽个非常空闲的时间来整理一下，把之前WordPress的博文都转移过来，看来现在比较是时候了。</p>
 <h2 id="JellyBins来历">JellyBins来历</h2><p>作为一个码农，第一篇博客的标题当然该是Hello World，就像那个码农转行书法家的笑话一样。之前有用京东云擎部署WordPress搭了个博客，但是没怎么打理。前些天看到新闻说京东云要正式运营关闭试用了，然后对于我等屌丝来说只能另寻其它免费之所，所以也自然而然的选择了真正的WordPress网站，虽然被GFW墙掉了。随之而来的就是站点的名称问题，其实一直想用Jelly，但是无奈已被注册或者名字过短等种种原因只能放弃。后来午休的时候突发奇想，码农应该和Binary（二进制码）有关。然后就想到了JellyBin，还跟谷歌的安卓果冻豆系统JellyBean谐音，瞬间感觉高大上，结果要注册的时候提示是保留名称，纠结了，再后来想到这一生应该跟很多Binary有关，于是就有了现在JellyBins（还可以变作JellyBin’s，简直perfect，请原谅我的放荡不羁爱自由）。之后再搭建这个静态博客的时候也就延续使用了这个名字，所以现在的站点链接是：<a href="http://jellybins.github.io">http://jellybins.github.io</a> 。</p>
 ]]></content>
@@ -438,6 +498,8 @@
     <![CDATA[<h2 id="你好_世界！">你好 世界！</h2><p>这个静态博客搭起来好久了，但是还从来没动过，本来准备抽个非常空闲的时间来整理一下，把之前WordPress的博文都转移过来，看来现在比较是时候了。</p>
 <h2 id="JellyBins来历">JellyBins来历]]>
     </summary>
+    
+      <category term="你好 世界" scheme="http://jellybins.github.io/tags/%E4%BD%A0%E5%A5%BD-%E4%B8%96%E7%95%8C/"/>
     
       <category term="杂文" scheme="http://jellybins.github.io/categories/%E6%9D%82%E6%96%87/"/>
     
