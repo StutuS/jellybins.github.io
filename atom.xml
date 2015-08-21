@@ -367,6 +367,84 @@
   </entry>
   
   <entry>
+    <title><![CDATA[关于Java线程两种同步方法的理解]]></title>
+    <link href="http://jellybins.github.io/2013/07/23/%E5%85%B3%E4%BA%8EJava%E7%BA%BF%E7%A8%8B%E4%B8%A4%E7%A7%8D%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://jellybins.github.io/2013/07/23/关于Java线程两种同步方法的理解/</id>
+    <published>2013-07-23T09:14:26.000Z</published>
+    <updated>2015-08-21T09:18:37.203Z</updated>
+    <content type="html"><![CDATA[<p>在阅读李兴华老师java开发实战经典一书，在java代码块级及方法级同步方法，起初讲解还是很清楚，但在讲解到模拟java多线程死锁时，使用上述代码块级同步方法让我对代码块级同步方法中同步对象的设置产生了较大的疑惑。</p>
+<h2 id="模拟死锁">模拟死锁</h2><p>有张三，李四两人，张三对李四说：“你给我画，我就给你书”，李四对张三说：“你给我你的书，我就给你画”。模拟代码如下：</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/* Test.java */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Sisuo s1 = <span class="keyword">new</span> Sisuo();</span><br><span class="line">		Sisuo s2 = <span class="keyword">new</span> Sisuo();</span><br><span class="line">		s1.setFlag(<span class="keyword">true</span>);</span><br><span class="line">		s2.setFlag(<span class="keyword">false</span>);</span><br><span class="line">		Thread t1 = <span class="keyword">new</span> Thread(s1);</span><br><span class="line">		Thread t2 = <span class="keyword">new</span> Thread(s2);</span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zhangsan</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"你给我画，我就给你书"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"张三得到了画"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Lisi</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"你给我书，我就给你画"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"李四得到了书"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/* Sisuo.java */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sisuo</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Zhangsan zs = <span class="keyword">new</span> Zhangsan();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Lisi ls = <span class="keyword">new</span> Lisi();</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlag</span><span class="params">(<span class="keyword">boolean</span> flag)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.flag = flag;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (flag) &#123;</span><br><span class="line">			<span class="keyword">synchronized</span> (zs) &#123;</span><br><span class="line">				System.out.println(<span class="string">"线程"</span> + Thread.currentThread().getName()</span><br><span class="line">						+ <span class="string">"获得了zs对象的锁"</span>);</span><br><span class="line">				zs.say();</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					Thread.sleep(<span class="number">300</span>);</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">synchronized</span> (ls) &#123;</span><br><span class="line">					System.out.println(<span class="string">"线程"</span> + Thread.currentThread().getName()</span><br><span class="line">							+ <span class="string">"获得了ls对象的锁"</span>);</span><br><span class="line">					zs.get();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">synchronized</span> (ls) &#123;</span><br><span class="line">				System.out.println(<span class="string">"线程"</span> + Thread.currentThread().getName()</span><br><span class="line">						+ <span class="string">"获得了ls对象的锁"</span>);</span><br><span class="line">				ls.say();</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					Thread.sleep(<span class="number">300</span>);</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">synchronized</span> (zs) &#123;</span><br><span class="line">					System.out.println(<span class="string">"线程"</span> + Thread.currentThread().getName()</span><br><span class="line">							+ <span class="string">"获得了zs对象的锁"</span>);</span><br><span class="line">					ls.get();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行结果（其中一种）">运行结果（其中一种）</h2><blockquote>
+<p>线程Thread-0获得了zs对象的锁<br>你给我画，我就给你书<br>线程Thread-1获得了ls对象的锁<br>你给我书，我就给你画</p>
+</blockquote>
+<h2 id="代码块级同步与方法级同步区别">代码块级同步与方法级同步区别</h2><p>方法级同步：</p>
+<ul>
+<li>实现方法：在要标志为同步的方法前加上synchronized关键字。</li>
+<li>实现原理：当调用对象的同步方法时，线程取得对象锁或监视器；如果另一个线程试图执行任何同步方 法时，他就会发现他被锁住了，进入挂起状态，直到对象监视器上的锁被释放时为止。当锁住方法的线程从方法中返回时，只有一个排队等候的线程可以访问对象。</li>
+</ul>
+<p>代码块级同步：</p>
+<ul>
+<li>临界区：需要进行互斥的代码段，而非整个方法。</li>
+<li>实现方法：用synchronized来指定某个对象，此对象的锁被用来对花括号内的代码进行同步控制。</li>
+<li>实现原理：在进入同步代码前，必须得到object对象的锁，如果其他线程已经得到这个锁，那么就得等到锁被释放后才能进入临界区。</li>
+<li>锁的作用域：只在代码块运行的时间内。</li>
+</ul>
+<h2 id="代码运行结果分析">代码运行结果分析</h2><p>由于同步代码块中sleep方法的操作，使得线程t1获得zs对象的锁后睡眠，这时另一线程t2执行获得ls对象的锁然后睡眠。此后两线程无论哪个线程先醒来都需要获取另一个线程所持有的对象的锁才能继续执行，从而使得程序执行陷入死锁状态，此时Eclips控制台会有终端结束灯一直持红色状态，即程序未执行完。在对其中一同步代码块中sleep方法注释掉后，程序执行出现在未注释前从未出现的一种结果，从而进一步证明了，代码块级同步对象的设置作用。</p>
+<h2 id="更改后运行结果">更改后运行结果</h2><blockquote>
+<p>线程Thread-0获得了zs对象的锁<br>你给我画，我就给你书<br>线程Thread-0获得了ls对象的锁<br>张三得到了画<br>线程Thread-1获得了ls对象的锁<br>你给我书，我就给你画<br>线程Thread-1获得了zs对象的锁<br>李四得到了书</p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在阅读李兴华老师java开发实战经典一书，在java代码块级及方法级同步方法，起初讲解还是很清楚，但在讲解到模拟java多线程死锁时，使用上述代码块级同步方法让我对代码块级同步方法中同步对象的设置产生了较大的疑惑。</p>
+<h2 id="模拟死锁">模拟死锁</h2><p>有张三，李四两人，张三对李四说：“你给我画，我就给你书”，李四对张三说：“你给我你的书，我就给你画”。模拟代码如下：</p>]]>
+    
+    </summary>
+    
+      <category term="代码块级同步" scheme="http://jellybins.github.io/tags/%E4%BB%A3%E7%A0%81%E5%9D%97%E7%BA%A7%E5%90%8C%E6%AD%A5/"/>
+    
+      <category term="方法级同步" scheme="http://jellybins.github.io/tags/%E6%96%B9%E6%B3%95%E7%BA%A7%E5%90%8C%E6%AD%A5/"/>
+    
+      <category term="线程" scheme="http://jellybins.github.io/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="Java" scheme="http://jellybins.github.io/categories/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Html中引入JS文件乱码问题]]></title>
+    <link href="http://jellybins.github.io/2013/07/21/Html%E4%B8%AD%E5%BC%95%E5%85%A5JS%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    <id>http://jellybins.github.io/2013/07/21/Html中引入JS文件乱码问题/</id>
+    <published>2013-07-21T09:59:11.000Z</published>
+    <updated>2015-08-21T10:08:41.860Z</updated>
+    <content type="html"><![CDATA[<h2 id="乱码问题">乱码问题</h2><p>在JS框架学习时，碰到了如下问题，在Html页面中引入的JS文件出现乱码，一开始以为是未指定默认的Html页面编码格式造成，但是通过head标签中<code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</code> charset属性设置Html页面编码格式后，引入JS文件还是乱码，按照原本的理解如果JS是直接写在Html页面中，会按照页面编码的格式对其进行编解码，所以猜测如果是引用的话，也应该是按照这样的方式对JS文件进行编解码，但事实是如果未对引入的JS文件指定正确编码（默认JS文件编码方式与HTML页面编码不同情况下），则JS会按照其真正的文本存储编码方式进行编码，但解码时却是按照指定的HTML页面的编码进行解码，从而出现乱码问题。</p>
+<h2 id="解决方法">解决方法</h2><p>一番尝试后发现上述问题的出现是由于在引入JS文件时忽略了其中的一个charset属性，<code>&lt;script type=&quot;text/javascript&quot; src=&quot;#&quot; charset=&quot;gbk&quot;&gt;</code>，如要引入的JS文件的文本存储编码格式为GBK，Html页面指定的页面编码设置（采用如上文设置方式）为UTF-8，但是引入JS处指定编码charset属性为GBK则不会有乱码问题出现。</p>
+<a id="more"></a>
+<h2 id="结论">结论</h2><p>在指定引入JS文本存储编码（charset属性）的情况下，浏览器会对JS文件按照charset解码JS文件；如果引入JS时未指定文本存储编码，则按照HTML页面指定的编码方式对JS文件解码，即浏览器是优先按照引入JS文件处指定的编码方式对JS文件进行解码的，</p>
+<h2 id="附Eclipse中设置JS文件默认编码">附Eclipse中设置JS文件默认编码</h2><ul>
+<li><p>方法1：window-&gt;Preferences打开属性页，General-&gt;Content Type,点击右边的Text，下面会出现<em>.js(locked)，选中</em>.js(locked)，在最下面的Default Encoding中写入utf-8，再点击update按钮即可。</p>
+</li>
+<li><p>方法2：在工程上右键Properties。 选中Resource，在右边的Text file Encoding中点击Other，选utf-8即可，不推荐方法2， 除非你的其他代码都是utf-8的。</p>
+</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="乱码问题">乱码问题</h2><p>在JS框架学习时，碰到了如下问题，在Html页面中引入的JS文件出现乱码，一开始以为是未指定默认的Html页面编码格式造成，但是通过head标签中<code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</code> charset属性设置Html页面编码格式后，引入JS文件还是乱码，按照原本的理解如果JS是直接写在Html页面中，会按照页面编码的格式对其进行编解码，所以猜测如果是引用的话，也应该是按照这样的方式对JS文件进行编解码，但事实是如果未对引入的JS文件指定正确编码（默认JS文件编码方式与HTML页面编码不同情况下），则JS会按照其真正的文本存储编码方式进行编码，但解码时却是按照指定的HTML页面的编码进行解码，从而出现乱码问题。</p>
+<h2 id="解决方法">解决方法</h2><p>一番尝试后发现上述问题的出现是由于在引入JS文件时忽略了其中的一个charset属性，<code>&lt;script type=&quot;text/javascript&quot; src=&quot;#&quot; charset=&quot;gbk&quot;&gt;</code>，如要引入的JS文件的文本存储编码格式为GBK，Html页面指定的页面编码设置（采用如上文设置方式）为UTF-8，但是引入JS处指定编码charset属性为GBK则不会有乱码问题出现。</p>]]>
+    
+    </summary>
+    
+      <category term="charset属性" scheme="http://jellybins.github.io/tags/charset%E5%B1%9E%E6%80%A7/"/>
+    
+      <category term="乱码" scheme="http://jellybins.github.io/tags/%E4%B9%B1%E7%A0%81/"/>
+    
+      <category term="JavaScript" scheme="http://jellybins.github.io/categories/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[使用Hexo在GitHub上搭建静态博客]]></title>
     <link href="http://jellybins.github.io/2013/07/16/%E4%BD%BF%E7%94%A8Hexo%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
     <id>http://jellybins.github.io/2013/07/16/使用Hexo在GitHub上搭建静态博客/</id>
