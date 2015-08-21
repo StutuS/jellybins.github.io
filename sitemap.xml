@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jellybins.github.io/2013/07/28/Hibernate%E9%85%8D%E7%BD%AEinverse%E4%B8%8Ecascade%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2015-08-21T12:00:11.555Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://jellybins.github.io/2013/07/21/Html%E4%B8%AD%E5%BC%95%E5%85%A5JS%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2015-08-21T10:08:41.860Z</lastmod>
   </url>

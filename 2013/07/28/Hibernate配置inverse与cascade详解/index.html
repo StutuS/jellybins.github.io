@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="你好 世界," />
+  <meta name="keywords" content="ORM配置,cascade,inverse," />
 
 
 
@@ -37,19 +37,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="你好 世界！这个静态博客搭起来好久了，但是还从来没动过，本来准备抽个非常空闲的时间来整理一下，把之前WordPress的博文都转移过来，看来现在比较是时候了。
-JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello World，就像那个码农转行书法家的笑话一样。之前有用京东云擎部署WordPress搭了个博客，但是没怎么打理。前些天看到新闻说京东云要正式运营关闭试用了，然后对于我等">
+<meta name="description" content="inverse配置inverse决定是否把对对象中集合的改动反映到数据库中，所以inverse只对集合起作用，也就是只对one-to-many或many-to-many有效（因为只有这两种关联关系包含集合，而one-to-one和many-to-one只含有关系对方的一个引用）。inverse默认值为false，即多的一方默认不放弃维护关系。
+cascade配置cascade决定是否把对对象的改动">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://jellybins.github.io/2013/07/13/hello-world/index.html">
+<meta property="og:title" content="Hibernate配置inverse与cascade详解">
+<meta property="og:url" content="http://jellybins.github.io/2013/07/28/Hibernate配置inverse与cascade详解/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
-<meta property="og:description" content="你好 世界！这个静态博客搭起来好久了，但是还从来没动过，本来准备抽个非常空闲的时间来整理一下，把之前WordPress的博文都转移过来，看来现在比较是时候了。
-JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello World，就像那个码农转行书法家的笑话一样。之前有用京东云擎部署WordPress搭了个博客，但是没怎么打理。前些天看到新闻说京东云要正式运营关闭试用了，然后对于我等">
-<meta property="og:updated_time" content="2015-08-20T02:36:13.459Z">
+<meta property="og:description" content="inverse配置inverse决定是否把对对象中集合的改动反映到数据库中，所以inverse只对集合起作用，也就是只对one-to-many或many-to-many有效（因为只有这两种关联关系包含集合，而one-to-one和many-to-one只含有关系对方的一个引用）。inverse默认值为false，即多的一方默认不放弃维护关系。
+cascade配置cascade决定是否把对对象的改动">
+<meta property="og:updated_time" content="2015-08-21T12:00:11.555Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="你好 世界！这个静态博客搭起来好久了，但是还从来没动过，本来准备抽个非常空闲的时间来整理一下，把之前WordPress的博文都转移过来，看来现在比较是时候了。
-JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello World，就像那个码农转行书法家的笑话一样。之前有用京东云擎部署WordPress搭了个博客，但是没怎么打理。前些天看到新闻说京东云要正式运营关闭试用了，然后对于我等">
+<meta name="twitter:title" content="Hibernate配置inverse与cascade详解">
+<meta name="twitter:description" content="inverse配置inverse决定是否把对对象中集合的改动反映到数据库中，所以inverse只对集合起作用，也就是只对one-to-many或many-to-many有效（因为只有这两种关联关系包含集合，而one-to-one和many-to-one只含有关系对方的一个引用）。inverse默认值为false，即多的一方默认不放弃维护关系。
+cascade配置cascade决定是否把对对象的改动">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -59,7 +59,7 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
   };
 </script>
 
-  <title> Hello World | JellyBin's博客 </title>
+  <title> Hibernate配置inverse与cascade详解 | JellyBin's博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -187,7 +187,7 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
           
           
             
-              Hello World
+              Hibernate配置inverse与cascade详解
             
           
         </h1>
@@ -196,8 +196,8 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2013-07-13T20:46:25+08:00" content="2013-07-13">
-            2013-07-13
+          <time itemprop="dateCreated" datetime="2013-07-28T19:57:18+08:00" content="2013-07-28">
+            2013-07-28
           </time>
         </span>
 
@@ -206,8 +206,8 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/杂文/" itemprop="url" rel="index">
-                  <span itemprop="name">杂文</span>
+                <a href="/categories/Hibernate/" itemprop="url" rel="index">
+                  <span itemprop="name">Hibernate</span>
                 </a>
               </span>
 
@@ -222,8 +222,8 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2013/07/13/hello-world/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/13/hello-world/" itemprop="commentsCount"></span>
+              <a href="/2013/07/28/Hibernate配置inverse与cascade详解/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/28/Hibernate配置inverse与cascade详解/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -237,9 +237,10 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
       
 
       
-        <span itemprop="articleBody"><h2 id="你好_世界！">你好 世界！</h2><p>这个静态博客搭起来好久了，但是还从来没动过，本来准备抽个非常空闲的时间来整理一下，把之前WordPress的博文都转移过来，看来现在比较是时候了。</p>
-<h2 id="JellyBins来历">JellyBins来历</h2><p>作为一个码农，第一篇博客的标题当然该是Hello World，就像那个码农转行书法家的笑话一样。之前有用京东云擎部署WordPress搭了个博客，但是没怎么打理。前些天看到新闻说京东云要正式运营关闭试用了，然后对于我等屌丝来说只能另寻其它免费之所，所以也自然而然的选择了真正的WordPress网站，虽然被GFW墙掉了。随之而来的就是站点的名称问题，其实一直想用Jelly，但是无奈已被注册或者名字过短等种种原因只能放弃。后来午休的时候突发奇想，码农应该和Binary（二进制码）有关。然后就想到了JellyBin，还跟谷歌的安卓果冻豆系统JellyBean谐音，瞬间感觉高大上，结果要注册的时候提示是保留名称，纠结了，再后来想到这一生应该跟很多Binary有关，于是就有了现在JellyBins（还可以变作JellyBin’s，简直perfect，请原谅我的放荡不羁爱自由）。之后再搭建这个静态博客的时候也就延续使用了这个名字，所以现在的站点链接是：<a href="http://jellybins.github.io">http://jellybins.github.io</a> 。</p>
-</span>
+        <span itemprop="articleBody"><h2 id="inverse配置">inverse配置</h2><p>inverse决定是否把对对象中集合的改动反映到数据库中，所以inverse只对集合起作用，也就是只对one-to-many或many-to-many有效（因为只有这两种关联关系包含集合，而one-to-one和many-to-one只含有关系对方的一个引用）。inverse默认值为false，即多的一方默认不放弃维护关系。</p>
+<h2 id="cascade配置">cascade配置</h2><p>cascade决定是否把对对象的改动反映到数据库中，所以cascade对所有的关联关系都起作用（因为关联关系就是指对象之间的关联关系）即对一方的CRUD操作，是否级联到相关联的一方。<br>在一对多关系中，通常设置为由多方维护关系，一方设置为放弃维护关系。同时对一方的操作，如删除，应级联引用的多方。</p>
+<h2 id="例(学生与班级)">例(学生与班级)</h2><a id="more"></a>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"com.jellybins.Clazz"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">id</span>&gt;</span>...<span class="tag">&lt;/<span class="title">id</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--此处inverse，cascade设置的对象都是班级，即班级不负责关系的维护，班级删除操作级联删除该班级的学生--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">set</span> <span class="attribute">name</span>=<span class="value">"students"</span> <span class="attribute">inverse</span>=<span class="value">"true"</span> <span class="attribute">cascade</span>=<span class="value">"delete"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="title">key</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!--此处设置的是students集合中外键列的名称，此外键列值用于匹配班级的id列--&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">column</span> <span class="attribute">name</span>=<span class="value">"calzz-id"</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!--此处设置为一对多关系多方集合中对象所属的类--&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">one-to-many</span> <span class="attribute">class</span>=<span class="value">"com.rauy.Student"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="title">key</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">set</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">class</span>&gt;</span></span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -247,7 +248,11 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
       
         <div class="post-tags">
           
-            <a href="/tags/你好-世界/" rel="tag">#你好 世界</a>
+            <a href="/tags/ORM配置/" rel="tag">#ORM配置</a>
+          
+            <a href="/tags/cascade/" rel="tag">#cascade</a>
+          
+            <a href="/tags/inverse/" rel="tag">#inverse</a>
           
         </div>
       
@@ -256,11 +261,13 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2013/07/16/使用Hexo在GitHub上搭建静态博客/" rel="prev">使用Hexo在GitHub上搭建静态博客</a>
+              <a href="/2013/08/15/从Ubuntu-LTS版本升级至普通版本/" rel="prev">从Ubuntu LTS版本升级至普通版本</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/07/23/关于Java线程两种同步方法的理解/" rel="next">关于Java线程两种同步方法的理解</a>
             
           </div>
         </div>
@@ -275,10 +282,10 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2013/07/13/hello-world/"
-     data-title="Hello World"
+        <div class="ds-share flat" data-thread-key="2013/07/28/Hibernate配置inverse与cascade详解/"
+     data-title="Hibernate配置inverse与cascade详解"
      data-content=""
-     data-url="http://jellybins.github.io/2013/07/13/hello-world/">
+     data-url="http://jellybins.github.io/2013/07/28/Hibernate配置inverse与cascade详解/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -304,8 +311,8 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2013/07/13/hello-world/"
-                   data-title="Hello World" data-url="http://jellybins.github.io/2013/07/13/hello-world/">
+              <div class="ds-thread" data-thread-key="2013/07/28/Hibernate配置inverse与cascade详解/"
+                   data-title="Hibernate配置inverse与cascade详解" data-url="http://jellybins.github.io/2013/07/28/Hibernate配置inverse与cascade详解/">
               </div>
             
           </div>
@@ -401,7 +408,7 @@ JellyBins来历作为一个码农，第一篇博客的标题当然该是Hello Wo
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#你好_世界！"><span class="nav-number">1.</span> <span class="nav-text">你好 世界！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JellyBins来历"><span class="nav-number">2.</span> <span class="nav-text">JellyBins来历</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#inverse配置"><span class="nav-number">1.</span> <span class="nav-text">inverse配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cascade配置"><span class="nav-number">2.</span> <span class="nav-text">cascade配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例(学生与班级)"><span class="nav-number">3.</span> <span class="nav-text">例(学生与班级)</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
