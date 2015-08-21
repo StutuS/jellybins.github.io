@@ -1057,14 +1057,14 @@ body {
   color: #fff;
 }
 .links-of-author {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .links-of-author a {
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-bottom-color: #555;
+  border-bottom: none;
   font-size: 13px;
 }
 .links-of-author a:before {
