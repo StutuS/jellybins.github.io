@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Ubuntu,命令行,系统升级," />
+  <meta name="keywords" content="SetInterval,SetTimeout," />
 
 
 
@@ -37,28 +37,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Debian/Ubuntu Linux使用apt升级时都是执行如下命令:
-
-apt-get updateapt-get upgrade（或）apt-get dist-upgrade
-
-但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.">
+<meta name="description" content="方法一：12345678var userName=”jack”;//根据用户名显示欢迎信息function hello(_name)&amp;#123;    alert(“hello,”+_name);&amp;#125;//用字符串形式,函数及变量必须为全局作用域window.setTimeout(“hello(userName)”,3000);
+方法二：1234567891011121314var user">
 <meta property="og:type" content="article">
-<meta property="og:title" content="apt-get upgrade和dist-upgrade的区别">
-<meta property="og:url" content="http://jellybins.github.io/2013/08/18/apt-get-upgrade和dist-upgrade的区别/index.html">
+<meta property="og:title" content="SETTIMEOUT，SETINTERVAL传参">
+<meta property="og:url" content="http://jellybins.github.io/2015/09/15/SETTIMEOUT，SETINTERVAL传参/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
-<meta property="og:description" content="Debian/Ubuntu Linux使用apt升级时都是执行如下命令:
-
-apt-get updateapt-get upgrade（或）apt-get dist-upgrade
-
-但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.">
-<meta property="og:updated_time" content="2015-08-20T02:41:08.812Z">
+<meta property="og:description" content="方法一：12345678var userName=”jack”;//根据用户名显示欢迎信息function hello(_name)&amp;#123;    alert(“hello,”+_name);&amp;#125;//用字符串形式,函数及变量必须为全局作用域window.setTimeout(“hello(userName)”,3000);
+方法二：1234567891011121314var user">
+<meta property="og:updated_time" content="2015-08-21T07:22:46.603Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="apt-get upgrade和dist-upgrade的区别">
-<meta name="twitter:description" content="Debian/Ubuntu Linux使用apt升级时都是执行如下命令:
-
-apt-get updateapt-get upgrade（或）apt-get dist-upgrade
-
-但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.">
+<meta name="twitter:title" content="SETTIMEOUT，SETINTERVAL传参">
+<meta name="twitter:description" content="方法一：12345678var userName=”jack”;//根据用户名显示欢迎信息function hello(_name)&amp;#123;    alert(“hello,”+_name);&amp;#125;//用字符串形式,函数及变量必须为全局作用域window.setTimeout(“hello(userName)”,3000);
+方法二：1234567891011121314var user">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -68,7 +59,7 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
   };
 </script>
 
-  <title> apt-get upgrade和dist-upgrade的区别 | JellyBin's博客 </title>
+  <title> SETTIMEOUT，SETINTERVAL传参 | JellyBin's博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -196,7 +187,7 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
           
           
             
-              apt-get upgrade和dist-upgrade的区别
+              SETTIMEOUT，SETINTERVAL传参
             
           
         </h1>
@@ -205,8 +196,8 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2013-08-18T15:24:41+08:00" content="2013-08-18">
-            2013-08-18
+          <time itemprop="dateCreated" datetime="2015-09-15T15:16:18+08:00" content="2015-09-15">
+            2015-09-15
           </time>
         </span>
 
@@ -215,8 +206,8 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Linux/" itemprop="url" rel="index">
-                  <span itemprop="name">Linux</span>
+                <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaScript</span>
                 </a>
               </span>
 
@@ -231,8 +222,8 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2013/08/18/apt-get-upgrade和dist-upgrade的区别/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/18/apt-get-upgrade和dist-upgrade的区别/" itemprop="commentsCount"></span>
+              <a href="/2015/09/15/SETTIMEOUT，SETINTERVAL传参/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/15/SETTIMEOUT，SETINTERVAL传参/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -246,21 +237,11 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
       
 
       
-        <span itemprop="articleBody"><p>Debian/Ubuntu Linux使用apt升级时都是执行如下命令:</p>
-<blockquote>
-<p><strong>apt-get update<br>apt-get upgrade（或）apt-get dist-upgrade</strong></p>
-</blockquote>
-<p>但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.<br><a id="more"></a> </p>
-<ul>
-<li><p><strong>upgrade</strong>：系统将现有的Package升级，如果有相依性的问题，而此相依性需要安装其它新的Package或影响到其它Package的相依性时，此Package就不会被升级，会保留下来。</p>
-</li>
-<li><p><strong>dist-upgrade</strong>：可以聪明的解决相依性的问题，如果有相依性问题，需要安装/移除新的Package，就会试着去安装/移除它(所以通常这个会被认为是有点风险的升级)。</p>
-</li>
-<li><p><strong>总结</strong>：apt-get upgrade 和 apt-get dist-upgrade 本质上是没有什么不同的。只不过，dist-upgrade会识别出当依赖关系改变的情形并作出处理，而upgrade对此情形不处理。</p>
-</li>
-<li><p><strong>示例</strong>：如软件包 a 原先依赖 b c d，但是在源里面可能已经升级了，现在是 a 依赖 b c e。这种情况下，dist-upgrade 会删除 d 安装 e，并把 a 软件包升级，而 upgrade 会认为<br>依赖关系改变而拒绝升级 a 软件包。</p>
-</li>
-</ul>
+        <span itemprop="articleBody"><h2 id="方法一：">方法一：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用字符串形式,函数及变量必须为全局作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(“hello(userName)”,<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="方法二：">方法二：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个函数，用于返回一个无参数函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        hello(_name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值为函数形式，变量名及调用的函数可以是局部作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(_hello(userName),<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="方法三：">方法三：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//*=============================================================</span></span><br><span class="line"><span class="comment">//*   功能： 修改 window.setInterval ，使之可以传递参数和对象参数</span></span><br><span class="line"><span class="comment">//*   方法： setInterval (回调函数,时间,参数1,,参数n)  参数可为对象(如数组等)</span></span><br><span class="line"><span class="comment">//*=============================================================</span></span><br><span class="line"><span class="keyword">var</span> __sto = setInterval;</span><br><span class="line"></span><br><span class="line"><span class="comment">//更改setTimeout,setInterval方法原型</span></span><br><span class="line"><span class="built_in">window</span>.setInterval = <span class="function"><span class="keyword">function</span>(<span class="params">callback,timeout,param</span>)</span>&#123;     </span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>,<span class="number">2</span>);     </span><br><span class="line">    <span class="keyword">var</span> _cb = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;     </span><br><span class="line">        callback.apply(<span class="literal">null</span>,args);     </span><br><span class="line">    &#125;     </span><br><span class="line">    __sto(_cb,timeout);     </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.setInterval(hello,<span class="number">3000</span>,userName);</span><br></pre></td></tr></table></figure>
+<h2 id="关于“this”">关于“this”</h2><p>当你向setTimeout()(或者其他函数也行)传递一个函数时,该函数中的this会指向一个错误的值。由于setTimeout()调用的代码运行在与所在函数完全分离的执行环境上，这会导致，这些代码中包含的 this 关键字会指向 window (全局对象)对象，这和所期望的this的值是不一样的。</p>
 </span>
       
     </div>
@@ -269,11 +250,9 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
       
         <div class="post-tags">
           
-            <a href="/tags/Ubuntu/" rel="tag">#Ubuntu</a>
+            <a href="/tags/SetInterval/" rel="tag">#SetInterval</a>
           
-            <a href="/tags/命令行/" rel="tag">#命令行</a>
-          
-            <a href="/tags/系统升级/" rel="tag">#系统升级</a>
+            <a href="/tags/SetTimeout/" rel="tag">#SetTimeout</a>
           
         </div>
       
@@ -282,13 +261,11 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2013/08/19/查看Ubuntu版本号/" rel="prev">查看Ubuntu版本号</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2013/08/17/HIBERNATE实体关系配置/" rel="next">Hibernate实体关系判断</a>
+              <a href="/2014/08/17/SQLServer创建登录用户错误/" rel="next">SQLServer创建登录用户错误</a>
             
           </div>
         </div>
@@ -303,10 +280,10 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2013/08/18/apt-get-upgrade和dist-upgrade的区别/"
-     data-title="apt-get upgrade和dist-upgrade的区别"
+        <div class="ds-share flat" data-thread-key="2015/09/15/SETTIMEOUT，SETINTERVAL传参/"
+     data-title="SETTIMEOUT，SETINTERVAL传参"
      data-content=""
-     data-url="http://jellybins.github.io/2013/08/18/apt-get-upgrade和dist-upgrade的区别/">
+     data-url="http://jellybins.github.io/2015/09/15/SETTIMEOUT，SETINTERVAL传参/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -332,8 +309,8 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2013/08/18/apt-get-upgrade和dist-upgrade的区别/"
-                   data-title="apt-get upgrade和dist-upgrade的区别" data-url="http://jellybins.github.io/2013/08/18/apt-get-upgrade和dist-upgrade的区别/">
+              <div class="ds-thread" data-thread-key="2015/09/15/SETTIMEOUT，SETINTERVAL传参/"
+                   data-title="SETTIMEOUT，SETINTERVAL传参" data-url="http://jellybins.github.io/2015/09/15/SETTIMEOUT，SETINTERVAL传参/">
               </div>
             
           </div>
@@ -429,7 +406,7 @@ apt-get updateapt-get upgrade（或）apt-get dist-upgrade
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一："><span class="nav-number">1.</span> <span class="nav-text">方法一：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二："><span class="nav-number">2.</span> <span class="nav-text">方法二：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法三："><span class="nav-number">3.</span> <span class="nav-text">方法三：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于“this”"><span class="nav-number">4.</span> <span class="nav-text">关于“this”</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
