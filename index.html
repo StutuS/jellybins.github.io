@@ -277,6 +277,100 @@
           
           
             
+              <a class="post-title-link" href="/2013/09/25/Java参数传递-值传递or引用传递？/" itemprop="url">
+                Java参数传递-值传递or引用传递？
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-09-25T21:26:01+08:00" content="2013-09-25">
+            2013-09-25
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/" itemprop="url" rel="index">
+                  <span itemprop="name">Java</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/09/25/Java参数传递-值传递or引用传递？/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/09/25/Java参数传递-值传递or引用传递？/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="简单类型是按值传递的">简单类型是按值传递的</h2><p>Java 方法的参数是简单类型的时候，是按值传递的 (pass by value)。这一点我们可以通过一个简单的例子来说明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 例 1 * Test.java */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">boolean</span> test)</span> </span>&#123;</span><br><span class="line">		test = !test;</span><br><span class="line">		System.out.println(<span class="string">"In test(boolean) : test = "</span> + test);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> test = <span class="keyword">true</span>;</span><br><span class="line">		System.out.println(<span class="string">"Before test(boolean) : test = "</span> + test);</span><br><span class="line">		test(test);</span><br><span class="line">		System.out.println(<span class="string">"After test(boolean) : test = "</span> + test);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<blockquote>
+<p>Before test(boolean) : test = true<br>In test(boolean) : test = false<br>After test(boolean) : test = true</p>
+</blockquote>
+<p>不难看出，虽然在 <code>test(boolean)</code> 方法中改变了传进来的参数的值，但对这个参数源变量本身并没有影响，即对 <code>main(String[])</code> 方法里的 test 变量没有影响。那说明，参数类型是简单类型的时候，是按值传递的。以参数形式传递简单类型的变量时，实际上是将参数的值作了一个拷贝传进方法函数的，那么在方法函数里再怎么改变其值，其结果都是只改变了拷贝的值，而不是源值。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/09/25/Java参数传递-值传递or引用传递？/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2013/09/21/原码，反码，补码详解（转）/" itemprop="url">
                 原码，反码，补码详解（转）
               </a>
@@ -542,98 +636,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/08/18/apt-get-upgrade和dist-upgrade的区别/" itemprop="url">
-                apt-get upgrade和dist-upgrade的区别
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2013-08-18T15:24:41+08:00" content="2013-08-18">
-            2013-08-18
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Linux/" itemprop="url" rel="index">
-                  <span itemprop="name">Linux</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/08/18/apt-get-upgrade和dist-upgrade的区别/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/18/apt-get-upgrade和dist-upgrade的区别/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>Debian/Ubuntu Linux使用apt升级时都是执行如下命令:</p>
-<blockquote>
-<p><strong>apt-get update<br>apt-get upgrade（或）apt-get dist-upgrade</strong></p>
-</blockquote>
-<p>但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/08/18/apt-get-upgrade和dist-upgrade的区别/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -672,7 +674,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -686,7 +688,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

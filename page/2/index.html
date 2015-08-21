@@ -185,6 +185,98 @@
           
           
             
+              <a class="post-title-link" href="/2013/08/18/apt-get-upgrade和dist-upgrade的区别/" itemprop="url">
+                apt-get upgrade和dist-upgrade的区别
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-08-18T15:24:41+08:00" content="2013-08-18">
+            2013-08-18
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Linux/" itemprop="url" rel="index">
+                  <span itemprop="name">Linux</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/08/18/apt-get-upgrade和dist-upgrade的区别/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/18/apt-get-upgrade和dist-upgrade的区别/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>Debian/Ubuntu Linux使用apt升级时都是执行如下命令:</p>
+<blockquote>
+<p><strong>apt-get update<br>apt-get upgrade（或）apt-get dist-upgrade</strong></p>
+</blockquote>
+<p>但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/08/18/apt-get-upgrade和dist-upgrade的区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2013/08/17/Hibernate实体关系判断/" itemprop="url">
                 Hibernate实体关系判断
               </a>
@@ -539,95 +631,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/07/21/Html中引入JS文件乱码问题/" itemprop="url">
-                Html中引入JS文件乱码问题
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2013-07-21T17:59:11+08:00" content="2013-07-21">
-            2013-07-21
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                  <span itemprop="name">JavaScript</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/07/21/Html中引入JS文件乱码问题/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/21/Html中引入JS文件乱码问题/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="乱码问题">乱码问题</h2><p>在JS框架学习时，碰到了如下问题，在Html页面中引入的JS文件出现乱码，一开始以为是未指定默认的Html页面编码格式造成，但是通过head标签中<code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</code> charset属性设置Html页面编码格式后，引入JS文件还是乱码，按照原本的理解如果JS是直接写在Html页面中，会按照页面编码的格式对其进行编解码，所以猜测如果是引用的话，也应该是按照这样的方式对JS文件进行编解码，但事实是如果未对引入的JS文件指定正确编码（默认JS文件编码方式与HTML页面编码不同情况下），则JS会按照其真正的文本存储编码方式进行编码，但解码时却是按照指定的HTML页面的编码进行解码，从而出现乱码问题。</p>
-<h2 id="解决方法">解决方法</h2><p>一番尝试后发现上述问题的出现是由于在引入JS文件时忽略了其中的一个charset属性，<code>&lt;script type=&quot;text/javascript&quot; src=&quot;#&quot; charset=&quot;gbk&quot;&gt;</code>，如要引入的JS文件的文本存储编码格式为GBK，Html页面指定的页面编码设置（采用如上文设置方式）为UTF-8，但是引入JS处指定编码charset属性为GBK则不会有乱码问题出现。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/07/21/Html中引入JS文件乱码问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -666,7 +669,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -680,7 +683,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
