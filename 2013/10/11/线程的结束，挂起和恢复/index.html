@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="线程,线程操作," />
 
 
 
@@ -37,15 +37,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="一介码农，一只程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JellyBin's博客">
-<meta property="og:url" content="http://jellybins.github.io/index.html">
+<meta name="description" content="引言Android的车辆监控端应用开发中，碰到了轨迹回放控制，播放、暂停、停止不知道该怎么实现的问题，虽然知道要用线程。然后找到了这篇文章，讲解的非常清晰，在此记录之，文末有原文链接。最后将整个轨迹回放实现完成后，再看代码恍然大悟，这不就是音乐播放器的播放、暂停、停止的实现，当初看播放器源码应该很容易就解决了，结果重复造了轮子，不过还是很有收获的。
+PS：程序示例部分是我在原作者的基础上改进而来，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线程的结束，挂起和恢复">
+<meta property="og:url" content="http://jellybins.github.io/2013/10/11/线程的结束，挂起和恢复/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
-<meta property="og:description" content="一介码农，一只程序猿">
+<meta property="og:description" content="引言Android的车辆监控端应用开发中，碰到了轨迹回放控制，播放、暂停、停止不知道该怎么实现的问题，虽然知道要用线程。然后找到了这篇文章，讲解的非常清晰，在此记录之，文末有原文链接。最后将整个轨迹回放实现完成后，再看代码恍然大悟，这不就是音乐播放器的播放、暂停、停止的实现，当初看播放器源码应该很容易就解决了，结果重复造了轮子，不过还是很有收获的。
+PS：程序示例部分是我在原作者的基础上改进而来，">
+<meta property="og:updated_time" content="2015-09-11T07:51:18.353Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JellyBin's博客">
-<meta name="twitter:description" content="一介码农，一只程序猿">
+<meta name="twitter:title" content="线程的结束，挂起和恢复">
+<meta name="twitter:description" content="引言Android的车辆监控端应用开发中，碰到了轨迹回放控制，播放、暂停、停止不知道该怎么实现的问题，虽然知道要用线程。然后找到了这篇文章，讲解的非常清晰，在此记录之，文末有原文链接。最后将整个轨迹回放实现完成后，再看代码恍然大悟，这不就是音乐播放器的播放、暂停、停止的实现，当初看播放器源码应该很容易就解决了，结果重复造了轮子，不过还是很有收获的。
+PS：程序示例部分是我在原作者的基础上改进而来，">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -55,7 +59,7 @@
   };
 </script>
 
-  <title> JellyBin's博客 </title>
+  <title> 线程的结束，挂起和恢复 | JellyBin's博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -83,9 +87,7 @@
 
 
 
-  <div class="container one-column 
-   page-home 
-">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -182,9 +184,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div id="content" class="content"> 
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
@@ -195,101 +197,7 @@
           
           
             
-              <a class="post-title-link" href="/2014/08/17/SQLServer创建登录用户错误/" itemprop="url">
-                SQLServer创建登录用户错误
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2014-08-17T17:42:19+08:00" content="2014-08-17">
-            2014-08-17
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/数据库/" itemprop="url" rel="index">
-                  <span itemprop="name">数据库</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/08/17/SQLServer创建登录用户错误/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/17/SQLServer创建登录用户错误/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h2 id="错误描述">错误描述</h2><p>在Microsoft SQLServer 还原数据库后，要创建登录该数据库的用户结果提示“错误15023:当前数据库中已存在用户或角色”或“用户、组或角色 在当前数据库中已存在”。</p>
-<h2 id="原因及解决办法">原因及解决办法</h2><ul>
-<li>原因：<br>SQLServer中登录用户名与数据库用户用户名的区别。登录用户名用于用户身份验证，而数据库用户用户名用于数据库访问和权限验证。登录用户通过安全识别符 (SID) 与数据库用户关联。将数据库恢复到其他服务器时，数据库中包含一组用户和权限，但可能没有相应的登录用户或者登录所关联的用户可能不是相同的用户。这种情况被称为存在“孤立用户”。</li>
-<li>解决办法：<br>调用系统存储过程sp_change_users_login，具体用法如下：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> 数据库名</span><br><span class="line"><span class="keyword">go</span></span><br><span class="line">sp_change_users_login <span class="string">'update_one'</span>, <span class="string">'用户名'</span>,<span class="string">'用户名'</span></span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>其中数据库名为存在孤立用户的数据库，update_one是存储过程的参数，表示只处理一个用户，前一个用户名是数据库用户，后一个用户名是用来数据库登录，以上这个SQL命令表示将数据库用户用户名与服务器登录用户名重新连接起来。这样就可以正常使用数据库了。</p>
-</blockquote>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/10/11/线程的结束，挂起和恢复/" itemprop="url">
-                线程的结束，挂起和恢复
-              </a>
+              线程的结束，挂起和恢复
             
           
         </h1>
@@ -339,8 +247,7 @@
       
 
       
-        
-          <span itemprop="articleBody"><h2 id="引言">引言</h2><p>Android的车辆监控端应用开发中，碰到了轨迹回放控制，播放、暂停、停止不知道该怎么实现的问题，虽然知道要用线程。然后找到了这篇文章，讲解的非常清晰，在此记录之，文末有原文链接。最后将整个轨迹回放实现完成后，再看代码恍然大悟，这不就是音乐播放器的播放、暂停、停止的实现，当初看播放器源码应该很容易就解决了，结果重复造了轮子，不过还是很有收获的。</p>
+        <span itemprop="articleBody"><h2 id="引言">引言</h2><p>Android的车辆监控端应用开发中，碰到了轨迹回放控制，播放、暂停、停止不知道该怎么实现的问题，虽然知道要用线程。然后找到了这篇文章，讲解的非常清晰，在此记录之，文末有原文链接。最后将整个轨迹回放实现完成后，再看代码恍然大悟，这不就是音乐播放器的播放、暂停、停止的实现，当初看播放器源码应该很容易就解决了，结果重复造了轮子，不过还是很有收获的。</p>
 <p>PS：程序示例部分是我在原作者的基础上改进而来，感觉应该更通俗易懂些，希望能对需要的人有帮助，有什么错误的话还请诸位评论指正，谢谢。</p>
 <h2 id="Android中的线程操作">Android中的线程操作</h2><p>在Android应用的开发过程中,我们有时候需要通过创建一个新的线程去完成一些任务。例如，我们去进行搜寻动作，如果搜寻比较费时，我们就需要通过进度条来提示用户搜寻的进展情况，避免用户认为发生了死机。此时进度条的刷新就需要另外一个线程去实现。</p>
 <p>但是这里有一个误区:有些人在多线程开发的时候会错误的认为，如果我们从创建线程的Activity中退出（该Acitivity被销毁），则在该Activity中创建的自定义线程也会被销毁。其实这是大错特错了。</p>
@@ -390,306 +297,79 @@
 <h3 id="程序实例:-1">程序实例:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SearchThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Object mPauseLock;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> mPauseFlag;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SearchThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		mPauseLock = <span class="keyword">new</span> Object();</span><br><span class="line">		mPauseFlag = <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pauseThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (mPauseLock) &#123;</span><br><span class="line">			mPauseFlag = <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resumeThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (mPauseLock) &#123;</span><br><span class="line">			mPauseFlag = <span class="keyword">false</span>;</span><br><span class="line">			mPauseLock.notifyAll();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//线程开始执行</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">			<span class="comment">//每次执行检测是否应改变为暂停状态</span></span><br><span class="line">			<span class="keyword">synchronized</span> (mPauseLock) &#123;</span><br><span class="line">				<span class="keyword">if</span> (mPauseFlag) &#123;</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						mPauseLock.wait();</span><br><span class="line">					&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// <span class="doctag"><span class="keyword">TODO</span></span> Something</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Ps：<a href="http://blog.sina.com.cn/s/blog_4c0706560101175j.html" target="_blank" rel="external">原文链接</a>在此。</p>
 </span>
-        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
+        <div class="post-tags">
           
+            <a href="/tags/线程/" rel="tag">#线程</a>
           
+            <a href="/tags/线程操作/" rel="tag">#线程操作</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
             
-              <a class="post-title-link" href="/2013/09/25/Java参数传递-值传递or引用传递？/" itemprop="url">
-                Java参数传递-值传递or引用传递？
-              </a>
+              <a href="/2014/08/17/SQLServer创建登录用户错误/" rel="prev">SQLServer创建登录用户错误</a>
             
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2013-09-25T21:26:01+08:00" content="2013-09-25">
-            2013-09-25
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Java/" itemprop="url" rel="index">
-                  <span itemprop="name">Java</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/09/25/Java参数传递-值传递or引用传递？/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/09/25/Java参数传递-值传递or引用传递？/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="简单类型是按值传递的">简单类型是按值传递的</h2><p>Java 方法的参数是简单类型的时候，是按值传递的 (pass by value)。这一点我们可以通过一个简单的例子来说明：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 例 1 * Test.java */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">boolean</span> test)</span> </span>&#123;</span><br><span class="line">		test = !test;</span><br><span class="line">		System.out.println(<span class="string">"In test(boolean) : test = "</span> + test);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> test = <span class="keyword">true</span>;</span><br><span class="line">		System.out.println(<span class="string">"Before test(boolean) : test = "</span> + test);</span><br><span class="line">		test(test);</span><br><span class="line">		System.out.println(<span class="string">"After test(boolean) : test = "</span> + test);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<blockquote>
-<p>Before test(boolean) : test = true<br>In test(boolean) : test = false<br>After test(boolean) : test = true</p>
-</blockquote>
-<p>不难看出，虽然在 <code>test(boolean)</code> 方法中改变了传进来的参数的值，但对这个参数源变量本身并没有影响，即对 <code>main(String[])</code> 方法里的 test 变量没有影响。那说明，参数类型是简单类型的时候，是按值传递的。以参数形式传递简单类型的变量时，实际上是将参数的值作了一个拷贝传进方法函数的，那么在方法函数里再怎么改变其值，其结果都是只改变了拷贝的值，而不是源值。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/09/25/Java参数传递-值传递or引用传递？/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
+          <div class="post-nav-next post-nav-item">
             
-              <a class="post-title-link" href="/2013/09/21/原码，反码，补码详解（转）/" itemprop="url">
-                原码，反码，补码详解（转）
-              </a>
+              <a href="/2013/09/25/Java参数传递-值传递or引用传递？/" rel="next">Java参数传递-值传递or引用传递？</a>
             
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2013-09-21T16:34:59+08:00" content="2013-09-21">
-            2013-09-21
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/计算机基础/" itemprop="url" rel="index">
-                  <span itemprop="name">计算机基础</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/09/21/原码，反码，补码详解（转）/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/09/21/原码，反码，补码详解（转）/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当选择字节后转换为十进制时，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/09/21/原码，反码，补码详解（转）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <div class="ds-share flat" data-thread-key="2013/10/11/线程的结束，挂起和恢复/"
+     data-title="线程的结束，挂起和恢复"
+     data-content=""
+     data-url="http://jellybins.github.io/2013/10/11/线程的结束，挂起和恢复/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/09/15/SetTimeout，SetInterval传参/" itemprop="url">
-                SetTimeout，SetInterval传参
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2013-09-15T15:16:18+08:00" content="2013-09-15">
-            2013-09-15
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                  <span itemprop="name">JavaScript</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/09/15/SetTimeout，SetInterval传参/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/09/15/SetTimeout，SetInterval传参/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="方法一：">方法一：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用字符串形式,函数及变量必须为全局作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(“hello(userName)”,<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="方法二：">方法二：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个函数，用于返回一个无参数函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        hello(_name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值为函数形式，变量名及调用的函数可以是局部作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(_hello(userName),<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/09/15/SetTimeout，SetInterval传参/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
       
     </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
-  </nav>
+  </div>
 
  </div>
 
         
 
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2013/10/11/线程的结束，挂起和恢复/"
+                   data-title="线程的结束，挂起和恢复" data-url="http://jellybins.github.io/2013/10/11/线程的结束，挂起和恢复/">
+              </div>
+            
+          </div>
         
       </div>
 
@@ -706,6 +386,15 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
       
 
       <section class="site-overview">
@@ -767,6 +456,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android中的线程操作"><span class="nav-number">2.</span> <span class="nav-text">Android中的线程操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的结束"><span class="nav-number">3.</span> <span class="nav-text">线程的结束</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number">3.1.</span> <span class="nav-text">解决方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序实例:"><span class="nav-number">3.2.</span> <span class="nav-text">程序实例:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的挂起与恢复"><span class="nav-number">4.</span> <span class="nav-text">线程的挂起与恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法："><span class="nav-number">4.1.</span> <span class="nav-text">解决方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序实例:-1"><span class="nav-number">4.2.</span> <span class="nav-text">程序实例:</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
       
 
     </div>
@@ -843,6 +543,165 @@
   <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
 
   <script type="text/javascript">
     $(document).ready(function () {
