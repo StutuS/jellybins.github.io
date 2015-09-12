@@ -287,6 +287,106 @@
           
           
             
+              <a class="post-title-link" href="/2013/10/20/再谈线程synchronized同步/" itemprop="url">
+                再谈线程synchronized同步
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-10-20T16:59:20+08:00" content="2013-10-20">
+            2013-10-20
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/" itemprop="url" rel="index">
+                  <span itemprop="name">Java</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/10/20/再谈线程synchronized同步/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/10/20/再谈线程synchronized同步/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><code>synchronized</code>是Java语言的关键字，当它用来修饰一个方法或者一个代码块的时候，能够保证在同一时刻最多只有一个线程执行该段代码。</p>
+<h2 id="先摆结论">先摆结论</h2><ol>
+<li><p>当两个并发线程访问同一个对象object中的这个synchronized(this)同步代码块时，一个时间内只能有一个线程得到执行。另一个线程必须等待当前线程执行完这个代码块以后才能执行该代码块。</p>
+</li>
+<li><p>然而，当一个线程访问object的一个synchronized(this)同步代码块时，另一个线程仍然可以访问该object中的非synchronized(this)同步代码块。</p>
+</li>
+<li><p>尤其关键的是，当一个线程访问object的一个synchronized(this)同步代码块时，其他线程对object中所有其它synchronized(this)同步代码块的访问将被阻塞。</p>
+</li>
+<li><p>第三个例子同样适用其它同步方法。也就是说，当一个线程访问object的一个synchronized(this)同步代码块时，它就获得了这个object的对象锁。结果，其它线程对该object对象所有同步方法的访问都被暂时阻塞。</p>
+</li>
+<li><p>以上规则对其它对象锁同样适用。</p>
+</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/10/20/再谈线程synchronized同步/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2013/10/11/线程的结束，挂起和恢复/" itemprop="url">
                 线程的结束，挂起和恢复
               </a>
@@ -341,7 +441,7 @@
       
         
           <h2 id="引言">引言</h2><p>Android的车辆监控端应用开发中，碰到了轨迹回放控制，播放、暂停、停止不知道该怎么实现的问题，虽然知道要用线程。然后找到了这篇文章，讲解的非常清晰，在此记录之，文末有原文链接。最后将整个轨迹回放实现完成后，再看代码恍然大悟，这不就是音乐播放器的播放、暂停、停止的实现，当初看播放器源码应该很容易就解决了，结果重复造了轮子，不过还是很有收获的。</p>
-<p>PS：程序示例部分是我在原作者的基础上改进而来，感觉应该更通俗易懂些，希望能对需要的人有帮助，有什么错误的话还请诸位评论指正，谢谢。</p>
+<p>PS：程序示例部分是我在原作者的基础上修改而来，感觉应该更通俗易懂些，希望能对需要的人有帮助，有什么错误的话还请指正，谢谢。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2013/10/11/线程的结束，挂起和恢复/#more" rel="contents">
               阅读全文 &raquo;
@@ -547,95 +647,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/09/15/SetTimeout，SetInterval传参/" itemprop="url">
-                SetTimeout，SetInterval传参
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2013-09-15T15:16:18+08:00" content="2013-09-15">
-            2013-09-15
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                  <span itemprop="name">JavaScript</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/09/15/SetTimeout，SetInterval传参/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/09/15/SetTimeout，SetInterval传参/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="方法一：">方法一：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用字符串形式,函数及变量必须为全局作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(“hello(userName)”,<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="方法二：">方法二：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个函数，用于返回一个无参数函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        hello(_name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值为函数形式，变量名及调用的函数可以是局部作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(_hello(userName),<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/09/15/SetTimeout，SetInterval传参/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -674,7 +685,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -688,7 +699,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
