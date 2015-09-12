@@ -43,7 +43,7 @@
 <meta property="og:url" content="http://jellybins.github.io/2015/09/12/路由器WPS的两种设置方式/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
 <meta property="og:description" content="最近趁着京东搞活动，终于以历史底价入了心仪已久的美国网件路由器WNDR4300，之所以选中它，是因为它的可折腾性极高，不过入手后也没有着急折腾，先体验了下官方固件到底怎么样。然后一通配置之后，发现一个问题，就是我取消了启用路由器PIN这个选项的勾选，路由器上WPS按键旁边的灯却依然亮着无法关闭。之所以纠结这个是因为之前曾利用PIN码破解过几个路由器，感觉这是一个极不靠谱的东西，必须把它关掉。后来查">
-<meta property="og:updated_time" content="2015-09-12T08:50:13.136Z">
+<meta property="og:updated_time" content="2015-09-12T08:58:12.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="路由器WPS的两种设置方式">
 <meta name="twitter:description" content="最近趁着京东搞活动，终于以历史底价入了心仪已久的美国网件路由器WNDR4300，之所以选中它，是因为它的可折腾性极高，不过入手后也没有着急折腾，先体验了下官方固件到底怎么样。然后一通配置之后，发现一个问题，就是我取消了启用路由器PIN这个选项的勾选，路由器上WPS按键旁边的灯却依然亮着无法关闭。之所以纠结这个是因为之前曾利用PIN码破解过几个路由器，感觉这是一个极不靠谱的东西，必须把它关掉。后来查">
@@ -257,17 +257,27 @@
 <li>按一下AP上的WPS按键,WPS开始链接协商,片刻后WPS安全连接成功建立。</li>
 </ol>
 <h3 id="输入PIN码实现WPS安全连接">输入PIN码实现WPS安全连接</h3><p>该方式又分为Internal Register和External Register两种。</p>
-<h4 id="PIN(Internal_Register，相对于AP而言)：">PIN(Internal Register，相对于AP而言)：</h4><p>通过在路由器中输入客户端PIN码来实现WPS安全连接。</p>
+<ul>
+<li>PIN(Internal Register，相对于AP而言)：通过在路由器中输入客户端PIN码来实现WPS安全连接。</li>
+</ul>
 <ol>
-<li>在WPS设置中,把状态设置为启用。</li>
-<li>打开客户端WPS设置软件，选择在路由器中输入PIN的方式连接，同时软件上还会显示客户端当前的PIN码。</li>
-<li>打开路由器界面，在WPS模式里选择PIN模式，然后输入客户端的PIN码，点添加新设备，一会儿后，WPS安全连接成功建立。</li>
+<li><p>在WPS设置中,把状态设置为启用。</p>
+</li>
+<li><p>打开客户端WPS设置软件，选择在路由器中输入PIN的方式连接，同时软件上还会显示客户端当前的PIN码。</p>
+</li>
+<li><p>打开路由器界面，在WPS模式里选择PIN模式，然后输入客户端的PIN码，点添加新设备，一会儿后，WPS安全连接成功建立。</p>
+</li>
 </ol>
-<h4 id="PIN(External_Register，相对于AP而言)：">PIN(External Register，相对于AP而言)：</h4><p>通过输入AP的PIN码实现WPS安全连接.</p>
+<ul>
+<li>PIN(External Register，相对于AP而言)：通过输入AP的PIN码实现WPS安全连接。</li>
+</ul>
 <ol>
-<li>在AP中，在WPS设置中，设置为启用。</li>
-<li>记住AP的PIN码，然后打开客户端（无线网卡）WPS设置软件，选择以AP的PIN码来进行连接。</li>
-<li>输入完PIN码后，点下一步，一会儿后，WPS安全连接成功建立。</li>
+<li><p>在AP中，在WPS设置中，设置为启用。</p>
+</li>
+<li><p>记住AP的PIN码，然后打开客户端（无线网卡）WPS设置软件，选择以AP的PIN码来进行连接。</p>
+</li>
+<li><p>输入完PIN码后，点下一步，一会儿后，WPS安全连接成功建立。</p>
+</li>
 </ol>
 </span>
       
@@ -435,7 +445,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是WPS？"><span class="nav-number">1.</span> <span class="nav-text">什么是WPS？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的失误在哪里？"><span class="nav-number">2.</span> <span class="nav-text">我的失误在哪里？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详解两种设置方式"><span class="nav-number">3.</span> <span class="nav-text">详解两种设置方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PBC:_按WPS按钮实现WPS安全连接。"><span class="nav-number">3.1.</span> <span class="nav-text">PBC: 按WPS按钮实现WPS安全连接。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入PIN码实现WPS安全连接"><span class="nav-number">3.2.</span> <span class="nav-text">输入PIN码实现WPS安全连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PIN(Internal_Register，相对于AP而言)："><span class="nav-number">3.2.1.</span> <span class="nav-text">PIN(Internal Register，相对于AP而言)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PIN(External_Register，相对于AP而言)："><span class="nav-number">3.2.2.</span> <span class="nav-text">PIN(External Register，相对于AP而言)：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是WPS？"><span class="nav-number">1.</span> <span class="nav-text">什么是WPS？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的失误在哪里？"><span class="nav-number">2.</span> <span class="nav-text">我的失误在哪里？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详解两种设置方式"><span class="nav-number">3.</span> <span class="nav-text">详解两种设置方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PBC:_按WPS按钮实现WPS安全连接。"><span class="nav-number">3.1.</span> <span class="nav-text">PBC: 按WPS按钮实现WPS安全连接。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入PIN码实现WPS安全连接"><span class="nav-number">3.2.</span> <span class="nav-text">输入PIN码实现WPS安全连接</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
