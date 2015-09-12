@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2015-09-12T09:03:44.603Z</updated>
+  <updated>2015-09-12T09:07:10.705Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jellybins.github.io/2015/09/12/%E8%B7%AF%E7%94%B1%E5%99%A8WPS%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%AE%BE%E7%BD%AE%E6%96%B9%E5%BC%8F/"/>
     <id>http://jellybins.github.io/2015/09/12/路由器WPS的两种设置方式/</id>
     <published>2015-09-12T08:09:11.000Z</published>
-    <updated>2015-09-12T09:03:44.603Z</updated>
+    <updated>2015-09-12T09:07:10.705Z</updated>
     <content type="html"><![CDATA[<p>最近趁着京东搞活动，终于以历史底价入了心仪已久的美国网件路由器WNDR4300，之所以选中它，是因为它的可折腾性极高，不过入手后也没有着急折腾，先体验了下官方固件到底怎么样。然后一通配置之后，发现一个问题，就是我取消了启用路由器PIN这个选项的勾选，路由器上WPS按键旁边的灯却依然亮着无法关闭。之所以纠结这个是因为之前曾利用PIN码破解过几个路由器，感觉这是一个极不靠谱的东西，必须把它关掉。后来查看路由器的设置说明，WPS灯正常就是常亮状态，即使禁用了PIN功能，然后今天在网上又查询关于关闭WPS功能的方法的时候，突然发现了我又一个自以为是的错误想法，下面慢慢道来，说不定你也有这个失误。</p>
 <a id="more"></a>
 <h2 id="什么是WPS？">什么是WPS？</h2><blockquote>
@@ -33,8 +33,7 @@
 <li>按一下客户端(无线网卡)上的WPS按键,搜索WPS网络。</li>
 <li>按一下AP上的WPS按键,WPS开始链接协商,片刻后WPS安全连接成功建立。</li>
 </ol>
-<h3 id="输入PIN码实现WPS安全连接">输入PIN码实现WPS安全连接</h3><p><strong>该方式又分为Internal Register和External Register两种，设置方式如下：</strong></p>
-<ul>
+<h3 id="PIN：输入PIN码实现WPS安全连接（分两小种）。">PIN：输入PIN码实现WPS安全连接（分两小种）。</h3><ul>
 <li>PIN(Internal Register，相对于AP而言)：通过在路由器中输入客户端PIN码来实现WPS安全连接。</li>
 </ul>
 <ol>
