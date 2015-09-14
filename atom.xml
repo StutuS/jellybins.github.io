@@ -357,8 +357,8 @@
     <link href="http://jellybins.github.io/2013/09/21/%E5%8E%9F%E7%A0%81%EF%BC%8C%E5%8F%8D%E7%A0%81%EF%BC%8C%E8%A1%A5%E7%A0%81%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/"/>
     <id>http://jellybins.github.io/2013/09/21/原码，反码，补码详解（转）/</id>
     <published>2013-09-21T08:34:59.000Z</published>
-    <updated>2015-09-12T01:48:11.503Z</updated>
-    <content type="html"><![CDATA[<p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当选择字节后转换为十进制时，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。<br><a id="more"></a></p>
+    <updated>2015-09-14T00:14:43.831Z</updated>
+    <content type="html"><![CDATA[<p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当字长选择字节后转换为十进制，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。<br><a id="more"></a></p>
 <h2 id="一-_机器数和真值">一. 机器数和真值</h2><p>在学习原码, 反码和补码之前， 需要先了解机器数和真值的概念。</p>
 <ol>
 <li><p>机器数</p>
@@ -451,7 +451,7 @@
 <p>PS：<a href="http://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html" target="_blank" rel="external">原文</a> 下面还有讲解原反补码的再深入的第四部分这里就不做摘要了。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当选择字节后转换为十进制时，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。<br>]]>
+    <![CDATA[<p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当字长选择字节后转换为十进制，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。<br>]]>
     
     </summary>
     
@@ -784,7 +784,7 @@
     <link href="http://jellybins.github.io/2013/07/16/%E4%BD%BF%E7%94%A8Hexo%E5%9C%A8GitHub%E4%B8%8A%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
     <id>http://jellybins.github.io/2013/07/16/使用Hexo在GitHub上搭建静态博客/</id>
     <published>2013-07-16T08:32:23.000Z</published>
-    <updated>2015-08-20T02:41:53.227Z</updated>
+    <updated>2015-09-14T00:13:55.965Z</updated>
     <content type="html"><![CDATA[<p>当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。</p>
 <h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><ol>
 <li><p>Git客户端(博客部署)</p>
@@ -816,11 +816,11 @@
 <li>注册GitHub账号</li>
 </ul>
 <ol>
-<li><p>登录<a href="https://github.com/" target="_blank" rel="external">GitHub</a>，选择Sign Up注册GitHub账户，注意此处注册的账号名称决定将来访问你的博客的路径。比如你注册的账号用户名为jellybins（以下部分也用该示例），则将来访问你博客的路径为<a href="http://jellybins.github.io。" target="_blank" rel="external">http://jellybins.github.io。</a></p>
+<li><p>登录<a href="https://github.com/" target="_blank" rel="external">GitHub</a>，选择Sign Up注册GitHub账户，注意此处注册的账号名称决定将来访问你的博客的路径。比如你注册的账号用户名为jellybins（以下部分也用该示例），则将来访问你博客的路径为<a href="http://jellybins.github.io">http://jellybins.github.io</a> 。</p>
 </li>
 <li><p>创建GitHub博客仓储，注册完成后登录GitHub选择New Repository，创建名称为jellybins.github.io的Repository(jellybins为示例，必须保证Repository名称中该部分和注册账户名称一致)。</p>
 </li>
-<li><p>首次创建后等待几分钟左右审核，之后即可访问静态主页如<a href="http://jellybins.github.io（jellybins为示例）" target="_blank" rel="external">http://jellybins.github.io（jellybins为示例）</a> 。</p>
+<li><p>首次创建后等待几分钟左右审核，之后即可访问静态主页如<a href="http://jellybins.github.io">http://jellybins.github.io</a> （jellybins为示例） 。</p>
 </li>
 </ol>
 <ul>
@@ -836,12 +836,12 @@
 </li>
 <li><p>双击桌面上Git Shell图标，通过CD命令切换到Hexo工作空间目录，然后执行如下命令完成博客部署至GitHub</p>
 <blockquote>
-<p><strong>hexo clean<br>hexo generate<br>hexo server（可选命令——本地<a href="http://localhost:4000端口预览博客效果，快捷键Ctrl+C停止预览）" target="_blank" rel="external">http://localhost:4000端口预览博客效果，快捷键Ctrl+C停止预览）</a><br>hexo deploy</strong></p>
+<p><strong>hexo clean<br>hexo generate<br>hexo server（可选命令——本地<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 端口预览博客效果，快捷键Ctrl+C停止预览）<br>hexo deploy</strong></p>
 </blockquote>
 </li>
 <li><p>以后每次完成新博客文章要发布时，重新执行步骤3中各命令即可。</p>
 </li>
-<li><p>访问博客地址<a href="http://jellybins.github.io查看效果（jellybins为示例）。" target="_blank" rel="external">http://jellybins.github.io查看效果（jellybins为示例）。</a></p>
+<li><p>访问博客地址<a href="http://jellybins.github.io">http://jellybins.github.io</a> 查看效果（jellybins为示例）。</p>
 </li>
 </ol>
 <h2 id="博客设置及主题更换">博客设置及主题更换</h2><ol>
