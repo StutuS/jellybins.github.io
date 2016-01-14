@@ -77,7 +77,7 @@
     <link href="http://jellybins.github.io/2015/10/14/ActiveMQ%E4%B8%ADMQTT%E6%B6%88%E6%81%AF%E8%AF%9D%E9%A2%98%E5%90%8D%E7%AC%A6%E5%8F%B7%E6%98%A0%E5%B0%84%E9%97%AE%E9%A2%98/"/>
     <id>http://jellybins.github.io/2015/10/14/ActiveMQ中MQTT消息话题名符号映射问题/</id>
     <published>2015-10-14T09:00:49.000Z</published>
-    <updated>2016-01-14T09:18:36.483Z</updated>
+    <updated>2016-01-14T09:22:48.174Z</updated>
     <content type="html"><![CDATA[<p>当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的<a href="http://activemq.apache.org/mqtt.html" target="_blank" rel="external">MQTT支持文档</a>中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。</p>
 <a id="more"></a>
 <h2 id="官方支持文档的说明">官方支持文档的说明</h2><h3 id="Working_with_Destinations_with_MQTT">Working with Destinations with MQTT</h3><hr>
@@ -110,8 +110,10 @@
 </tr>
 </tbody>
 </table>
-<pre><code>&gt;These values are automatically transposed between clients <span class="keyword">using</span> JMS/NMS/Stomp <span class="operator">and</span> clients <span class="keyword">using</span> MQTT. For example - <span class="operator">a</span> client subscribing <span class="built_in">to</span> <span class="string">"foo/#/bar"</span> would receive messages published <span class="command"><span class="keyword">on</span> <span class="title">a</span> <span class="title">JMS</span> <span class="title">Topic</span> <span class="title">of</span> <span class="title">foo</span>.<span class="title">blah</span>.<span class="title">bar</span>.</span>
-</code></pre><h3 id="蹩脚的翻译">蹩脚的翻译</h3><h2 id="采用使用MQTT协议的客户端接收消息">采用使用MQTT协议的客户端接收消息</h2><blockquote>
+<blockquote>
+<p>These values are automatically transposed between clients using JMS/NMS/Stomp and clients using MQTT. For example - a client subscribing to “foo/#/bar” would receive messages published on a JMS Topic of foo.blah.bar.</p>
+</blockquote>
+<h3 id="蹩脚的翻译">蹩脚的翻译</h3><h2 id="采用使用MQTT协议的客户端接收消息">采用使用MQTT协议的客户端接收消息</h2><blockquote>
 <p>MQTT支持层级分隔符和通配符，但是与传统ActiveMQ消息的不同：-这是映射表：</p>
 </blockquote>
 <table>
@@ -140,8 +142,10 @@
 </tr>
 </tbody>
 </table>
-<pre><code>&gt;这些值（指上述分隔符和通配符）会在使用JMS/NMS/Stop协议的客户端和使用MQTT协议的客户端的消息传输过程中自动转换。例如-当一个采用MQTT协议的客户端订阅“foo/#/bar”这个话题的消息时将会收到以JMS话题“foo<span class="class">.blah</span><span class="class">.bar</span>”发布的消息。
-</code></pre><h2 id="新旧版本ActiveMQ对上述映射处理的差异">新旧版本ActiveMQ对上述映射处理的差异</h2><p>正常情况下，在使用MQTT协议的客户端订阅消息话题用到上述分隔符和通配符的情况下，应该使用“/”、“+”和“#”这三个来订阅对应的发布JMS消息的话题名，如官方文档中提到的示例一样。在这种情况下，从支持MQTT协议开始的最早的ActiveMQ版本还是最新版本上述映射没有任何差异。但是当你使用MQTT协议的客户端订阅消息话题，但是使用的分隔符和通配符却是“.”、“*”和“&gt;”时，新旧版本的ActiveMQ对映射的处理却有如下不同。</p>
+<blockquote>
+<p>这些值（指上述分隔符和通配符）会在使用JMS/NMS/Stop协议的客户端和使用MQTT协议的客户端的消息传输过程中自动转换。例如-当一个采用MQTT协议的客户端订阅“foo/#/bar”这个话题的消息时将会收到以JMS话题“foo.blah.bar”发布的消息。</p>
+</blockquote>
+<h2 id="新旧版本ActiveMQ对上述映射处理的差异">新旧版本ActiveMQ对上述映射处理的差异</h2><p>正常情况下，在使用MQTT协议的客户端订阅消息话题用到上述分隔符和通配符的情况下，应该使用“/”、“+”和“#”这三个来订阅对应的发布JMS消息的话题名，如官方文档中提到的示例一样。在这种情况下，从支持MQTT协议开始的最早的ActiveMQ版本还是最新版本上述映射没有任何差异。但是当你使用MQTT协议的客户端订阅消息话题，但是使用的分隔符和通配符却是“.”、“*”和“&gt;”时，新旧版本的ActiveMQ对映射的处理却有如下不同。</p>
 <p>以话题foo.blah.bar为例：</p>
 <hr>
 <ol>
