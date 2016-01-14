@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2015-09-12T09:07:10.705Z</updated>
+  <updated>2016-01-14T07:11:04.389Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -14,6 +14,134 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[终于等到你]]></title>
+    <link href="http://jellybins.github.io/2016/01/14/%E7%BB%88%E4%BA%8E%E7%AD%89%E5%88%B0%E4%BD%A0/"/>
+    <id>http://jellybins.github.io/2016/01/14/终于等到你/</id>
+    <published>2016-01-14T07:01:26.000Z</published>
+    <updated>2016-01-14T07:11:04.389Z</updated>
+    <content type="html"><![CDATA[<p>初看这篇博文的标题诸位一定以为我是要写一篇年度狗血秀恩爱的博文，但是考虑到我是一个理工科出身的人，最头疼的就是作文，所以事实上我是要讲一下这个静态博客的主题Next的修改问题，还有在配置Next这个主题时发现的主题配置文档里的部分问题。至于为什么要用这个标题呢，因为之前好多次讲要找个时间写一下，结果找个时间找到了现在，二零一六年元月，对于之前在知乎里询问我主题怎么修改成现在这样的亲们，真是灰常抱歉啊。说到修改其实我对nodejs几乎也是一窍不通，什么swig，styl也是根本从来没接触过，但好在有做Web开发的底子，外加上swig长的也比较像HTML加上自有标签，还有神器firebug相助，然后摸索着修改了Next这个主题，最终完成了我的私人定制。</p>
+<a id="more"></a>
+<h2 id="拖延症的错">拖延症的错</h2><p>要写这篇博文前，突然想到先前搭建这个静态博客的时间是很久之前的事了，<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">Next主题</a> 不出意外的话，在现在这个时间节点肯定已经早就更新过n多次了（感谢作者的辛勤付出让我们用上这么漂亮简洁的主题），于是在本地新建了一个demo站点然后pull下来最新的主题，配置到这个示例站点上看了下，果不其然，作者又做出来一个Pisces的侧边栏分成双栏的scheme，非常漂亮，而且我所使用Mist的scheme作者也做了较大的改动，所以这次的主题修改以最新的Next主题的Mist scheme为例，最终完成的效果会与我的这个博客有些许不同，还请见谅。</p>
+<h2 id="我要变（xiu）形（gai）了">我要变（xiu）形（gai）了</h2><h3 id="底栏部分">底栏部分</h3><ol>
+<li><p>去除底部“由XXX驱动”文字及链接：找到站点（以deom为例）本地磁盘目录“demo\themes\next\layout_partials”文件夹下面的footer.swig文件，用记事本之类的文本编辑工具打开，删除以下两个div区块的内容。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"powered-by"</span>&gt;</span></span><br><span class="line">省略内容</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"theme-info"</span>&gt;</span></span><br><span class="line">省略内容</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改底栏高度：找到站点（以deom为例）本地磁盘目录“demo\themes\next\source\css_variables”文件夹下面的base.styl文件，打开后找到Layout sizes段落，修改如下内容。</p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$footer</span>-<span class="attribute">height</span>                  = <span class="number">20px</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改底栏文字为居中对齐(侧边栏一直显示情况下比较美观，否则不用修改)：找到站点（以deom为例）本地磁盘目录“demo\themes\next\source\css_scheme\Mist”文件夹下面的index.styl文件，打开后找到Layout sizes段落，修改如下内容。</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.footer-inner &#123;</span><br><span class="line">  省略内容</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="侧边栏部分">侧边栏部分</h3><ol>
+<li>隐藏社交链接项下划线：找到站点（以deom为例）本地磁盘目录“demo\themes\next\source\css_common\components\siderbar”文件夹下面的sidebar-author-links.styl文件，打开后修改如下内容。<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.links-of-author a &#123;</span><br><span class="line">  省略内容</span><br><span class="line">  border-bottom-color: $black-deep;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>去除社交链接项前面的圆点:打开1步骤中同样文件去掉如下内容中标注的一行。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.links-of-author a &#123;</span><br><span class="line">  省略内容</span><br><span class="line">  &amp;:before &#123;</span><br><span class="line">    省略内容</span><br><span class="line">    background: rgb(random-color(0, 255) - 50%,             random-color(0, 255) - 50%, random-color(0, 255) - 50%);#只去掉这一行#</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>去除社交链接文字描述：找到站点（以deom为例）本地磁盘目录“demo\themes\next\layout_macro”文件夹下面的sidebar.swig文件，打开后修改如下内容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"links-of-author motion-element"</span>&gt;</span></span><br><span class="line">    省略内容</span><br><span class="line">    &#123;% if theme.social_icons.enable %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"fa fa-&#123;&#123;theme.social_icons[name] || 'globe' &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="主题配置中遇到的问题">主题配置中遇到的问题</h2><ol>
+<li><p>启用社交链接时，别忘了把social前的注释关闭，在试用新版的主题时，因为这个生成静态页面时一直报错，最后发现是忘记把这个注释关闭了。</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Social links</span></span><br><span class="line"><span class="preprocessor"># social: <span class="comment">//这个前面的＃号要去掉</span></span></span><br><span class="line">  <span class="preprocessor">#GitHub: <span class="comment">//去掉#号填写社交链接地址并且保留一个空格</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主题使用文档中“自定义logo及图标”部分现在已经废弃，但是有下面的问题其中步骤三中提到的新建styl文件的目录应该“source/css/_common/_fonts/”。</p>
+</li>
+<li><p>之前主题还存在一个文本上标（如表示数字的平方的上标）、下标（如标识数字是什么进制的下标）显示不正常的问题，不知道最新的主题解决了没有，因为懒，我也没有再试验，也忘记当初老版本是怎么更改解决的了。</p>
+</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>初看这篇博文的标题诸位一定以为我是要写一篇年度狗血秀恩爱的博文，但是考虑到我是一个理工科出身的人，最头疼的就是作文，所以事实上我是要讲一下这个静态博客的主题Next的修改问题，还有在配置Next这个主题时发现的主题配置文档里的部分问题。至于为什么要用这个标题呢，因为之前好多次讲要找个时间写一下，结果找个时间找到了现在，二零一六年元月，对于之前在知乎里询问我主题怎么修改成现在这样的亲们，真是灰常抱歉啊。说到修改其实我对nodejs几乎也是一窍不通，什么swig，styl也是根本从来没接触过，但好在有做Web开发的底子，外加上swig长的也比较像HTML加上自有标签，还有神器firebug相助，然后摸索着修改了Next这个主题，最终完成了我的私人定制。</p>]]>
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://jellybins.github.io/tags/Hexo/"/>
+    
+      <category term="Next主题" scheme="http://jellybins.github.io/tags/Next%E4%B8%BB%E9%A2%98/"/>
+    
+      <category term="静态博客搭建" scheme="http://jellybins.github.io/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="杂文" scheme="http://jellybins.github.io/categories/%E6%9D%82%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[ActiveMQ中MQTT消息话题名符号映射问题]]></title>
+    <link href="http://jellybins.github.io/2015/10/14/ActiveMQ%E4%B8%ADMQTT%E6%B6%88%E6%81%AF%E8%AF%9D%E9%A2%98%E5%90%8D%E7%AC%A6%E5%8F%B7%E6%98%A0%E5%B0%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://jellybins.github.io/2015/10/14/ActiveMQ中MQTT消息话题名符号映射问题/</id>
+    <published>2015-10-14T09:00:49.000Z</published>
+    <updated>2016-01-14T09:06:38.957Z</updated>
+    <content type="html"><![CDATA[<p>当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的<a href="http://activemq.apache.org/mqtt.html" target="_blank" rel="external">MQTT支持文档</a>中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。</p>
+<a id="more"></a>
+<h2 id="官方支持文档的说明">官方支持文档的说明</h2><h3 id="Working_with_Destinations_with_MQTT">Working with Destinations with MQTT</h3><hr>
+<blockquote>
+<p>MQTT supports hierarchies and wildcards, though the delimiters and characters are different: - Here’s the mapping:<br>| function |ActiveMQ |  MQTT |<br>| :——:   | :——:  | :——: |<br>| separator|    .    |   /  |<br>| element  |    *    |   +  |<br>| sub tree |    &gt;    |   #  |</p>
+<p>These values are automatically transposed between clients using JMS/NMS/Stomp and clients using MQTT. For example - a client subscribing to “foo/#/bar” would receive messages published on a JMS Topic of foo.blah.bar.</p>
+</blockquote>
+<h3 id="蹩脚的翻译">蹩脚的翻译</h3><h2 id="采用使用MQTT协议的客户端接收消息">采用使用MQTT协议的客户端接收消息</h2><blockquote>
+<p>MQTT支持层级分隔符和通配符，但是与传统ActiveMQ消息的不同：-这是映射表：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">ActiveMQ</th>
+<th style="text-align:center">MQTT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">分隔符</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">/</td>
+</tr>
+<tr>
+<td style="text-align:center">元素通配符</td>
+<td style="text-align:center">*</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">子结构</td>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">#</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>这些值（指上述分隔符和通配符）会在使用JMS/NMS/Stop协议的客户端和使用MQTT协议的客户端的消息传输过程中自动转换。例如-当一个采用MQTT协议的客户端订阅“foo/#/bar”这个话题的消息时将会收到以JMS话题“foo.blah.bar”发布的消息。</p>
+</blockquote>
+<h2 id="新旧版本ActiveMQ对上述映射处理的差异">新旧版本ActiveMQ对上述映射处理的差异</h2><p>正常情况下，在使用MQTT协议的客户端订阅消息话题用到上述分隔符和通配符的情况下，应该使用“/”、“+”和“#”这三个来订阅对应的发布JMS消息的话题名，如官方文档中提到的示例一样。在这种情况下，从支持MQTT协议开始的最早的ActiveMQ版本还是最新版本上述映射没有任何差异。但是当你使用MQTT协议的客户端订阅消息话题，但是使用的分隔符和通配符却是“.”、“*”和“&gt;”时，新旧版本的ActiveMQ对映射的处理却有如下不同。</p>
+<p>以话题foo.blah.bar为例：</p>
+<hr>
+<ol>
+<li><p>ActiveMQ老版本(5.9.0及以下,5.9.X无法下载故未验证，理论上所有5.9版本均存在该问题）当MQTT客户端订阅的话题名为“foo.blah.bar”时，其实际订阅的ActiveMQ话题即为“foo.blah.bar”，即不对话题中的分隔符和通配符做映射转化。</p>
+</li>
+<li><p>ActiveMQ新版本（5.10.X版本），当MQTT客户端订阅的话题名为“foo.blah.bar”时，其实际订阅的ActiveMQ话题即为“foo\blah\bar”,即会对话题中的分隔符和通配符做映射转化。</p>
+</li>
+</ol>
+<h2 id="综上及建议">综上及建议</h2><p>如果想消除ActiveMQ新老版本对消息话题中分隔符和通配符映射的差异，则最好采用官方推荐的方式，即MQTT的客户端订阅发布消息事话题中使用“/”、“+”和“#”等符号，JMS消息客户端订阅发布消息时话题中使用“.”、“*”和“&gt;”等符号。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的<a href="http://activemq.apache.org/mqtt.html">MQTT支持文档</a>中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。</p>]]>
+    
+    </summary>
+    
+      <category term="MQTT" scheme="http://jellybins.github.io/tags/MQTT/"/>
+    
+      <category term="Topic" scheme="http://jellybins.github.io/tags/Topic/"/>
+    
+      <category term="消息Broker" scheme="http://jellybins.github.io/tags/%E6%B6%88%E6%81%AFBroker/"/>
+    
+      <category term="ActiveMQ" scheme="http://jellybins.github.io/categories/ActiveMQ/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[路由器WPS的两种设置方式]]></title>
@@ -188,7 +316,7 @@
     <link href="http://jellybins.github.io/2013/10/11/%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%BB%93%E6%9D%9F%EF%BC%8C%E6%8C%82%E8%B5%B7%E5%92%8C%E6%81%A2%E5%A4%8D/"/>
     <id>http://jellybins.github.io/2013/10/11/线程的结束，挂起和恢复/</id>
     <published>2013-10-11T06:26:22.000Z</published>
-    <updated>2015-09-12T01:47:53.037Z</updated>
+    <updated>2015-09-17T09:29:08.524Z</updated>
     <content type="html"><![CDATA[<h2 id="引言">引言</h2><p>Android的车辆监控端应用开发中，碰到了轨迹回放控制，播放、暂停、停止不知道该怎么实现的问题，虽然知道要用线程。然后找到了这篇文章，讲解的非常清晰，在此记录之，文末有原文链接。最后将整个轨迹回放实现完成后，再看代码恍然大悟，这不就是音乐播放器的播放、暂停、停止的实现，当初看播放器源码应该很容易就解决了，结果重复造了轮子，不过还是很有收获的。</p>
 <p>PS：程序示例部分是我在原作者的基础上修改而来，感觉应该更通俗易懂些，希望能对需要的人有帮助，有什么错误的话还请指正，谢谢。</p>
 <a id="more"></a>
@@ -222,7 +350,7 @@
 <blockquote>
 <p>这样，当自定义线程执行还未结束时，我们就可以通过调用5中的方法将线程安全结束。思想的本质就是，既然我们不能安全强制结束线程，那我们就让它安全地提前退出。效果是一样的。</p>
 </blockquote>
-<h3 id="程序实例:">程序实例:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SearchThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> isRun = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SearchThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		isRun = <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStopState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		isRun = <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//改变为运行状态</span></span><br><span class="line">		isRun = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">//开始运行</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">		    <span class="comment">//每次运行检查运行标志位</span></span><br><span class="line">			<span class="keyword">if</span> (!isRun) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// <span class="doctag"><span class="keyword">TODO</span></span> Something</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="程序实例">程序实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SearchThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> isRun = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SearchThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		isRun = <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStopState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		isRun = <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//改变为运行状态</span></span><br><span class="line">		isRun = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">//开始运行</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">		    <span class="comment">//每次运行检查运行标志位</span></span><br><span class="line">			<span class="keyword">if</span> (!isRun) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// <span class="doctag">TODO</span> Something</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="线程的挂起与恢复">线程的挂起与恢复</h2><p>同样，Android线程类也提供了一些公共方法去挂起和恢复线程:</p>
 <blockquote>
 <p><strong>final void resume()</strong></p>
@@ -243,7 +371,7 @@
 </blockquote>
 <p>通过说明我们可以知道，wait方法可以让正在调用的线程处于等待状态，直到其他线程调用了该对象的notify或者notifyAll，而notify和notifyAll方法则是用于唤醒处于等待中的线程。</p>
 <p>同样，线程类也是继承于Object类，但是线程类是一个比较特殊的类，有自己独立的栈机制来处理其方法，参数和局部变量。通过实验发现，虽然线程类继承于Object类，但是却不能通过wait和notify方法挂起唤醒线程。而要实现上述动作，必须去间接地实现，即在自定义线程类中创建一个Object对象，然后通过对该Object的相关操作实现线程的挂起和唤醒。</p>
-<h3 id="解决方法：">解决方法：</h3><ol>
+<h3 id="解决方法-1">解决方法</h3><ol>
 <li><p>在自定义线程类的实例化过程中创建一个Object对象。</p>
 </li>
 <li><p>定义一个变量来记录线程的状态是否挂起，初始化为假。</p>
@@ -258,7 +386,7 @@
 <blockquote>
 <p>综上，当自定义线程运行后我们可以通过4中的方法挂起线程，通过5中的方法唤醒线程。</p>
 </blockquote>
-<h3 id="程序实例:-1">程序实例:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SearchThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Object mPauseLock;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> mPauseFlag;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SearchThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		mPauseLock = <span class="keyword">new</span> Object();</span><br><span class="line">		mPauseFlag = <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pauseThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (mPauseLock) &#123;</span><br><span class="line">			mPauseFlag = <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resumeThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (mPauseLock) &#123;</span><br><span class="line">			mPauseFlag = <span class="keyword">false</span>;</span><br><span class="line">			mPauseLock.notifyAll();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//线程开始执行</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">			<span class="comment">//每次执行检测是否应改变为暂停状态</span></span><br><span class="line">			<span class="keyword">synchronized</span> (mPauseLock) &#123;</span><br><span class="line">				<span class="keyword">if</span> (mPauseFlag) &#123;</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						mPauseLock.wait();</span><br><span class="line">					&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// <span class="doctag"><span class="keyword">TODO</span></span> Something</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="程序实例-1">程序实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SearchThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Object mPauseLock;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> mPauseFlag;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SearchThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		mPauseLock = <span class="keyword">new</span> Object();</span><br><span class="line">		mPauseFlag = <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pauseThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (mPauseLock) &#123;</span><br><span class="line">			mPauseFlag = <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resumeThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (mPauseLock) &#123;</span><br><span class="line">			mPauseFlag = <span class="keyword">false</span>;</span><br><span class="line">			mPauseLock.notifyAll();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//线程开始执行</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">			<span class="comment">//每次执行检测是否应改变为暂停状态</span></span><br><span class="line">			<span class="keyword">synchronized</span> (mPauseLock) &#123;</span><br><span class="line">				<span class="keyword">if</span> (mPauseFlag) &#123;</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						mPauseLock.wait();</span><br><span class="line">					&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO</span> Something</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>PS：<a href="http://blog.sina.com.cn/s/blog_4c0706560101175j.html" target="_blank" rel="external">原文链接</a>在此。</p>
 ]]></content>
     <summary type="html">

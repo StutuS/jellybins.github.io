@@ -1,0 +1,716 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一介码农，一只程序猿" />
+
+
+
+  <meta name="keywords" content="Hexo,Next主题,静态博客搭建," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="初看这篇博文的标题诸位一定以为我是要写一篇年度狗血秀恩爱的博文，但是考虑到我是一个理工科出身的人，最头疼的就是作文，所以事实上我是要讲一下这个静态博客的主题Next的修改问题，还有在配置Next这个主题时发现的主题配置文档里的部分问题。至于为什么要用这个标题呢，因为之前好多次讲要找个时间写一下，结果找个时间找到了现在，二零一六年元月，对于之前在知乎里询问我主题怎么修改成现在这样的亲们，真是灰常抱歉">
+<meta property="og:type" content="article">
+<meta property="og:title" content="终于等到你">
+<meta property="og:url" content="http://jellybins.github.io/2016/01/14/终于等到你/index.html">
+<meta property="og:site_name" content="JellyBin's博客">
+<meta property="og:description" content="初看这篇博文的标题诸位一定以为我是要写一篇年度狗血秀恩爱的博文，但是考虑到我是一个理工科出身的人，最头疼的就是作文，所以事实上我是要讲一下这个静态博客的主题Next的修改问题，还有在配置Next这个主题时发现的主题配置文档里的部分问题。至于为什么要用这个标题呢，因为之前好多次讲要找个时间写一下，结果找个时间找到了现在，二零一六年元月，对于之前在知乎里询问我主题怎么修改成现在这样的亲们，真是灰常抱歉">
+<meta property="og:updated_time" content="2016-01-14T07:11:04.389Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="终于等到你">
+<meta name="twitter:description" content="初看这篇博文的标题诸位一定以为我是要写一篇年度狗血秀恩爱的博文，但是考虑到我是一个理工科出身的人，最头疼的就是作文，所以事实上我是要讲一下这个静态博客的主题Next的修改问题，还有在配置Next这个主题时发现的主题配置文档里的部分问题。至于为什么要用这个标题呢，因为之前好多次讲要找个时间写一下，结果找个时间找到了现在，二零一六年元月，对于之前在知乎里询问我主题怎么修改成现在这样的亲们，真是灰常抱歉">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'always'
+  };
+</script>
+
+  <title> 终于等到你 | JellyBin's博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?02aec28a1ebfd7d99792aa87c27a9fd0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">JellyBin's博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'dYT2U5c87SdDUCRygqot','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              终于等到你
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-14T15:01:26+08:00" content="2016-01-14">
+            2016-01-14
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/杂文/" itemprop="url" rel="index">
+                  <span itemprop="name">杂文</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/14/终于等到你/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/终于等到你/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>初看这篇博文的标题诸位一定以为我是要写一篇年度狗血秀恩爱的博文，但是考虑到我是一个理工科出身的人，最头疼的就是作文，所以事实上我是要讲一下这个静态博客的主题Next的修改问题，还有在配置Next这个主题时发现的主题配置文档里的部分问题。至于为什么要用这个标题呢，因为之前好多次讲要找个时间写一下，结果找个时间找到了现在，二零一六年元月，对于之前在知乎里询问我主题怎么修改成现在这样的亲们，真是灰常抱歉啊。说到修改其实我对nodejs几乎也是一窍不通，什么swig，styl也是根本从来没接触过，但好在有做Web开发的底子，外加上swig长的也比较像HTML加上自有标签，还有神器firebug相助，然后摸索着修改了Next这个主题，最终完成了我的私人定制。</p>
+<a id="more"></a>
+<h2 id="拖延症的错">拖延症的错</h2><p>要写这篇博文前，突然想到先前搭建这个静态博客的时间是很久之前的事了，<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">Next主题</a> 不出意外的话，在现在这个时间节点肯定已经早就更新过n多次了（感谢作者的辛勤付出让我们用上这么漂亮简洁的主题），于是在本地新建了一个demo站点然后pull下来最新的主题，配置到这个示例站点上看了下，果不其然，作者又做出来一个Pisces的侧边栏分成双栏的scheme，非常漂亮，而且我所使用Mist的scheme作者也做了较大的改动，所以这次的主题修改以最新的Next主题的Mist scheme为例，最终完成的效果会与我的这个博客有些许不同，还请见谅。</p>
+<h2 id="我要变（xiu）形（gai）了">我要变（xiu）形（gai）了</h2><h3 id="底栏部分">底栏部分</h3><ol>
+<li><p>去除底部“由XXX驱动”文字及链接：找到站点（以deom为例）本地磁盘目录“demo\themes\next\layout_partials”文件夹下面的footer.swig文件，用记事本之类的文本编辑工具打开，删除以下两个div区块的内容。</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"powered-by"</span>&gt;</span></span><br><span class="line">省略内容</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"theme-info"</span>&gt;</span></span><br><span class="line">省略内容</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改底栏高度：找到站点（以deom为例）本地磁盘目录“demo\themes\next\source\css_variables”文件夹下面的base.styl文件，打开后找到Layout sizes段落，修改如下内容。</p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$footer</span>-<span class="attribute">height</span>                  = <span class="number">20px</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改底栏文字为居中对齐(侧边栏一直显示情况下比较美观，否则不用修改)：找到站点（以deom为例）本地磁盘目录“demo\themes\next\source\css_scheme\Mist”文件夹下面的index.styl文件，打开后找到Layout sizes段落，修改如下内容。</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.footer-inner &#123;</span><br><span class="line">  省略内容</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="侧边栏部分">侧边栏部分</h3><ol>
+<li>隐藏社交链接项下划线：找到站点（以deom为例）本地磁盘目录“demo\themes\next\source\css_common\components\siderbar”文件夹下面的sidebar-author-links.styl文件，打开后修改如下内容。<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.links-of-author a &#123;</span><br><span class="line">  省略内容</span><br><span class="line">  border-bottom-color: $black-deep;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>去除社交链接项前面的圆点:打开1步骤中同样文件去掉如下内容中标注的一行。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.links-of-author a &#123;</span><br><span class="line">  省略内容</span><br><span class="line">  &amp;:before &#123;</span><br><span class="line">    省略内容</span><br><span class="line">    background: rgb(random-color(0, 255) - 50%,             random-color(0, 255) - 50%, random-color(0, 255) - 50%);#只去掉这一行#</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>去除社交链接文字描述：找到站点（以deom为例）本地磁盘目录“demo\themes\next\layout_macro”文件夹下面的sidebar.swig文件，打开后修改如下内容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"links-of-author motion-element"</span>&gt;</span></span><br><span class="line">    省略内容</span><br><span class="line">    &#123;% if theme.social_icons.enable %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"fa fa-&#123;&#123;theme.social_icons[name] || 'globe' &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="主题配置中遇到的问题">主题配置中遇到的问题</h2><ol>
+<li><p>启用社交链接时，别忘了把social前的注释关闭，在试用新版的主题时，因为这个生成静态页面时一直报错，最后发现是忘记把这个注释关闭了。</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Social links</span></span><br><span class="line"><span class="preprocessor"># social: <span class="comment">//这个前面的＃号要去掉</span></span></span><br><span class="line">  <span class="preprocessor">#GitHub: <span class="comment">//去掉#号填写社交链接地址并且保留一个空格</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主题使用文档中“自定义logo及图标”部分现在已经废弃，但是有下面的问题其中步骤三中提到的新建styl文件的目录应该“source/css/_common/_fonts/”。</p>
+</li>
+<li><p>之前主题还存在一个文本上标（如表示数字的平方的上标）、下标（如标识数字是什么进制的下标）显示不正常的问题，不知道最新的主题解决了没有，因为懒，我也没有再试验，也忘记当初老版本是怎么更改解决的了。</p>
+</li>
+</ol>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+          
+            <a href="/tags/Next主题/" rel="tag">#Next主题</a>
+          
+            <a href="/tags/静态博客搭建/" rel="tag">#静态博客搭建</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/14/ActiveMQ中MQTT消息话题名符号映射问题/" rel="next">ActiveMQ中MQTT消息话题名符号映射问题</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/01/14/终于等到你/"
+     data-title="终于等到你"
+     data-content=""
+     data-url="http://jellybins.github.io/2016/01/14/终于等到你/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/01/14/终于等到你/"
+                   data-title="终于等到你" data-url="http://jellybins.github.io/2016/01/14/终于等到你/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/avatar.jpg" alt="Jelly Bins" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Jelly Bins</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一介码农，一只程序猿</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+		<span class="links-of-author">
+		  <a href="http://www.zhihu.com/people/wo-yi-wei-17" target="_blank" class="icon-next-zhihu"></a>
+		</span>
+            
+		<span class="links-of-author">
+		  <a href="mailto:1176224659@qq.com" target="_blank" class="icon-next-email"></a>
+		</span>
+            
+		<span class="links-of-author">
+		  <a href="https://github.com/jellybins" target="_blank" class="icon-next-github"></a>
+		</span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#拖延症的错"><span class="nav-number">1.</span> <span class="nav-text">拖延症的错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我要变（xiu）形（gai）了"><span class="nav-number">2.</span> <span class="nav-text">我要变（xiu）形（gai）了</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#底栏部分"><span class="nav-number">2.1.</span> <span class="nav-text">底栏部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#侧边栏部分"><span class="nav-number">2.2.</span> <span class="nav-text">侧边栏部分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题配置中遇到的问题"><span class="nav-number">3.</span> <span class="nav-text">主题配置中遇到的问题</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jelly Bins</span>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jellybins"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
