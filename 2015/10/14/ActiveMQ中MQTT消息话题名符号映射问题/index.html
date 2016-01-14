@@ -37,16 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的MQTT支持文档中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。">
+<meta name="description" content="当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅发布ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的MQTT支持文档 中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ActiveMQ中MQTT消息话题名符号映射问题">
 <meta property="og:url" content="http://jellybins.github.io/2015/10/14/ActiveMQ中MQTT消息话题名符号映射问题/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
-<meta property="og:description" content="当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的MQTT支持文档中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。">
-<meta property="og:updated_time" content="2016-01-14T09:22:48.174Z">
+<meta property="og:description" content="当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅发布ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的MQTT支持文档 中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。">
+<meta property="og:updated_time" content="2016-01-14T23:42:36.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ActiveMQ中MQTT消息话题名符号映射问题">
-<meta name="twitter:description" content="当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的MQTT支持文档中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。">
+<meta name="twitter:description" content="当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅发布ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的MQTT支持文档 中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -244,7 +244,7 @@
       
 
       
-        <span itemprop="articleBody"><p>当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的<a href="http://activemq.apache.org/mqtt.html" target="_blank" rel="external">MQTT支持文档</a>中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。</p>
+        <span itemprop="articleBody"><p>当使用ActiveMQ充当消息Broker时，如使用MQTT协议的客户端订阅发布ActiveMQ消息则会遇到一个ActiveMQ消息话题名和MQTT消息话题名映射的问题，在ActiveMQ官网的<a href="http://activemq.apache.org/mqtt.html" target="_blank" rel="external">MQTT支持文档</a> 中也提到了此问题，但是对于这个话题名符号映射在新老版本的ActiveMQ中的处理还是有差异存在，下面将详细说明。</p>
 <a id="more"></a>
 <h2 id="官方支持文档的说明">官方支持文档的说明</h2><h3 id="Working_with_Destinations_with_MQTT">Working with Destinations with MQTT</h3><hr>
 <blockquote>
@@ -279,7 +279,7 @@
 <blockquote>
 <p>These values are automatically transposed between clients using JMS/NMS/Stomp and clients using MQTT. For example - a client subscribing to “foo/#/bar” would receive messages published on a JMS Topic of foo.blah.bar.</p>
 </blockquote>
-<h3 id="蹩脚的翻译">蹩脚的翻译</h3><h2 id="采用使用MQTT协议的客户端接收消息">采用使用MQTT协议的客户端接收消息</h2><blockquote>
+<h3 id="蹩脚的翻译">蹩脚的翻译</h3><h2 id="使用MQTT协议的客户端工作">使用MQTT协议的客户端工作</h2><blockquote>
 <p>MQTT支持层级分隔符和通配符，但是与传统ActiveMQ消息的不同：-这是映射表：</p>
 </blockquote>
 <table>
@@ -311,8 +311,8 @@
 <blockquote>
 <p>这些值（指上述分隔符和通配符）会在使用JMS/NMS/Stop协议的客户端和使用MQTT协议的客户端的消息传输过程中自动转换。例如-当一个采用MQTT协议的客户端订阅“foo/#/bar”这个话题的消息时将会收到以JMS话题“foo.blah.bar”发布的消息。</p>
 </blockquote>
-<h2 id="新旧版本ActiveMQ对上述映射处理的差异">新旧版本ActiveMQ对上述映射处理的差异</h2><p>正常情况下，在使用MQTT协议的客户端订阅消息话题用到上述分隔符和通配符的情况下，应该使用“/”、“+”和“#”这三个来订阅对应的发布JMS消息的话题名，如官方文档中提到的示例一样。在这种情况下，从支持MQTT协议开始的最早的ActiveMQ版本还是最新版本上述映射没有任何差异。但是当你使用MQTT协议的客户端订阅消息话题，但是使用的分隔符和通配符却是“.”、“*”和“&gt;”时，新旧版本的ActiveMQ对映射的处理却有如下不同。</p>
-<p>以话题foo.blah.bar为例：</p>
+<h2 id="新旧版本ActiveMQ对上述映射处理的差异">新旧版本ActiveMQ对上述映射处理的差异</h2><p>正常情况下，在使用MQTT协议的客户端订阅发布消息话题用到上述分隔符和通配符的情况下，应该使用“/”、“+”和“#”这三个来订阅发布对应的JMS消息的话题名，如官方文档中提到的示例一样。在这种情况下，从不论是开始支持MQTT协议客户端的最早的ActiveMQ版本还是最新版本，上述映射没有任何差异。但是当使用MQTT协议的客户端订阅发布消息话题，使用的分隔符和通配符是“.”、“*”和“&gt;”时，新旧版本的ActiveMQ对映射的处理却有如下不同。</p>
+<p>以订阅话题foo.blah.bar为例：</p>
 <hr>
 <ol>
 <li><p>ActiveMQ老版本(5.9.0及以下,5.9.X无法下载故未验证，理论上所有5.9版本均存在该问题）当MQTT客户端订阅的话题名为“foo.blah.bar”时，其实际订阅的ActiveMQ话题即为“foo.blah.bar”，即不对话题中的分隔符和通配符做映射转化。</p>
@@ -320,7 +320,7 @@
 <li><p>ActiveMQ新版本（5.10.X版本），当MQTT客户端订阅的话题名为“foo.blah.bar”时，其实际订阅的ActiveMQ话题即为“foo\blah\bar”,即会对话题中的分隔符和通配符做映射转化。</p>
 </li>
 </ol>
-<h2 id="综上及建议">综上及建议</h2><p>如果想消除ActiveMQ新老版本对消息话题中分隔符和通配符映射的差异，则最好采用官方推荐的方式，即MQTT的客户端订阅发布消息事话题中使用“/”、“+”和“#”等符号，JMS消息客户端订阅发布消息时话题中使用“.”、“*”和“&gt;”等符号。</p>
+<h2 id="综上及建议">综上及建议</h2><p>如果想消除ActiveMQ新老版本对消息话题中分隔符和通配符映射的差异，则最好采用官方推荐的方式，即MQTT的客户端订阅发布消息时话题中使用“/”、“+”和“#”等符号，JMS消息客户端订阅发布消息时话题中使用“.”、“*”和“&gt;”等符号。</p>
 </span>
       
     </div>
@@ -489,7 +489,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#官方支持文档的说明"><span class="nav-number">1.</span> <span class="nav-text">官方支持文档的说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Working_with_Destinations_with_MQTT"><span class="nav-number">1.1.</span> <span class="nav-text">Working with Destinations with MQTT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蹩脚的翻译"><span class="nav-number">1.2.</span> <span class="nav-text">蹩脚的翻译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#采用使用MQTT协议的客户端接收消息"><span class="nav-number">2.</span> <span class="nav-text">采用使用MQTT协议的客户端接收消息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新旧版本ActiveMQ对上述映射处理的差异"><span class="nav-number">3.</span> <span class="nav-text">新旧版本ActiveMQ对上述映射处理的差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综上及建议"><span class="nav-number">4.</span> <span class="nav-text">综上及建议</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#官方支持文档的说明"><span class="nav-number">1.</span> <span class="nav-text">官方支持文档的说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Working_with_Destinations_with_MQTT"><span class="nav-number">1.1.</span> <span class="nav-text">Working with Destinations with MQTT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蹩脚的翻译"><span class="nav-number">1.2.</span> <span class="nav-text">蹩脚的翻译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用MQTT协议的客户端工作"><span class="nav-number">2.</span> <span class="nav-text">使用MQTT协议的客户端工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新旧版本ActiveMQ对上述映射处理的差异"><span class="nav-number">3.</span> <span class="nav-text">新旧版本ActiveMQ对上述映射处理的差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综上及建议"><span class="nav-number">4.</span> <span class="nav-text">综上及建议</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
