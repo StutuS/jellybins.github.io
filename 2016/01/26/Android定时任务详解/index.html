@@ -43,7 +43,7 @@
 <meta property="og:url" content="http://jellybins.github.io/2016/01/26/Android定时任务详解/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
 <meta property="og:description" content="Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者">
-<meta property="og:updated_time" content="2016-01-26T09:22:56.330Z">
+<meta property="og:updated_time" content="2016-01-26T09:30:34.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android定时任务详解">
 <meta name="twitter:description" content="Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者">
@@ -305,7 +305,7 @@
 <blockquote>
 <p>上述PowerManager的newWakeLock方法第一个参数有以下常量值代表不同休眠状态，以PARTIAL_WAKE_LOCK为例，该状态锁acquire()之后，CPU会保持非休眠状态，屏幕和键盘则还是会分别自动熄屏和锁定。</p>
 </blockquote>
-<p>| 标志常量 | CPU | 屏幕  |键盘|<br>| :——:   | :——: | :——: |:—-:|<br>| PARTIAL_WAKE_LOCK  | 开 | 关 | 锁定 |<br>| SCREEN_DIM_WAKE_LOCK  | 开 | 低亮度 | 锁定 |<br>| SCREEN_BRIGHT_WAKE_LOCK | 开 | 高亮度 | 锁定 |<br>| FULL_WAKE_LOCK | 开 | 高亮度 | 有效 |</p>
+<p>| 标志常量 | CPU | 屏幕  |键盘|<br>| :——:  | :——: | :——: |:—-:|<br>| PARTIAL_WAKE_LOCK  | 开 | 关 | 锁定 |<br>| SCREEN_DIM_WAKE_LOCK  | 开 | 低亮度 | 锁定 |<br>| SCREEN_BRIGHT_WAKE_LOCK | 开 | 高亮度 | 锁定 |<br>| FULL_WAKE_LOCK | 开 | 高亮度 | 有效 |</p>
 <blockquote>
 <p>本文参考此<a href="http://www.cnblogs.com/kobe8/p/3819305.html" target="_blank" rel="external">博文</a>，在此表示感谢！</p>
 </blockquote>
