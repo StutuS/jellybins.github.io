@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2016-01-26T09:45:39.011Z</updated>
+  <updated>2016-01-26T23:32:58.075Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jellybins.github.io/2016/01/26/Android%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%AF%A6%E8%A7%A3/"/>
     <id>http://jellybins.github.io/2016/01/26/Android定时任务详解/</id>
     <published>2016-01-26T09:06:43.000Z</published>
-    <updated>2016-01-26T09:45:39.011Z</updated>
+    <updated>2016-01-26T23:32:58.075Z</updated>
     <content type="html"><![CDATA[<p>Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者。但是不一定完全遵照上述标准，特殊情况下还要特殊处理，比如这篇文章最后提到的问题。</p>
 <a id="more"></a>
 <h2 id="TimerTask实现方式">TimerTask实现方式</h2><ol>
@@ -120,8 +120,8 @@
 </tr>
 </tbody>
 </table>
-<pre><code>&gt;本文参考此[<span class="link_label">博文</span>](<span class="link_url">http://www.cnblogs.com/kobe8/p/3819305.html</span>)，在此表示感谢！
-</code></pre>]]></content>
+<p>PS:本文参考此<a href="http://www.cnblogs.com/kobe8/p/3819305.html" target="_blank" rel="external">博文</a> ，在此表示感谢！</p>
+]]></content>
     <summary type="html">
     <![CDATA[<p>Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者。但是不一定完全遵照上述标准，特殊情况下还要特殊处理，比如这篇文章最后提到的问题。</p>]]>
     
