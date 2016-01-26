@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2016-01-14T09:16:28.050Z</updated>
+  <updated>2016-01-26T09:10:31.825Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -14,6 +14,90 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Android定时任务详解]]></title>
+    <link href="http://jellybins.github.io/2016/01/26/Android%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://jellybins.github.io/2016/01/26/Android定时任务详解/</id>
+    <published>2016-01-26T09:06:43.000Z</published>
+    <updated>2016-01-26T09:10:31.825Z</updated>
+    <content type="html"><![CDATA[<p>Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者。但是不一定完全遵照上述标准，特殊情况下还要特殊处理，比如这篇文章最后提到的问题。</p>
+<a id="more"></a>
+<h2 id="TimerTask实现方式">TimerTask实现方式</h2><ol>
+<li><p>定时任务（以AlarmTask为例）实现TimerTask。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AlarmTask</span> <span class="keyword">extends</span> <span class="title">TimerTask</span> </span>&#123;</span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//任务代码写在此处</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Timer类启动和取消AlarmTask。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Timer timer = <span class="keyword">new</span> Timer();</span><br><span class="line"></span><br><span class="line">TimerTask alarmTask = <span class="keyword">new</span> AlarmTask();</span><br><span class="line"></span><br><span class="line">timer.schedule(alarmTask,<span class="number">0</span>,<span class="number">2</span>*<span class="number">60</span>*<span class="number">1000</span>);<span class="comment">//0毫秒后每2分钟执行该任务一次</span></span><br><span class="line">timer.schedule(alarmTask,<span class="number">1</span>*<span class="number">60</span>*<span class="number">1000</span>);<span class="comment">//1分钟后执行该任务一次</span></span><br><span class="line">·····</span><br><span class="line">alarmTask.cancel();<span class="comment">//取消定时任务</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="AlarmManager实现方式">AlarmManager实现方式</h2><ol>
+<li><p>获取系统服务AlarmManager。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>封装执行定时任务的PendingIntent。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Intent intent = Intent(context,NetworkService.class);</span><br><span class="line">intent.setAction(Constants.ALARM_ACTION);<span class="comment">//自定义的执行定义任务的Action</span></span><br><span class="line"></span><br><span class="line">PendingIntent pendingIntent = PendingIntent.getService(context,requestCode,intent,PendingIntent.FLAG_CANCEL_CURRENT);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>此处仅以getService()方式为例，还可通过getBroadCast()发送广播或getActivity()启动Activity来执行某项固定任务。其中各方法的最后一个参数含有以下常量分别代表不同含义的任务执行效果：</p>
+<p>FLAG_CANCEL_CURRENT:如果当前系统中已经存在一个相同的PendingIntent对象，那么就将先将已有的PendingIntent取消，然后重新生成一个PendingIntent对象。</p>
+<p>FLAG_NO_CREATE:如果当前系统中不存在相同的PendingIntent对象，系统将不会创建该PendingIntent对象而是直接返回null。</p>
+<p>FLAG_ONE_SHOT:该PendingIntent只作用一次。在该PendingIntent对象通过send()方法触发过后，PendingIntent将自动调用cancel()进行销毁，那么如果你再调用send()方法的话，系统将会返回一个SendIntentException。</p>
+<p>FLAG_UPDATE_CURRENT:如果系统中有一个和你描述的PendingIntent对等的PendingInent，那么系统将使用该PendingIntent对象，但是会使用新的Intent来更新之前PendingIntent中的Intent对象数据，例如更新Intent中的Extras。</p>
+</blockquote>
+</li>
+<li><p>启动或取消定时任务。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alarmManager.(AlarmManager.RTC_WAKEUP,triggerAtMills, sender)<span class="comment">//在时间点triggerAtMills执行改任务，如果该时间已过则立即执行</span></span><br><span class="line"></span><br><span class="line">alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,triggerAtMills,intervalAtMills,pendingintent);<span class="comment">//在时间点triggerAtMills执行，如果该时间已过则立即执行，然后以intervalAtMills间隔重复执行该任务</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上述方法第一个参数有以下常量分别代表不同含义的定时：</p>
+<p>AlarmManager.RTC_WAKEUP表示闹钟在睡眠状态下会唤醒系统并执行提示功能，该状态下闹钟使用绝对时间，状态值为0；</p>
+<p>AlarmManager.RTC表示闹钟在睡眠状态下不可用，该状态下闹钟使用绝对时间，即当前系统时间，状态值为1；</p>
+<p>AlarmManager.ELAPSED_REALTIME_WAKEUP表示闹钟在睡眠状态下会唤醒系统并执行提示功能，该状态下闹钟也使用相对时间，状态值为2；</p>
+<p>AlarmManager.ELAPSED_REALTIME表示闹钟在手机睡眠状态下不可用，该状态下闹钟使用相对时间（相对于系统启动开始），状态值为3；</p>
+<p>AlarmManager.POWER_OFF_WAKEUP表示闹钟在手机关机状态下也能正常进行提示功能，所以是5个状态中用的最多的状态之一，该状态下闹钟也是用绝对时间，状态值为4；不过本状态好像受SDK版本影响，某些版本并不支持；</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="特殊情况特殊处理">特殊情况特殊处理</h2><ol>
+<li><p>问题来源。</p>
+<p>开发的一个App中有这样一个需求，通过每隔一段向服务器发送Http请求来更新当前用户在线时间，从而根据系统时间和该用户最后在线时间的差值来大体的判断用户在线状态，原本这个App是针对一个特定型号的手机开发，当时通过TimerTask的方式，设定定时执行此请求，实际使用中也基本满足了需求。后来客户因为原来的手机性能问题全部更换了新的手机，然后使用中发现App切入后台（App设定前台情况下不熄屏），只要手机屏幕熄灭后，用户就会一直处于离线状态。</p>
+</li>
+<li><p>问题复现。</p>
+<p>从客户处拿到新换的手机后开始调试，一开始是连着USB线调试查看定时任务的执行情况，然后发现不像客户描述的那样，App后台手机熄屏后，定时任务的Log还是按固有的频率打印的，而且查看用户在线信息的Web页也显示用户一直在线，不像客户讲的那样啊，又开始怀疑是不是用户手机装了数字全家桶或是其它所谓的优化App把我的这个App搞得不正常了，然后又想了下用户实际的使用情况，应该是在断电，3g网络下使用，然后把调试用的USB线拔掉，手机不支持网络调试也无法观察日志打印信息，只能通过上述的Web页面观察用户在线情况，果不其然，问题终于得到复现了，手机熄屏后一段时间，用户一直没有再显示在线过，同时发现之后如果又把USB线连接上，Log信息又开始按设定间隔打印了，用户也显示在线了。</p>
+</li>
+<li><p>曲折的解决过程。</p>
+<p>问题复现后，开始各种搜索，然后发现问题的根源应该就是在非充电情况下，手机熄屏后，CPU会进入休眠状态，原来的TimerTask定时任务将不在执行，而在充电状态下CPU则不会休眠，同时也查找到上述AlarmManager方式实现的定时任务可以通过AlarmManager.RTC_WAKEUP标志来让App在指定的时间唤醒CPU执行定时任务，于是快刀斩乱麻修改为AlarmManager方式，本以为这个问题就这样轻轻松松的解决了，结果却是革命还未成功。</p>
+<p>更换实现方式后，再次在手机非充电状态下观察定时任务执行情况，结果发现在设定时间间隔到时时任务还是不执行，表现为用户又离线了，但是好在又耐心等待了一段时间，发现用户又突然在线了一会儿，而且稀奇的是这种情况在充电状态下也一样，查看调试日志是15分钟执行一次（设置2分钟一次，尝试缩短结果还是一样），然后再次查找搜索，最终发现了之前早有耳闻，却还从未遇到过的对齐唤醒问题。国内厂商为了手机省电，在自行定制的ROM中加入了对齐唤醒的技术（貌似小米的MIUI最早的吧），即当有多个App通过AlarmManager方式要唤醒手机CPU执行某项任务时，系统会自动将该唤醒时间延迟到同一个时间点唤醒CPU，查询有哪些应用有唤醒需求，然后在该时间点执行定时任务。这也就造成了在有对齐唤醒机制的手机上，除系统级应用外，其它应用的定时任务的执行时间无法得到保证，这点在MIUI论坛里令好多第三方闹钟开发者怨声载道，这也造成了小米手机上第三方闹钟不准时的问题。就在我痛骂国内手机厂商乱改ROM，感觉问题无解的时候，在官方文档查询到了如下信息：</p>
+<blockquote>
+<p>With the new batching policy, delivery ordering guarantees are not as strong as they were previously. If the application sets multiple alarms, it is possible that these alarms’ actual delivery ordering may not match the order of their requested delivery times. If your application has strong ordering requirements there are other APIs that you can use to get the necessary behavior; see setWindow(int, long, long, PendingIntent) and setExact(int, long, PendingIntent).</p>
+</blockquote>
+<p>上述这段的大意就是在高版本（Level19及以上）的Android系统上已经有了新的方法setWindow()和setExact()来实现精确唤醒CPU，突然感觉胜利就在前方，遂更改调用新的方法，然而定时任务还是不能按时执行，但是跟最初的执行间隔时间比缩短了，结果5分钟一次（同样设定2分钟一次）。再看文档发现了我遗漏了下面的信息，正好解释了为什么用新方法还是不行。</p>
+<blockquote>
+<p>Note: Beginning in API 19, the trigger time passed to this method is treated as inexact: the alarm will not be delivered before this time, but may be deferred and delivered some time later. The OS will use this policy in order to “batch” alarms together across the entire system, minimizing the number of times the device needs to “wake up” and minimizing battery use. In general, alarms scheduled in the near future will not be deferred as long as alarms scheduled far in the future.</p>
+</blockquote>
+<p>上述这段的大意就是从Level19开始，原生系统也采用了对齐唤醒的机制来省电（哇，难道这是Google官方吸收了国内厂商的技术），即使使用新的方法也无法保证能精确执行定时任务，而且同样无论充电还是非充电状态都会延迟，看来这条路是真的行不通了。</p>
+<p>就在我再次以为问题真的无解的时候，又发现可以通过PowerManager来控制CPU的休眠状态（屏幕该熄灭还是熄灭），再考虑到AlarmManager即使在充电状态下都无法保证执行时间，而TimerTask却可以，于是尝试采用控制CPU不休眠，定时任务还是TimerTask的方式，虽然控制CPU不休眠会耗电些，但是真正的解决了这个问题。而且可以通过在应用退出后，解除CPU不休眠状态来缩减部分耗电影响，最后附上PowerManager控制CPU不休眠方法。</p>
+</li>
+<li><p>PowerManager控制手机CPU不休眠。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   PowerManager powerManager =(PowerManager)getSystemService(Context.POWER_SERVICE);</span><br><span class="line">PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,TAG);<span class="comment">//设置休眠状态</span></span><br><span class="line">wakeLock.acquire();<span class="comment">//锁定休眠状态</span></span><br><span class="line">······</span><br><span class="line">wakeLock.release();<span class="comment">//释放休眠状态锁定，应用退出时调用</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上述PowerManager的newWakeLock方法第一个参数有以下常量值代表不同休眠状态，以PARTIAL_WAKE_LOCK为例，该状态锁acquire()之后，CPU会保持非休眠状态，屏幕和键盘则还是会分别自动熄屏和锁定。<br>| 标志常量 | CPU | 屏幕  |键盘|<br>| :——:   | :——: | :——: |:—-:|<br>| PARTIAL_WAKE_LOCK  | 开 | 关 | 锁定 |<br>| SCREEN_DIM_WAKE_LOCK  | 开 | 低亮度 | 锁定 |<br>| SCREEN_BRIGHT_WAKE_LOCK | 开 | 高亮度 | 锁定 |<br>| FULL_WAKE_LOCK | 开 | 高亮度 | 有效 |</p>
+<p>本文参考此<a href="http://www.cnblogs.com/kobe8/p/3819305.html" target="_blank" rel="external">博文</a>，在此表示感谢！</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者。但是不一定完全遵照上述标准，特殊情况下还要特殊处理，比如这篇文章最后提到的问题。</p>]]>
+    
+    </summary>
+    
+      <category term="CPU休眠控制" scheme="http://jellybins.github.io/tags/CPU%E4%BC%91%E7%9C%A0%E6%8E%A7%E5%88%B6/"/>
+    
+      <category term="定时任务" scheme="http://jellybins.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+    
+      <category term="Android" scheme="http://jellybins.github.io/categories/Android/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[终于等到你]]></title>

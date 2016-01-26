@@ -1,0 +1,743 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="一介码农，一只程序猿" />
+
+
+
+  <meta name="keywords" content="CPU休眠控制,定时任务," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android定时任务详解">
+<meta property="og:url" content="http://jellybins.github.io/2016/01/26/Android定时任务详解/index.html">
+<meta property="og:site_name" content="JellyBin's博客">
+<meta property="og:description" content="Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者">
+<meta property="og:updated_time" content="2016-01-26T09:10:31.825Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android定时任务详解">
+<meta name="twitter:description" content="Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'always'
+  };
+</script>
+
+  <title> Android定时任务详解 | JellyBin's博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?02aec28a1ebfd7d99792aa87c27a9fd0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">JellyBin's博客</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'dYT2U5c87SdDUCRygqot','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Android定时任务详解
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-26T17:06:43+08:00" content="2016-01-26">
+            2016-01-26
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Android/" itemprop="url" rel="index">
+                  <span itemprop="name">Android</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/26/Android定时任务详解/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/26/Android定时任务详解/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者。但是不一定完全遵照上述标准，特殊情况下还要特殊处理，比如这篇文章最后提到的问题。</p>
+<a id="more"></a>
+<h2 id="TimerTask实现方式">TimerTask实现方式</h2><ol>
+<li><p>定时任务（以AlarmTask为例）实现TimerTask。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AlarmTask</span> <span class="keyword">extends</span> <span class="title">TimerTask</span> </span>&#123;</span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//任务代码写在此处</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Timer类启动和取消AlarmTask。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Timer timer = <span class="keyword">new</span> Timer();</span><br><span class="line"></span><br><span class="line">TimerTask alarmTask = <span class="keyword">new</span> AlarmTask();</span><br><span class="line"></span><br><span class="line">timer.schedule(alarmTask,<span class="number">0</span>,<span class="number">2</span>*<span class="number">60</span>*<span class="number">1000</span>);<span class="comment">//0毫秒后每2分钟执行该任务一次</span></span><br><span class="line">timer.schedule(alarmTask,<span class="number">1</span>*<span class="number">60</span>*<span class="number">1000</span>);<span class="comment">//1分钟后执行该任务一次</span></span><br><span class="line">·····</span><br><span class="line">alarmTask.cancel();<span class="comment">//取消定时任务</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="AlarmManager实现方式">AlarmManager实现方式</h2><ol>
+<li><p>获取系统服务AlarmManager。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>封装执行定时任务的PendingIntent。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Intent intent = Intent(context,NetworkService.class);</span><br><span class="line">intent.setAction(Constants.ALARM_ACTION);<span class="comment">//自定义的执行定义任务的Action</span></span><br><span class="line"></span><br><span class="line">PendingIntent pendingIntent = PendingIntent.getService(context,requestCode,intent,PendingIntent.FLAG_CANCEL_CURRENT);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>此处仅以getService()方式为例，还可通过getBroadCast()发送广播或getActivity()启动Activity来执行某项固定任务。其中各方法的最后一个参数含有以下常量分别代表不同含义的任务执行效果：</p>
+<p>FLAG_CANCEL_CURRENT:如果当前系统中已经存在一个相同的PendingIntent对象，那么就将先将已有的PendingIntent取消，然后重新生成一个PendingIntent对象。</p>
+<p>FLAG_NO_CREATE:如果当前系统中不存在相同的PendingIntent对象，系统将不会创建该PendingIntent对象而是直接返回null。</p>
+<p>FLAG_ONE_SHOT:该PendingIntent只作用一次。在该PendingIntent对象通过send()方法触发过后，PendingIntent将自动调用cancel()进行销毁，那么如果你再调用send()方法的话，系统将会返回一个SendIntentException。</p>
+<p>FLAG_UPDATE_CURRENT:如果系统中有一个和你描述的PendingIntent对等的PendingInent，那么系统将使用该PendingIntent对象，但是会使用新的Intent来更新之前PendingIntent中的Intent对象数据，例如更新Intent中的Extras。</p>
+</blockquote>
+</li>
+<li><p>启动或取消定时任务。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alarmManager.(AlarmManager.RTC_WAKEUP,triggerAtMills, sender)<span class="comment">//在时间点triggerAtMills执行改任务，如果该时间已过则立即执行</span></span><br><span class="line"></span><br><span class="line">alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,triggerAtMills,intervalAtMills,pendingintent);<span class="comment">//在时间点triggerAtMills执行，如果该时间已过则立即执行，然后以intervalAtMills间隔重复执行该任务</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上述方法第一个参数有以下常量分别代表不同含义的定时：</p>
+<p>AlarmManager.RTC_WAKEUP表示闹钟在睡眠状态下会唤醒系统并执行提示功能，该状态下闹钟使用绝对时间，状态值为0；</p>
+<p>AlarmManager.RTC表示闹钟在睡眠状态下不可用，该状态下闹钟使用绝对时间，即当前系统时间，状态值为1；</p>
+<p>AlarmManager.ELAPSED_REALTIME_WAKEUP表示闹钟在睡眠状态下会唤醒系统并执行提示功能，该状态下闹钟也使用相对时间，状态值为2；</p>
+<p>AlarmManager.ELAPSED_REALTIME表示闹钟在手机睡眠状态下不可用，该状态下闹钟使用相对时间（相对于系统启动开始），状态值为3；</p>
+<p>AlarmManager.POWER_OFF_WAKEUP表示闹钟在手机关机状态下也能正常进行提示功能，所以是5个状态中用的最多的状态之一，该状态下闹钟也是用绝对时间，状态值为4；不过本状态好像受SDK版本影响，某些版本并不支持；</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="特殊情况特殊处理">特殊情况特殊处理</h2><ol>
+<li><p>问题来源。</p>
+<p>开发的一个App中有这样一个需求，通过每隔一段向服务器发送Http请求来更新当前用户在线时间，从而根据系统时间和该用户最后在线时间的差值来大体的判断用户在线状态，原本这个App是针对一个特定型号的手机开发，当时通过TimerTask的方式，设定定时执行此请求，实际使用中也基本满足了需求。后来客户因为原来的手机性能问题全部更换了新的手机，然后使用中发现App切入后台（App设定前台情况下不熄屏），只要手机屏幕熄灭后，用户就会一直处于离线状态。</p>
+</li>
+<li><p>问题复现。</p>
+<p>从客户处拿到新换的手机后开始调试，一开始是连着USB线调试查看定时任务的执行情况，然后发现不像客户描述的那样，App后台手机熄屏后，定时任务的Log还是按固有的频率打印的，而且查看用户在线信息的Web页也显示用户一直在线，不像客户讲的那样啊，又开始怀疑是不是用户手机装了数字全家桶或是其它所谓的优化App把我的这个App搞得不正常了，然后又想了下用户实际的使用情况，应该是在断电，3g网络下使用，然后把调试用的USB线拔掉，手机不支持网络调试也无法观察日志打印信息，只能通过上述的Web页面观察用户在线情况，果不其然，问题终于得到复现了，手机熄屏后一段时间，用户一直没有再显示在线过，同时发现之后如果又把USB线连接上，Log信息又开始按设定间隔打印了，用户也显示在线了。</p>
+</li>
+<li><p>曲折的解决过程。</p>
+<p>问题复现后，开始各种搜索，然后发现问题的根源应该就是在非充电情况下，手机熄屏后，CPU会进入休眠状态，原来的TimerTask定时任务将不在执行，而在充电状态下CPU则不会休眠，同时也查找到上述AlarmManager方式实现的定时任务可以通过AlarmManager.RTC_WAKEUP标志来让App在指定的时间唤醒CPU执行定时任务，于是快刀斩乱麻修改为AlarmManager方式，本以为这个问题就这样轻轻松松的解决了，结果却是革命还未成功。</p>
+<p>更换实现方式后，再次在手机非充电状态下观察定时任务执行情况，结果发现在设定时间间隔到时时任务还是不执行，表现为用户又离线了，但是好在又耐心等待了一段时间，发现用户又突然在线了一会儿，而且稀奇的是这种情况在充电状态下也一样，查看调试日志是15分钟执行一次（设置2分钟一次，尝试缩短结果还是一样），然后再次查找搜索，最终发现了之前早有耳闻，却还从未遇到过的对齐唤醒问题。国内厂商为了手机省电，在自行定制的ROM中加入了对齐唤醒的技术（貌似小米的MIUI最早的吧），即当有多个App通过AlarmManager方式要唤醒手机CPU执行某项任务时，系统会自动将该唤醒时间延迟到同一个时间点唤醒CPU，查询有哪些应用有唤醒需求，然后在该时间点执行定时任务。这也就造成了在有对齐唤醒机制的手机上，除系统级应用外，其它应用的定时任务的执行时间无法得到保证，这点在MIUI论坛里令好多第三方闹钟开发者怨声载道，这也造成了小米手机上第三方闹钟不准时的问题。就在我痛骂国内手机厂商乱改ROM，感觉问题无解的时候，在官方文档查询到了如下信息：</p>
+<blockquote>
+<p>With the new batching policy, delivery ordering guarantees are not as strong as they were previously. If the application sets multiple alarms, it is possible that these alarms’ actual delivery ordering may not match the order of their requested delivery times. If your application has strong ordering requirements there are other APIs that you can use to get the necessary behavior; see setWindow(int, long, long, PendingIntent) and setExact(int, long, PendingIntent).</p>
+</blockquote>
+<p>上述这段的大意就是在高版本（Level19及以上）的Android系统上已经有了新的方法setWindow()和setExact()来实现精确唤醒CPU，突然感觉胜利就在前方，遂更改调用新的方法，然而定时任务还是不能按时执行，但是跟最初的执行间隔时间比缩短了，结果5分钟一次（同样设定2分钟一次）。再看文档发现了我遗漏了下面的信息，正好解释了为什么用新方法还是不行。</p>
+<blockquote>
+<p>Note: Beginning in API 19, the trigger time passed to this method is treated as inexact: the alarm will not be delivered before this time, but may be deferred and delivered some time later. The OS will use this policy in order to “batch” alarms together across the entire system, minimizing the number of times the device needs to “wake up” and minimizing battery use. In general, alarms scheduled in the near future will not be deferred as long as alarms scheduled far in the future.</p>
+</blockquote>
+<p>上述这段的大意就是从Level19开始，原生系统也采用了对齐唤醒的机制来省电（哇，难道这是Google官方吸收了国内厂商的技术），即使使用新的方法也无法保证能精确执行定时任务，而且同样无论充电还是非充电状态都会延迟，看来这条路是真的行不通了。</p>
+<p>就在我再次以为问题真的无解的时候，又发现可以通过PowerManager来控制CPU的休眠状态（屏幕该熄灭还是熄灭），再考虑到AlarmManager即使在充电状态下都无法保证执行时间，而TimerTask却可以，于是尝试采用控制CPU不休眠，定时任务还是TimerTask的方式，虽然控制CPU不休眠会耗电些，但是真正的解决了这个问题。而且可以通过在应用退出后，解除CPU不休眠状态来缩减部分耗电影响，最后附上PowerManager控制CPU不休眠方法。</p>
+</li>
+<li><p>PowerManager控制手机CPU不休眠。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   PowerManager powerManager =(PowerManager)getSystemService(Context.POWER_SERVICE);</span><br><span class="line">PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,TAG);<span class="comment">//设置休眠状态</span></span><br><span class="line">wakeLock.acquire();<span class="comment">//锁定休眠状态</span></span><br><span class="line">······</span><br><span class="line">wakeLock.release();<span class="comment">//释放休眠状态锁定，应用退出时调用</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上述PowerManager的newWakeLock方法第一个参数有以下常量值代表不同休眠状态，以PARTIAL_WAKE_LOCK为例，该状态锁acquire()之后，CPU会保持非休眠状态，屏幕和键盘则还是会分别自动熄屏和锁定。<br>| 标志常量 | CPU | 屏幕  |键盘|<br>| :——:   | :——: | :——: |:—-:|<br>| PARTIAL_WAKE_LOCK  | 开 | 关 | 锁定 |<br>| SCREEN_DIM_WAKE_LOCK  | 开 | 低亮度 | 锁定 |<br>| SCREEN_BRIGHT_WAKE_LOCK | 开 | 高亮度 | 锁定 |<br>| FULL_WAKE_LOCK | 开 | 高亮度 | 有效 |</p>
+<p>本文参考此<a href="http://www.cnblogs.com/kobe8/p/3819305.html" target="_blank" rel="external">博文</a>，在此表示感谢！</p>
+</blockquote>
+</li>
+</ol>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CPU休眠控制/" rel="tag">#CPU休眠控制</a>
+          
+            <a href="/tags/定时任务/" rel="tag">#定时任务</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/14/终于等到你/" rel="next">终于等到你</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/01/26/Android定时任务详解/"
+     data-title="Android定时任务详解"
+     data-content=""
+     data-url="http://jellybins.github.io/2016/01/26/Android定时任务详解/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/01/26/Android定时任务详解/"
+                   data-title="Android定时任务详解" data-url="http://jellybins.github.io/2016/01/26/Android定时任务详解/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/avatar.jpg" alt="Jelly Bins" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Jelly Bins</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">一介码农，一只程序猿</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+		<span class="links-of-author">
+		  <a href="http://www.zhihu.com/people/wo-yi-wei-17" target="_blank" class="icon-next-zhihu"></a>
+		</span>
+            
+		<span class="links-of-author">
+		  <a href="mailto:1176224659@qq.com" target="_blank" class="icon-next-email"></a>
+		</span>
+            
+		<span class="links-of-author">
+		  <a href="https://github.com/jellybins" target="_blank" class="icon-next-github"></a>
+		</span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TimerTask实现方式"><span class="nav-number">1.</span> <span class="nav-text">TimerTask实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AlarmManager实现方式"><span class="nav-number">2.</span> <span class="nav-text">AlarmManager实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊情况特殊处理"><span class="nav-number">3.</span> <span class="nav-text">特殊情况特殊处理</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2013 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jelly Bins</span>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jellybins"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
