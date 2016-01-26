@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2016-01-26T09:40:53.762Z</updated>
+  <updated>2016-01-26T09:43:57.522Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jellybins.github.io/2016/01/26/Android%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%AF%A6%E8%A7%A3/"/>
     <id>http://jellybins.github.io/2016/01/26/Android定时任务详解/</id>
     <published>2016-01-26T09:06:43.000Z</published>
-    <updated>2016-01-26T09:40:53.762Z</updated>
+    <updated>2016-01-26T09:43:57.522Z</updated>
     <content type="html"><![CDATA[<p>Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者。但是不一定完全遵照上述标准，特殊情况下还要特殊处理，比如这篇文章最后提到的问题。</p>
 <a id="more"></a>
 <h2 id="TimerTask实现方式">TimerTask实现方式</h2><ol>
@@ -57,34 +57,23 @@
 </blockquote>
 </li>
 </ol>
-<h2 id="特殊情况特殊处理">特殊情况特殊处理</h2><ol>
-<li><p>问题来源。</p>
-<p> 开发的一个App中有这样一个需求，通过每隔一段向服务器发送Http请求来更新当前用户在线时间，从而根据系统时间和该用户最后在线时间的差值来大体的判断用户在线状态，原本这个App是针对一个特定型号的手机开发，当时通过TimerTask的方式，设定定时执行此请求，实际使用中也基本满足了需求。后来客户因为原来的手机性能问题全部更换了新的手机，然后使用中发现App切入后台（App设定前台情况下不熄屏），只要手机屏幕熄灭后，用户就会一直处于离线状态。</p>
-</li>
-<li><p>问题复现。</p>
-<p> 从客户处拿到新换的手机后开始调试，一开始是连着USB线调试查看定时任务的执行情况，然后发现不像客户描述的那样，App后台手机熄屏后，定时任务的Log还是按固有的频率打印的，而且查看用户在线信息的Web页也显示用户一直在线，不像客户讲的那样啊，又开始怀疑是不是用户手机装了数字全家桶或是其它所谓的优化App把我的这个App搞得不正常了，然后又想了下用户实际的使用情况，应该是在断电，3g网络下使用，然后把调试用的USB线拔掉，手机不支持网络调试也无法观察日志打印信息，只能通过上述的Web页面观察用户在线情况，果不其然，问题终于得到复现了，手机熄屏后一段时间，用户一直没有再显示在线过，同时发现之后如果又把USB线连接上，Log信息又开始按设定间隔打印了，用户也显示在线了。</p>
-</li>
-<li><p>曲折的解决过程。</p>
-<p> 问题复现后，开始各种搜索，然后发现问题的根源应该就是在非充电情况下，手机熄屏后，CPU会进入休眠状态，原来的TimerTask定时任务将不在执行，而在充电状态下CPU则不会休眠，同时也查找到上述AlarmManager方式实现的定时任务可以通过AlarmManager.RTC_WAKEUP标志来让App在指定的时间唤醒CPU执行定时任务，于是快刀斩乱麻修改为AlarmManager方式，本以为这个问题就这样轻轻松松的解决了，结果却是革命还未成功。</p>
-<p> 更换实现方式后，再次在手机非充电状态下观察定时任务执行情况，结果发现在设定时间间隔到时时任务还是不执行，表现为用户又离线了，但是好在又耐心等待了一段时间，发现用户又突然在线了一会儿，而且稀奇的是这种情况在充电状态下也一样，查看调试日志是15分钟执行一次（设置2分钟一次，尝试缩短结果还是一样），然后再次查找搜索，最终发现了之前早有耳闻，却还从未遇到过的对齐唤醒问题。国内厂商为了手机省电，在自行定制的ROM中加入了对齐唤醒的技术（貌似小米的MIUI最早的吧），即当有多个App通过AlarmManager方式要唤醒手机CPU执行某项任务时，系统会自动将该唤醒时间延迟到同一个时间点唤醒CPU，查询有哪些应用有唤醒需求，然后在该时间点执行定时任务。这也就造成了在有对齐唤醒机制的手机上，除系统级应用外，其它应用的定时任务的执行时间无法得到保证，这点在MIUI论坛里令好多第三方闹钟开发者怨声载道，这也造成了小米手机上第三方闹钟不准时的问题。就在我痛骂国内手机厂商乱改ROM，感觉问题无解的时候，在官方文档查询到了如下信息：</p>
-<blockquote>
-<p>With the new batching policy, delivery ordering guarantees are not as strong as they were previously. If the application sets multiple alarms, it is possible that these alarms’ actual delivery ordering may not match the order of their requested delivery times. If your application has strong ordering requirements there are other APIs that you can use to get the necessary behavior; see setWindow(int, long, long, PendingIntent) and setExact(int, long, PendingIntent).</p>
-</blockquote>
-<p>上述这段的大意就是在高版本（Level19及以上）的Android系统上已经有了新的方法setWindow()和setExact()来实现精确唤醒CPU，突然感觉胜利就在前方，遂更改调用新的方法，然而定时任务还是不能按时执行，但是跟最初的执行间隔时间比缩短了，结果5分钟一次（同样设定2分钟一次）。再看文档发现了我遗漏了下面的信息，正好解释了为什么用新方法还是不行。</p>
-<blockquote>
-<p>Note: Beginning in API 19, the trigger time passed to this method is treated as inexact: the alarm will not be delivered before this time, but may be deferred and delivered some time later. The OS will use this policy in order to “batch” alarms together across the entire system, minimizing the number of times the device needs to “wake up” and minimizing battery use. In general, alarms scheduled in the near future will not be deferred as long as alarms scheduled far in the future.</p>
-</blockquote>
-<p> 上述这段的大意就是从Level19开始，原生系统也采用了对齐唤醒的机制来省电（哇，难道这是Google官方吸收了国内厂商的技术），即使使用新的方法也无法保证能精确执行定时任务，而且同样无论充电还是非充电状态都会延迟，看来这条路是真的行不通了。</p>
-<p> 就在我再次以为问题真的无解的时候，又发现可以通过PowerManager来控制CPU的休眠状态（屏幕该熄灭还是熄灭），再考虑到AlarmManager即使在充电状态下都无法保证执行时间，而TimerTask却可以，于是尝试采用控制CPU不休眠，定时任务还是TimerTask的方式，虽然控制CPU不休眠会耗电些，但是真正的解决了这个问题。而且可以通过在应用退出后，解除CPU不休眠状态来缩减部分耗电影响，最后附上PowerManager控制CPU不休眠方法。</p>
-</li>
-<li><p>PowerManager控制手机CPU不休眠。</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PowerManager powerManager =(PowerManager)getSystemService(Context.POWER_SERVICE);</span><br><span class="line">PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,TAG);<span class="comment">//设置休眠状态</span></span><br><span class="line">wakeLock.acquire();<span class="comment">//锁定休眠状态</span></span><br><span class="line">······</span><br><span class="line">wakeLock.release();<span class="comment">//释放休眠状态锁定，应用退出时调用</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>上述PowerManager的newWakeLock方法第一个参数有以下常量值代表不同休眠状态，以PARTIAL_WAKE_LOCK为例，该状态锁acquire()之后，CPU会保持非休眠状态，屏幕和键盘则还是会分别自动熄屏和锁定。</p>
-</blockquote>
-</li>
-</ol>
-<table>
+<h2 id="特殊情况特殊处理">特殊情况特殊处理</h2><h3 id="问题来源。">问题来源。</h3><pre><code>开发的一个<span class="keyword">App</span>中有这样一个需求，通过每隔一段向服务器发送Http请求来更新当前用户在线时间，从而根据系统时间和该用户最后在线时间的差值来大体的判断用户在线状态，原本这个<span class="keyword">App</span>是针对一个特定型号的手机开发，当时通过TimerTask的方式，设定定时执行此请求，实际使用中也基本满足了需求。后来客户因为原来的手机性能问题全部更换了新的手机，然后使用中发现<span class="keyword">App</span>切入后台（<span class="keyword">App</span>设定前台情况下不熄屏），只要手机屏幕熄灭后，用户就会一直处于离线状态。
+</code></pre><h3 id="问题复现。">问题复现。</h3><pre><code>从客户处拿到新换的手机后开始调试，一开始是连着USB线调试查看定时任务的执行情况，然后发现不像客户描述的那样，<span class="keyword">App</span>后台手机熄屏后，定时任务的<span class="keyword">Log</span>还是按固有的频率打印的，而且查看用户在线信息的Web页也显示用户一直在线，不像客户讲的那样啊，又开始怀疑是不是用户手机装了数字全家桶或是其它所谓的优化<span class="keyword">App</span>把我的这个<span class="keyword">App</span>搞得不正常了，然后又想了下用户实际的使用情况，应该是在断电，3g网络下使用，然后把调试用的USB线拔掉，手机不支持网络调试也无法观察日志打印信息，只能通过上述的Web页面观察用户在线情况，果不其然，问题终于得到复现了，手机熄屏后一段时间，用户一直没有再显示在线过，同时发现之后如果又把USB线连接上，<span class="keyword">Log</span>信息又开始按设定间隔打印了，用户也显示在线了。
+</code></pre><h3 id="曲折的解决过程。">曲折的解决过程。</h3><pre><code>问题复现后，开始各种搜索，然后发现问题的根源应该就是在非充电情况下，手机熄屏后，CPU会进入休眠状态，原来的TimerTask定时任务将不在执行，而在充电状态下CPU则不会休眠，同时也查找到上述AlarmManager方式实现的定时任务可以通过AlarmManager.RTC_WAKEUP标志来让App在指定的时间唤醒CPU执行定时任务，于是快刀斩乱麻修改为AlarmManager方式，本以为这个问题就这样轻轻松松的解决了，结果却是革命还未成功。
+
+更换实现方式后，再次在手机非充电状态下观察定时任务执行情况，结果发现在设定时间间隔到时时任务还是不执行，表现为用户又离线了，但是好在又耐心等待了一段时间，发现用户又突然在线了一会儿，而且稀奇的是这种情况在充电状态下也一样，查看调试日志是<span class="number">15</span>分钟执行一次（设置<span class="number">2</span>分钟一次，尝试缩短结果还是一样），然后再次查找搜索，最终发现了之前早有耳闻，却还从未遇到过的对齐唤醒问题。国内厂商为了手机省电，在自行定制的ROM中加入了对齐唤醒的技术（貌似小米的MIUI最早的吧），即当有多个App通过AlarmManager方式要唤醒手机CPU执行某项任务时，系统会自动将该唤醒时间延迟到同一个时间点唤醒CPU，查询有哪些应用有唤醒需求，然后在该时间点执行定时任务。这也就造成了在有对齐唤醒机制的手机上，除系统级应用外，其它应用的定时任务的执行时间无法得到保证，这点在MIUI论坛里令好多第三方闹钟开发者怨声载道，这也造成了小米手机上第三方闹钟不准时的问题。就在我痛骂国内手机厂商乱改ROM，感觉问题无解的时候，在官方文档查询到了如下信息：
+
+&gt;With <span class="keyword">the</span> new batching policy, delivery ordering guarantees are <span class="keyword">not</span> <span class="keyword">as</span> strong <span class="keyword">as</span> they were previously. If <span class="keyword">the</span> <span class="type">application</span> sets multiple alarms, <span class="keyword">it</span> <span class="keyword">is</span> possible <span class="keyword">that</span> these alarms' actual delivery ordering may <span class="keyword">not</span> match <span class="keyword">the</span> order <span class="keyword">of</span> their requested delivery <span class="keyword">times</span>. If your <span class="type">application</span> has strong ordering requirements there are other APIs <span class="keyword">that</span> you can use <span class="keyword">to</span> <span class="keyword">get</span> <span class="keyword">the</span> necessary behavior; see setWindow(int, long, long, PendingIntent) <span class="keyword">and</span> setExact(int, long, PendingIntent).
+</code></pre><p>  上述这段的大意就是在高版本（Level19及以上）的Android系统上已经有了新的方法setWindow()和setExact()来实现精确唤醒CPU，突然感觉胜利就在前方，遂更改调用新的方法，然而定时任务还是不能按时执行，但是跟最初的执行间隔时间比缩短了，结果5分钟一次（同样设定2分钟一次）。再看文档发现了我遗漏了下面的信息，正好解释了为什么用新方法还是不行。</p>
+<pre><code>&gt;Note: Beginning <span class="operator">in</span> API <span class="number">19</span>, <span class="operator">the</span> trigger <span class="built_in">time</span> passed <span class="built_in">to</span> this method is treated <span class="keyword">as</span> inexact: <span class="operator">the</span> alarm will <span class="operator">not</span> be delivered <span class="keyword">before</span> this <span class="built_in">time</span>, but may be deferred <span class="operator">and</span> delivered some <span class="built_in">time</span> later. The OS will use this policy <span class="operator">in</span> order <span class="built_in">to</span> <span class="string">"batch"</span> alarms together across <span class="operator">the</span> entire <span class="keyword">system</span>, minimizing <span class="operator">the</span> <span class="built_in">number</span> <span class="operator">of</span> times <span class="operator">the</span> device needs <span class="built_in">to</span> <span class="string">"wake up"</span> <span class="operator">and</span> minimizing battery use. In general, alarms scheduled <span class="operator">in</span> <span class="operator">the</span> near future will <span class="operator">not</span> be deferred <span class="keyword">as</span> <span class="keyword">long</span> <span class="keyword">as</span> alarms scheduled far <span class="operator">in</span> <span class="operator">the</span> future.
+
+上述这段的大意就是从Level19开始，原生系统也采用了对齐唤醒的机制来省电（哇，难道这是Google官方吸收了国内厂商的技术），即使使用新的方法也无法保证能精确执行定时任务，而且同样无论充电还是非充电状态都会延迟，看来这条路是真的行不通了。
+
+就在我再次以为问题真的无解的时候，又发现可以通过PowerManager来控制CPU的休眠状态（屏幕该熄灭还是熄灭），再考虑到AlarmManager即使在充电状态下都无法保证执行时间，而TimerTask却可以，于是尝试采用控制CPU不休眠，定时任务还是TimerTask的方式，虽然控制CPU不休眠会耗电些，但是真正的解决了这个问题。而且可以通过在应用退出后，解除CPU不休眠状态来缩减部分耗电影响，最后附上PowerManager控制CPU不休眠方法。
+</code></pre><h3 id="PowerManager控制手机CPU不休眠。">PowerManager控制手机CPU不休眠。</h3><pre><code><span class="comment"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PowerManager powerManager =(PowerManager)getSystemService(Context.POWER_SERVICE);</span><br><span class="line">PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,TAG);<span class="comment">//设置休眠状态</span></span><br><span class="line">wakeLock.acquire();<span class="comment">//锁定休眠状态</span></span><br><span class="line">······</span><br><span class="line">wakeLock.release();<span class="comment">//释放休眠状态锁定，应用退出时调用</span></span><br></pre></td></tr></table></figure></span>
+
+&gt;上述PowerManager的newWakeLock方法第一个参数有以下常量值代表不同休眠状态，以PARTIAL_WAKE_LOCK为例，该状态锁acquire()之后，CPU会保持非休眠状态，屏幕和键盘则还是会分别自动熄屏和锁定。
+</code></pre><table>
 <thead>
 <tr>
 <th style="text-align:center">标志常量</th>
