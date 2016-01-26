@@ -43,7 +43,7 @@
 <meta property="og:url" content="http://jellybins.github.io/2016/01/26/Android定时任务详解/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
 <meta property="og:description" content="Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者">
-<meta property="og:updated_time" content="2016-01-26T09:10:31.825Z">
+<meta property="og:updated_time" content="2016-01-26T09:16:34.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android定时任务详解">
 <meta name="twitter:description" content="Android系统下实现指定时长后执行某任务或周期性执行某项任务（以下统称为定时任务）通常有以下两种方式：1，定时任务实现TimerTask，Timer控制定时任务的启动，取消。2，通过PendingIntent执行定时任务，AlarmManager(安卓的闹钟服务)来控制定时任务的启动和取消。两者同样能实现，不同之处在于前者是Java范畴的定时任务，而Android官方推荐的定时任务实现则是后者">
@@ -259,7 +259,7 @@
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>封装执行定时任务的PendingIntent。</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Intent intent = Intent(context,NetworkService.class);</span><br><span class="line">intent.setAction(Constants.ALARM_ACTION);<span class="comment">//自定义的执行定义任务的Action</span></span><br><span class="line"></span><br><span class="line">PendingIntent pendingIntent = PendingIntent.getService(context,requestCode,intent,PendingIntent.FLAG_CANCEL_CURRENT);</span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = Intent(context,NetworkService.class);</span><br><span class="line">intent.setAction(Constants.ALARM_ACTION);<span class="comment">//自定义的执行定义任务的Action</span></span><br><span class="line"></span><br><span class="line">PendingIntent pendingIntent = PendingIntent.getService(context,requestCode,intent,PendingIntent.FLAG_CANCEL_CURRENT);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>此处仅以getService()方式为例，还可通过getBroadCast()发送广播或getActivity()启动Activity来执行某项固定任务。其中各方法的最后一个参数含有以下常量分别代表不同含义的任务执行效果：</p>
 <p>FLAG_CANCEL_CURRENT:如果当前系统中已经存在一个相同的PendingIntent对象，那么就将先将已有的PendingIntent取消，然后重新生成一个PendingIntent对象。</p>
@@ -301,7 +301,7 @@
 <p>就在我再次以为问题真的无解的时候，又发现可以通过PowerManager来控制CPU的休眠状态（屏幕该熄灭还是熄灭），再考虑到AlarmManager即使在充电状态下都无法保证执行时间，而TimerTask却可以，于是尝试采用控制CPU不休眠，定时任务还是TimerTask的方式，虽然控制CPU不休眠会耗电些，但是真正的解决了这个问题。而且可以通过在应用退出后，解除CPU不休眠状态来缩减部分耗电影响，最后附上PowerManager控制CPU不休眠方法。</p>
 </li>
 <li><p>PowerManager控制手机CPU不休眠。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   PowerManager powerManager =(PowerManager)getSystemService(Context.POWER_SERVICE);</span><br><span class="line">PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,TAG);<span class="comment">//设置休眠状态</span></span><br><span class="line">wakeLock.acquire();<span class="comment">//锁定休眠状态</span></span><br><span class="line">······</span><br><span class="line">wakeLock.release();<span class="comment">//释放休眠状态锁定，应用退出时调用</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PowerManager powerManager =(PowerManager)getSystemService(Context.POWER_SERVICE);</span><br><span class="line">PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,TAG);<span class="comment">//设置休眠状态</span></span><br><span class="line">wakeLock.acquire();<span class="comment">//锁定休眠状态</span></span><br><span class="line">······</span><br><span class="line">wakeLock.release();<span class="comment">//释放休眠状态锁定，应用退出时调用</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>上述PowerManager的newWakeLock方法第一个参数有以下常量值代表不同休眠状态，以PARTIAL_WAKE_LOCK为例，该状态锁acquire()之后，CPU会保持非休眠状态，屏幕和键盘则还是会分别自动熄屏和锁定。<br>| 标志常量 | CPU | 屏幕  |键盘|<br>| :——:   | :——: | :——: |:—-:|<br>| PARTIAL_WAKE_LOCK  | 开 | 关 | 锁定 |<br>| SCREEN_DIM_WAKE_LOCK  | 开 | 低亮度 | 锁定 |<br>| SCREEN_BRIGHT_WAKE_LOCK | 开 | 高亮度 | 锁定 |<br>| FULL_WAKE_LOCK | 开 | 高亮度 | 有效 |</p>
 <p>本文参考此<a href="http://www.cnblogs.com/kobe8/p/3819305.html" target="_blank" rel="external">博文</a>，在此表示感谢！</p>
