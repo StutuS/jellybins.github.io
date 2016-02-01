@@ -130,7 +130,7 @@
     <link href="http://jellybins.github.io/2016/01/14/%E7%BB%88%E4%BA%8E%E7%AD%89%E5%88%B0%E4%BD%A0/"/>
     <id>http://jellybins.github.io/2016/01/14/终于等到你/</id>
     <published>2016-01-14T07:01:26.000Z</published>
-    <updated>2016-02-01T08:34:15.168Z</updated>
+    <updated>2016-02-01T08:40:33.239Z</updated>
     <content type="html"><![CDATA[<p>初看这篇博文的标题诸位一定以为我是要写一篇年度狗血秀恩爱的博文，但是考虑到我是一个理工科出身的人，最头疼的就是作文，所以事实上我是要讲一下这个静态博客的主题Next的修改问题，还有在配置Next主题时发现的主题配置文档里的部分问题。至于为什么要用这个标题呢，因为之前好多次讲要找个时间写一下，结果找个时间找到了现在，二零一六年元月，对于之前在知乎里询问我主题怎么修改成现在这样的亲们，真是灰常抱歉啊。说到修改其实我对nodejs几乎也是一窍不通，什么swig，styl也是根本从来没接触过，但好在有做Web开发的底子，外加上swig长的也比较像HTML加自有标签，还有神器firebug相助，然后摸索着修改了Next主题，最终完成了我的私人定制。</p>
 <a id="more"></a>
 <h2 id="拖延症的错">拖延症的错</h2><p>要写这篇博文前，突然想到先前搭建这个静态博客的时间是很久之前的事了，<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">Next主题</a> 不出意外的话，在现在这个时间节点肯定已经早就更新过n多次了（感谢作者的辛勤付出让我们用上这么漂亮简洁的主题），于是在本地新建了一个demo站点然后pull下来最新的主题，配置到这个示例站点上看了下，果不其然，作者又做出来一个Pisces的侧边栏分成双栏的scheme，非常漂亮，而且我所使用Mist的scheme作者也做了较大的改动，所以这次的主题修改以最新的Next主题的Mist scheme为例，最终完成的效果会与我的这个博客有些许不同，还请见谅。</p>
@@ -146,10 +146,9 @@
 </li>
 </ol>
 <h3 id="侧边栏部分">侧边栏部分</h3><ol>
-<li>隐藏社交链接项下划线：找到站点（以deom为例）本地磁盘目录“demo\themes\next\source\css_common\components\siderbar”文件夹下面的sidebar-author-links.styl文件，打开后修改如下内容。 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.links-of-author</span> <span class="tag">a</span> &#123;</span><br><span class="line">  省略内容</span><br><span class="line">  <span class="attribute">border-bottom-color</span><span class="value">: <span class="variable">$black-deep</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>隐藏社交链接项下划线：找到站点（以deom为例）本地磁盘目录“demo\themes\next\source\css_common\components\siderbar”文件夹下面的sidebar-author-links.styl文件，打开后修改如下内容。</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.links-of-author</span> <span class="tag">a</span> &#123;</span><br><span class="line">  省略内容</span><br><span class="line">  <span class="attribute">border-bottom-color</span><span class="value">: <span class="variable">$black-deep</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol>
 <li><p>去除社交链接项前面的圆点:打开1步骤中同样文件去掉如下内容中标注的一行。</p>
  <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.links-<span class="operator">of</span>-author <span class="operator">a</span> &#123;</span><br><span class="line">  省略内容</span><br><span class="line">  &amp;:<span class="keyword">before</span> &#123;</span><br><span class="line">    省略内容</span><br><span class="line">    background: rgb(<span class="built_in">random</span>-color(<span class="number">0</span>, <span class="number">255</span>) - <span class="number">50</span>%,<span class="built_in">random</span>-color(<span class="number">0</span>, <span class="number">255</span>) - <span class="number">50</span>%, <span class="built_in">random</span>-color(<span class="number">0</span>, <span class="number">255</span>) - <span class="number">50</span>%);<span class="comment">#只去掉这一行#</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
