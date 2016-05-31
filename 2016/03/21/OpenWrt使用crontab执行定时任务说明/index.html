@@ -39,23 +39,20 @@
 
 <meta name="description" content="列出当前的默认计划任务列表：crontab -l删除当前的默认计划任务列表：crontab -r修改当前的默认计划任务列表：crontab -e
 计划任务列表的格式：
-[minute] [hour] [day of month] [month] [day of week] [program to be run]
-其中各个参数的取值范围是:123456789minute(0-59)hour(0-23">
+[minute] [hour] [day of month] [month] [day of week] [program to be run]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenWrt使用crontab执行定时任务说明">
 <meta property="og:url" content="http://jellybins.github.io/2016/03/21/OpenWrt使用crontab执行定时任务说明/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
 <meta property="og:description" content="列出当前的默认计划任务列表：crontab -l删除当前的默认计划任务列表：crontab -r修改当前的默认计划任务列表：crontab -e
 计划任务列表的格式：
-[minute] [hour] [day of month] [month] [day of week] [program to be run]
-其中各个参数的取值范围是:123456789minute(0-59)hour(0-23">
-<meta property="og:updated_time" content="2016-05-31T04:32:16.751Z">
+[minute] [hour] [day of month] [month] [day of week] [program to be run]">
+<meta property="og:updated_time" content="2016-05-31T04:43:51.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenWrt使用crontab执行定时任务说明">
 <meta name="twitter:description" content="列出当前的默认计划任务列表：crontab -l删除当前的默认计划任务列表：crontab -r修改当前的默认计划任务列表：crontab -e
 计划任务列表的格式：
-[minute] [hour] [day of month] [month] [day of week] [program to be run]
-其中各个参数的取值范围是:123456789minute(0-59)hour(0-23">
+[minute] [hour] [day of month] [month] [day of week] [program to be run]">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -256,6 +253,7 @@
         <span itemprop="articleBody"><p>列出当前的默认计划任务列表：<code>crontab -l</code><br>删除当前的默认计划任务列表：<code>crontab -r</code><br>修改当前的默认计划任务列表：<code>crontab -e</code></p>
 <p>计划任务列表的格式：</p>
 <p><code>[minute] [hour] [day of month] [month] [day of week] [program to be run]</code></p>
+<a id="more"></a>
 <p>其中各个参数的取值范围是:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">minute</span><span class="params">(<span class="number">0</span>-<span class="number">59</span>)</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">hour</span><span class="params">(<span class="number">0</span>-<span class="number">23</span>)</span></span></span><br><span class="line"></span><br><span class="line">day of <span class="function"><span class="title">month</span><span class="params">(<span class="number">1</span>-<span class="number">31</span>)</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">month</span><span class="params">(<span class="number">1</span>-<span class="number">12</span>)</span></span></span><br><span class="line"></span><br><span class="line">day of <span class="function"><span class="title">week</span><span class="params">(<span class="number">0</span>-<span class="number">7</span>,<span class="number">0</span> or <span class="number">7</span> is Sun)</span></span></span><br></pre></td></tr></table></figure></p>
 <p>每个参数里的取值可以有4种间隔符:<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span>表示任意</span><br><span class="line"></span><br><span class="line">– 表示范围</span><br><span class="line"></span><br><span class="line">, 表示枚举多个值</span><br><span class="line"></span><br><span class="line">/ 表示每隔</span><br></pre></td></tr></table></figure></p>
 <p>例如:</p>
