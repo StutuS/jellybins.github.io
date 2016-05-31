@@ -248,11 +248,12 @@
 
       
         
-          <span itemprop="articleBody"><p>根据前端设计原则html-&gt;内容，css-&gt;样式，js-&gt;动作一般会将按钮点击事件在js中绑定，但是button元素type属性默认值在不同浏览器有差异，故在除IE以外浏览器中会造成多次提交或提交表单后页面又刷新的问题，故记录button元素用法如下：</p>
-<p>HTML DOM Button 对象</p>
-<p>定义和用法：type属性设置或返回按钮的类型。<br><strong>提示：请始终为按钮规定 type 属性。IE 浏览器的默认类型是 “button”，而在其他浏览器中（以及在 W3C 规范中）是 “submit”。</strong></p>
-<p>语法：buttonObject.type=value，可选值及描述如下表：<br>|  值     |   描述  |<br>| :——:  | :——:  |<br>| submit  |button 是提交按钮（是 IE 之外的所有浏览器的默认值）|<br>| button  |button 是可点击的按钮（IE 的默认值）|<br>| reset   |button 是重置按钮（清除表单数据）|</p>
-</span>
+          <p>根据前端设计原则html-&gt;内容，css-&gt;样式，js-&gt;动作一般会将按钮点击事件在js中绑定，但是button元素type属性默认值在不同浏览器有差异，故在除IE以外浏览器中会造成多次提交或提交表单后页面又刷新的问题，故记录button元素用法如下：</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/26/html中button元素type属性默认值问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -335,20 +336,12 @@
 
       
         
-          <span itemprop="articleBody"><h2 id="在Java中取用户信息的代码：">在Java中取用户信息的代码：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Object principal = SecurityContextHolder.getContext()</span><br><span class="line">		.getAuthentication().getPrincipal();</span><br><span class="line"><span class="keyword">if</span> (principal <span class="keyword">instanceof</span> UserDetails) &#123;</span><br><span class="line">	username = ((UserDetails) principal).getUsername();</span><br><span class="line">	Iterator it = ((UserDetails) principal).getAuthorities().iterator();</span><br><span class="line">	String authority = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">		authority = ((GrantedAuthority) it.next()).getAuthority();</span><br><span class="line">		System.out.println(<span class="string">"Authority:"</span> + authority);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="spring_security_3的配置示例：applicationContext-security-xml">spring security 3的配置示例：applicationContext-security.xml</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/dwr/**"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/css/**"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/images/**"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/scripts/**"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/index.html*"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/mydefault/**"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="comment">&lt;!-- </span><br><span class="line">&lt;intercept-url pattern="/admin/**" filters="none"/&gt; </span><br><span class="line">--&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>当你的servlet、action或Spring MVC的C（Control）相对应的url是以/mydefalut/开头，如果你要使用SecurityContextHolder获取用户信息，那么我告诉你，你想都别想。绝对是不可能的！</p>
-<p>当你的servlet、action或Spring MVC的C相对应的url是以/admin/开头(或者其它没有没有配置filter为none的url)，如果你要使用SecurityContextHolder获取用户信息，那么我想你是没有问题的。</p>
-</blockquote>
-<h2 id="产生原因:">产生原因:</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="attribute">filter</span>&gt;  </span><br><span class="line">  &lt;<span class="attribute">filter</span>-name&gt;springSecurityFilterChain&lt;/<span class="attribute">filter</span>-name&gt;  </span><br><span class="line">  &lt;<span class="attribute">filter</span>-class&gt;org<span class="class">.springframework</span><span class="class">.web</span><span class="class">.filter</span><span class="class">.DelegatingFilterProxy</span>&lt;/<span class="attribute">filter</span>-class&gt;  </span><br><span class="line">&lt;/<span class="attribute">filter</span>&gt;  </span><br><span class="line">   </span><br><span class="line">&lt;<span class="attribute">filter</span>-mapping&gt;  </span><br><span class="line">  &lt;<span class="attribute">filter</span>-name&gt;springSecurityFilterChain&lt;/<span class="attribute">filter</span>-name&gt;  </span><br><span class="line">  &lt;url-pattern&gt;<span class="comment">/*&lt;/url-pattern&gt;  </span><br><span class="line">&lt;/filter-mapping&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Spring Security的工作原理:Spring Security就是一个filter,如果你把Spring Security的配置文件中某个url-pattern 的filter配置为none，那么与这个url相关的请求，Spring Security是不会干活滴！</p>
-</blockquote>
-<ul>
-<li>PS:<a href="http://blog.csdn.net/generalyy0/article/details/8467675" target="_blank" rel="external">原文出处</a></li>
-</ul>
-</span>
+          <h2 id="在Java中取用户信息的代码：">在Java中取用户信息的代码：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Object principal = SecurityContextHolder.getContext()</span><br><span class="line">		.getAuthentication().getPrincipal();</span><br><span class="line"><span class="keyword">if</span> (principal <span class="keyword">instanceof</span> UserDetails) &#123;</span><br><span class="line">	username = ((UserDetails) principal).getUsername();</span><br><span class="line">	Iterator it = ((UserDetails) principal).getAuthorities().iterator();</span><br><span class="line">	String authority = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">		authority = ((GrantedAuthority) it.next()).getAuthority();</span><br><span class="line">		System.out.println(<span class="string">"Authority:"</span> + authority);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/23/Spring-Security3使用SecurityContextHolder取不到用户/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -431,20 +424,12 @@
 
       
         
-          <span itemprop="articleBody"><h2 id="easyui_deleteRow方法批量执行出错">easyui deleteRow方法批量执行出错</h2><p>easyui的datatgrid表格组件deleteRow（rowIndex）删除行方法中，删除一行后会立即调用opts.view.deleteRow.call(opts.view,_4d2,_4d3)，刷新页面上剩余行的rowIndex，rowIndex发生改变后，原来rows的数据也会发生改变，删除会出错，故把这个rows复制给另外一个数组，每次删除再重新查找rowIndex；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">del</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rows = $(<span class="string">'#tt'</span>).datagrid(<span class="string">"getSelections"</span>); </span><br><span class="line">    <span class="keyword">var</span> copyRows = [];</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">var</span> j= <span class="number">0</span>; j &lt; rows.length; j++) &#123;</span><br><span class="line">        copyRows.push(rows[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;copyRows.length;i++)&#123;    </span><br><span class="line">        <span class="keyword">var</span> index = $(<span class="string">'#tt'</span>).datagrid(<span class="string">'getRowIndex'</span>,copyRows[i]);</span><br><span class="line">        $(<span class="string">'#tt'</span>).datagrid(<span class="string">'deleteRow'</span>,index); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="jquery中attr和prop的区别">jquery中attr和prop的区别</h2><ul>
-<li>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。</li>
-<li>对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。</li>
-</ul>
-<p>例1： </p>
-<p><code>&lt;a href=&quot;http://www.baidu.com&quot; target=&quot;_self&quot; class=&quot;btn&quot;&gt;百度&lt;/a&gt;</code><br>这个例子里<a>元素的DOM属性有“href、target和class”，这些属性就是<a>元素本身就带有的属性，也是W3C标准里就包含有这几个属性，或者说在IDE里能够智能提示出的属性，这些就叫做固有属性。处理这些属性时，建议使用prop方法。</a></a></p>
-<p><code>&lt;a href=&quot;#&quot; id=&quot;link1&quot; action=&quot;delete&quot;&gt;删除&lt;/a&gt;</code><br>这个例子里<a>元素的DOM属性有“href、id和action”，很明显，前两个是固有属性，而后面一个“action”属性是我们自己自定义上去的，<a>元素本身是没有这个属性的。这种就是自定义的DOM属性。处理这些属性时，建议使用attr方法。使用prop方法取值和设置属性值时，都会返回undefined值。</a></a></p>
-<p>例2：</p>
-<p><code>&lt;input id=&quot;chk1&quot; type=&quot;checkbox&quot; /&gt;是否可见</code><br><code>&lt;input id=&quot;chk2&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot; /&gt;是否可见</code><br>像checkbox，radio和select这样的元素，选中属性对应“checked”和“selected”，这些也属于固有属性，因此需要使用prop方法去操作才能获得正确的结果。<br>使用prop结果如下:<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$<span class="params">(<span class="string">"#chk1"</span>)</span>.prop<span class="params">(<span class="string">"checked"</span>)</span> == <span class="literal">false</span></span><br><span class="line">$<span class="params">(<span class="string">"#chk2"</span>)</span>.prop<span class="params">(<span class="string">"checked"</span>)</span> == <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
-<p>如果上面使用attr方法，则会出现：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#chk1"</span>).<span class="function"><span class="title">attr</span><span class="params">(<span class="string">"checked"</span>)</span></span> == undefined</span><br><span class="line">$(<span class="string">"#chk2"</span>).<span class="function"><span class="title">attr</span><span class="params">(<span class="string">"checked"</span>)</span></span> == <span class="string">"checked"</span></span><br></pre></td></tr></table></figure></p>
-<p>另注意：checkbox、radio、select元素中只要含有checked属性或selected属性即为勾选或选中状态。即使<code>checked = &quot;false&quot;</code>或<code>selected=&quot;false&quot;</code>。</p>
-</span>
+          <h2 id="easyui_deleteRow方法批量执行出错">easyui deleteRow方法批量执行出错</h2><p>easyui的datatgrid表格组件deleteRow（rowIndex）删除行方法中，删除一行后会立即调用opts.view.deleteRow.call(opts.view,_4d2,_4d3)，刷新页面上剩余行的rowIndex，rowIndex发生改变后，原来rows的数据也会发生改变，删除会出错，故把这个rows复制给另外一个数组，每次删除再重新查找rowIndex。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/24/easyui表格前台删除及jquery中attr和prop区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

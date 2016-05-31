@@ -43,7 +43,7 @@
 <meta property="og:url" content="http://jellybins.github.io/2016/03/24/easyui表格前台删除及jquery中attr和prop区别/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
 <meta property="og:description" content="easyui deleteRow方法批量执行出错easyui的datatgrid表格组件deleteRow（rowIndex）删除行方法中，删除一行后会立即调用opts.view.deleteRow.call(opts.view,_4d2,_4d3)，刷新页面上剩余行的rowIndex，rowIndex发生改变后，原来rows的数据也会发生改变，删除会出错，故把这个rows复制给另外一个数组，每次">
-<meta property="og:updated_time" content="2016-05-31T04:29:37.717Z">
+<meta property="og:updated_time" content="2016-05-31T08:56:36.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="easyui表格前台删除及jquery中attr和prop区别">
 <meta name="twitter:description" content="easyui deleteRow方法批量执行出错easyui的datatgrid表格组件deleteRow（rowIndex）删除行方法中，删除一行后会立即调用opts.view.deleteRow.call(opts.view,_4d2,_4d3)，刷新页面上剩余行的rowIndex，rowIndex发生改变后，原来rows的数据也会发生改变，删除会出错，故把这个rows复制给另外一个数组，每次">
@@ -244,7 +244,8 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="easyui_deleteRow方法批量执行出错">easyui deleteRow方法批量执行出错</h2><p>easyui的datatgrid表格组件deleteRow（rowIndex）删除行方法中，删除一行后会立即调用opts.view.deleteRow.call(opts.view,_4d2,_4d3)，刷新页面上剩余行的rowIndex，rowIndex发生改变后，原来rows的数据也会发生改变，删除会出错，故把这个rows复制给另外一个数组，每次删除再重新查找rowIndex；</p>
+        <span itemprop="articleBody"><h2 id="easyui_deleteRow方法批量执行出错">easyui deleteRow方法批量执行出错</h2><p>easyui的datatgrid表格组件deleteRow（rowIndex）删除行方法中，删除一行后会立即调用opts.view.deleteRow.call(opts.view,_4d2,_4d3)，刷新页面上剩余行的rowIndex，rowIndex发生改变后，原来rows的数据也会发生改变，删除会出错，故把这个rows复制给另外一个数组，每次删除再重新查找rowIndex。</p>
+<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">del</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rows = $(<span class="string">'#tt'</span>).datagrid(<span class="string">"getSelections"</span>); </span><br><span class="line">    <span class="keyword">var</span> copyRows = [];</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">var</span> j= <span class="number">0</span>; j &lt; rows.length; j++) &#123;</span><br><span class="line">        copyRows.push(rows[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;copyRows.length;i++)&#123;    </span><br><span class="line">        <span class="keyword">var</span> index = $(<span class="string">'#tt'</span>).datagrid(<span class="string">'getRowIndex'</span>,copyRows[i]);</span><br><span class="line">        $(<span class="string">'#tt'</span>).datagrid(<span class="string">'deleteRow'</span>,index); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="jquery中attr和prop的区别">jquery中attr和prop的区别</h2><ul>
 <li>对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。</li>
