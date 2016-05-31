@@ -38,21 +38,18 @@
 
 
 <meta name="description" content="关于sleep不释放锁的说明12345678public void run（）&amp;#123;    while(true)&amp;#123;        synchronized(this)&amp;#123;            //todo sth            Thread.sleep()        &amp;#125;    &amp;#125;&amp;#125;
-
-上述代码执行会出现多个线程都能执行同步代码块">
+上述代码执行会出现多个线程都能执行同步代码块情">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线程sleep不会释放锁代码验证说明">
 <meta property="og:url" content="http://jellybins.github.io/2016/02/11/线程sleep不会释放锁代码验证说明/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
 <meta property="og:description" content="关于sleep不释放锁的说明12345678public void run（）&amp;#123;    while(true)&amp;#123;        synchronized(this)&amp;#123;            //todo sth            Thread.sleep()        &amp;#125;    &amp;#125;&amp;#125;
-
-上述代码执行会出现多个线程都能执行同步代码块">
-<meta property="og:updated_time" content="2016-05-31T08:10:58.435Z">
+上述代码执行会出现多个线程都能执行同步代码块情">
+<meta property="og:updated_time" content="2016-05-31T08:18:30.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程sleep不会释放锁代码验证说明">
 <meta name="twitter:description" content="关于sleep不释放锁的说明12345678public void run（）&amp;#123;    while(true)&amp;#123;        synchronized(this)&amp;#123;            //todo sth            Thread.sleep()        &amp;#125;    &amp;#125;&amp;#125;
-
-上述代码执行会出现多个线程都能执行同步代码块">
+上述代码执行会出现多个线程都能执行同步代码块情">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -251,17 +248,13 @@
 
       
         <span itemprop="articleBody"><h2 id="关于sleep不释放锁的说明">关于sleep不释放锁的说明</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> run（）&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        <span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123;</span><br><span class="line">            <span class="comment">//<span class="doctag"><span class="keyword">todo</span></span> sth</span></span><br><span class="line">            Thread.sleep()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
 <p>上述代码执行会出现多个线程都能执行同步代码块情况，原因并非是sleep释放锁，而是每一次同步代码块执行完毕（循环一次完毕）线程会自动释放锁。流程图如下：</p>
-</blockquote>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">op1=&#62;operation: &#24490;&#29615;&#24320;&#22987;&#10;op2=&#62;operation: &#32447;&#31243;&#35831;&#27714;&#38145;&#10;cond=&#62;condition: &#33719;&#21462;&#38145;&#10;op3=&#62;operation: todo sth&#10;op4=&#62;operation: &#32447;&#31243;&#20241;&#30496;&#10;op5=&#62;operation: &#21516;&#27493;&#20195;&#30721;&#22359;&#25191;&#34892;&#23436;&#27605;&#10;op6=&#62;operation: &#32447;&#31243;&#38145;&#33258;&#21160;&#37322;&#25918;&#10;&#10;op1-&#62;op2-&#62;cond&#10;cond(yes)-&#62;op3-&#62;op3-&#62;op4-&#62;op5-&#62;op6-&#62;op2&#10;cond(no)-&#62;op2</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>一次循环开始—请求并获得锁—todo sth-当前线程休眠—同步代码块执行一次完毕，锁自动释放（一次循环结束，其它线程获得锁执行）-下一次循环</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> run（）&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="comment">//<span class="doctag"><span class="keyword">todo</span></span> sth</span></span><br><span class="line">            Thread.sleep()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
 <p>上述代码才能表明sleep并不会释放对象锁。流程图如下：</p>
-</blockquote>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">st=&#62;start: &#24320;&#22987;&#10;op1=&#62;operation: &#32447;&#31243;&#35831;&#27714;&#38145;&#10;cond=&#62;condition: &#33719;&#21462;&#38145;&#10;op2=&#62;operation: &#24490;&#29615;&#24320;&#22987;&#10;op3=&#62;operation: todo sth&#10;op4=&#62;operation: &#32447;&#31243;&#20241;&#30496;&#65288;&#19981;&#37322;&#25918;&#38145;&#65289;&#10;&#10;st-&#62;op1-&#62;cond&#10;cond(yes)-&#62;op2-&#62;op3-&#62;op4-&#62;op2&#10;cond(no)-&#62;op1</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>请求获得锁—循环开始—todo sth—当前线程休眠（sleep也不能使线程释放锁，故别的线程无法执行）—一次循环结束，同步代码块未执行完毕—下一次循环</p>
