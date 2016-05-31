@@ -343,8 +343,11 @@
 </blockquote>
 <h2 id="产生原因:">产生原因:</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="attribute">filter</span>&gt;  </span><br><span class="line">  &lt;<span class="attribute">filter</span>-name&gt;springSecurityFilterChain&lt;/<span class="attribute">filter</span>-name&gt;  </span><br><span class="line">  &lt;<span class="attribute">filter</span>-class&gt;org<span class="class">.springframework</span><span class="class">.web</span><span class="class">.filter</span><span class="class">.DelegatingFilterProxy</span>&lt;/<span class="attribute">filter</span>-class&gt;  </span><br><span class="line">&lt;/<span class="attribute">filter</span>&gt;  </span><br><span class="line">   </span><br><span class="line">&lt;<span class="attribute">filter</span>-mapping&gt;  </span><br><span class="line">  &lt;<span class="attribute">filter</span>-name&gt;springSecurityFilterChain&lt;/<span class="attribute">filter</span>-name&gt;  </span><br><span class="line">  &lt;url-pattern&gt;<span class="comment">/*&lt;/url-pattern&gt;  </span><br><span class="line">&lt;/filter-mapping&gt;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Spring Security的工作原理:Spring Security就是一个filter,如果你把Spring Security的配置文件中某个url-pattern 的filter配置为none，那么与这个url相关的请求，Spring Security是不会干活滴！PS:<a href="http://blog.csdn.net/generalyy0/article/details/8467675" target="_blank" rel="external">原文出处</a></p>
+<p>Spring Security的工作原理:Spring Security就是一个filter,如果你把Spring Security的配置文件中某个url-pattern 的filter配置为none，那么与这个url相关的请求，Spring Security是不会干活滴！</p>
 </blockquote>
+<ul>
+<li>PS:<a href="http://blog.csdn.net/generalyy0/article/details/8467675" target="_blank" rel="external">原文出处</a></li>
+</ul>
 </span>
         
       
