@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2016-06-14T07:25:17.157Z</updated>
+  <updated>2016-06-14T07:29:41.168Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -20,23 +20,19 @@
     <link href="http://jellybins.github.io/2016/06/14/%E8%B7%AF%E7%94%B1%E5%99%A8OpenWrt%E5%AE%9A%E5%88%B6%E7%9B%B8%E5%85%B3/"/>
     <id>http://jellybins.github.io/2016/06/14/路由器OpenWrt定制相关/</id>
     <published>2016-06-14T07:21:54.000Z</published>
-    <updated>2016-06-14T07:25:17.157Z</updated>
+    <updated>2016-06-14T07:29:41.168Z</updated>
     <content type="html"><![CDATA[<ul>
-<li>国内较快速的软件源：</li>
+<li><p>国内较快速的软件源：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">src<span class="regexp">/gz chaos_calmer_base http:/</span><span class="regexp">/openwrt.mirrors.ustc.edu.cn/</span>chaos_calmer<span class="regexp">/15.05.1/</span>ar71xx<span class="regexp">/nand/</span>packages/base</span><br><span class="line">src<span class="regexp">/gz chaos_calmer_luci http:/</span><span class="regexp">/openwrt.mirrors.ustc.edu.cn/</span>chaos_calmer<span class="regexp">/15.05.1/</span>ar71xx<span class="regexp">/nand/</span>packages/luci</span><br><span class="line">src<span class="regexp">/gz chaos_calmer_packages http:/</span><span class="regexp">/openwrt.mirrors.ustc.edu.cn/</span>chaos_calmer<span class="regexp">/15.05.1/</span>ar71xx<span class="regexp">/nand/</span>packages/packages</span><br><span class="line">src<span class="regexp">/gz chaos_calmer_routing http:/</span><span class="regexp">/openwrt.mirrors.ustc.edu.cn/</span>chaos_calmer<span class="regexp">/15.05.1/</span>ar71xx<span class="regexp">/nand/</span>packages/routing</span><br><span class="line">src<span class="regexp">/gz chaos_calmer_telephony http:/</span><span class="regexp">/openwrt.mirrors.ustc.edu.cn/</span>chaos_calmer<span class="regexp">/15.05.1/</span>ar71xx<span class="regexp">/nand/</span>packages/telephony</span><br><span class="line">src<span class="regexp">/gz chaos_calmer_management http:/</span><span class="regexp">/openwrt.mirrors.ustc.edu.cn/</span>chaos_calmer<span class="regexp">/15.05.1/</span>ar71xx<span class="regexp">/nand/</span>packages/management</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>openwrt降级安装ipk</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg <span class="operator"><span class="keyword">install</span> ipkname.ipk <span class="comment">--force-downgrade</span></span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<blockquote>
-<p>src/gz chaos_calmer_base <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/base" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/base</a><br>src/gz chaos_calmer_luci <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/luci" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/luci</a><br>src/gz chaos_calmer_packages <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/packages" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/packages</a><br>src/gz chaos_calmer_routing <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/routing" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/routing</a><br>src/gz chaos_calmer_telephony <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/telephony" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/telephony</a><br>src/gz chaos_calmer_management <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/management" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/management</a></p>
-</blockquote>
-<ul>
-<li>openwrt降级安装ipk</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg <span class="operator"><span class="keyword">install</span> ipkname.ipk <span class="comment">--force-downgrade</span></span></span><br></pre></td></tr></table></figure>]]></content>
+]]></content>
     <summary type="html">
     <![CDATA[<ul>
-<li>国内较快速的软件源：</li>
-</ul>
-<blockquote>
-<p>src/gz chaos_calmer_base <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar7]]>
+<li><p>国内较快速的软件源：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="l]]>
     </summary>
     
       <category term="系统定制" scheme="http://jellybins.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%AE%9A%E5%88%B6/"/>
@@ -618,15 +614,15 @@
     <link href="http://jellybins.github.io/2015/04/12/Linux%E9%94%99%E8%AF%AF%E5%92%8C%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/"/>
     <id>http://jellybins.github.io/2015/04/12/Linux错误和标准输出重定向/</id>
     <published>2015-04-12T07:18:20.000Z</published>
-    <updated>2016-06-14T07:20:31.022Z</updated>
-    <content type="html"><![CDATA[<p>问题由来：/dev/null 2&gt;&amp;1 这句话的含义及使用的意义？</p>
+    <updated>2016-06-14T07:32:04.287Z</updated>
+    <content type="html"><![CDATA[<p>例：/dev/null 2&gt;&amp;1 这句话的含义及使用的意义？</p>
 <p>一般在linux的shell包括windows的dos下都可能会这样使用。null是一个名叫null小桶的东西，将输出重定向到它的好处是不会因为输出的内容过多而导致文件大小不断的增加。其实，可以把null认为是什么都没有，也就是将命令的输出抛弃掉。</p>
 <p>1表示标准输出，2表示标准错误输出，2&gt;&amp;1表示将标准错误输出重定向到标准输出，这样，程序或者命令的正常输出和错误输出就可以在标准输出中输出。</p>
 <a id="more"></a>
-<p>一般来讲标准输出和标准错误输出都是屏幕，那为什么还要这么用呢？原因是标准输出的重定向。你的例子是重定向到了null，如果重定向到文件则为<code>dir &gt; out.txt</code>，表示标准输出重定向到out.txt文件。此时如果dir命令出错，那么错误信息不会输出到out.txt文件，错误信息仍然会输出到屏幕—标准错误输出。为了使正确的信息和错误的信息都重定向到out.txt文件，那么需要将错误信息的标准错误输出重定向到标准输出。即命令如下：<code>dir &gt; out.txt 2&gt;&amp;1</code>，重定向到null是一个道理:<code>dir &gt; null 2&gt;&amp;1</code>。</p>
+<p>一般来讲，标准输出和标准错误输出都是屏幕，那为什么还要这么用呢？原因是标准输出的重定向。例子是重定向到了null，如果重定向到文件则为<code>dir &gt; out.txt</code>，表示标准输出重定向到out.txt文件。此时如果dir命令出错，那么错误信息不会输出到out.txt文件，错误信息仍然会输出到屏幕—标准错误输出。为了使正确的信息和错误的信息都重定向到out.txt文件，那么需要将错误信息的标准错误输出重定向到标准输出。即命令如下：<code>dir &gt; out.txt 2&gt;&amp;1</code>，重定向到null是一个道理:<code>dir &gt; null 2&gt;&amp;1</code>。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>问题由来：/dev/null 2&gt;&amp;1 这句话的含义及使用的意义？</p>
+    <![CDATA[<p>例：/dev/null 2&gt;&amp;1 这句话的含义及使用的意义？</p>
 <p>一般在linux的shell包括windows的dos下都可能会这样使用。null是一个名叫null小桶的东西，将输出重定向到它的好处是不会因为输出的内容过多而导致文件大小不断的增加。其实，可以把null认为是什么都没有，也就是将命令的输出抛弃掉。</p>
 <p>1表示标准输出，2表示标准错误输出，2&gt;&amp;1表示将标准错误输出重定向到标准输出，这样，程序或者命令的正常输出和错误输出就可以在标准输出中输出。</p>]]>
     
@@ -692,12 +688,20 @@
     <link href="http://jellybins.github.io/2014/07/15/SQL%E8%A7%86%E5%9B%BE%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%B8%AD%E4%BD%BF%E7%94%A8ORDER-BY%E6%8A%A5%E9%94%99/"/>
     <id>http://jellybins.github.io/2014/07/15/SQL视图、子查询中使用ORDER-BY报错/</id>
     <published>2014-07-15T06:57:59.000Z</published>
-    <updated>2016-06-14T07:08:29.688Z</updated>
-    <content type="html"><![CDATA[<p>默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> (<span class="keyword">select</span> * <span class="keyword">from</span> tab <span class="keyword">where</span> ID&gt;<span class="number">20</span> <span class="keyword">order</span> <span class="keyword">by</span> userID <span class="keyword">desc</span>) <span class="keyword">as</span> a <span class="keyword">order</span> <span class="keyword">by</span> date <span class="keyword">desc</span></span><br><span class="line">``` </span><br><span class="line">那么可能会遇到下面的错误提示：</span><br><span class="line">&gt;除非另外还指定了 TOP 或 <span class="keyword">FOR</span> XML，否则，<span class="keyword">ORDER</span> <span class="keyword">BY</span> 子句在视图、内联函数、派生表、子查询和公用表表达式中无效。</span><br><span class="line"></span><br><span class="line">- 上述错误产生的原因：针对一个表的<span class="keyword">SELECT</span>其实并不是返回一个表，而是一个游标。</span><br><span class="line"> </span><br><span class="line">- 如果一定要用怎么办呢,答案就是配合TOP <span class="number">100</span> PERCENT：</span><br></pre></td></tr></table></figure></p>
-<p>select <em> from (select top 100 percent </em> from tab where ID&gt;20 order by userID desc) as a order by date desc<br>```</p>
-]]></content>
+    <updated>2016-06-14T07:36:29.572Z</updated>
+    <content type="html"><![CDATA[<p>默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> (<span class="keyword">select</span> * <span class="keyword">from</span> tab <span class="keyword">where</span> ID&gt;<span class="number">20</span> <span class="keyword">order</span> <span class="keyword">by</span> userID <span class="keyword">desc</span>) <span class="keyword">as</span> a <span class="keyword">order</span> <span class="keyword">by</span> <span class="built_in">date</span> <span class="keyword">desc</span></span></span><br></pre></td></tr></table></figure>
+<p>可能会遇到下面的错误提示：</p>
+<blockquote>
+<p>除非另外还指定了 TOP 或 FOR XML，否则，ORDER BY 子句在视图、内联函数、派生表、子查询和公用表表达式中无效。</p>
+</blockquote>
+<ul>
+<li>上述错误产生的原因：针对一个表的SELECT其实并不是返回一个表，而是一个游标。如果一定要则要配合<code>TOP 100 PERCENT</code>：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">100</span> percent * <span class="keyword">from</span> tab <span class="keyword">where</span> ID&gt;<span class="number">20</span> <span class="keyword">order</span> <span class="keyword">by</span> userID <span class="keyword">desc</span>) <span class="keyword">as</span> a <span class="keyword">order</span> <span class="keyword">by</span> <span class="built_in">date</span> <span class="keyword">desc</span></span></span><br></pre></td></tr></table></figure>]]></content>
     <summary type="html">
-    <![CDATA[<p>默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><]]>
+    <![CDATA[<p>默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><]]>
     </summary>
     
       <category term="SQL语法" scheme="http://jellybins.github.io/tags/SQL%E8%AF%AD%E6%B3%95/"/>

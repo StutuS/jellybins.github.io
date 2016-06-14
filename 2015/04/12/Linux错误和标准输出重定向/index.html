@@ -37,22 +37,22 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="问题由来：/dev/null 2&amp;gt;&amp;amp;1 这句话的含义及使用的意义？
+<meta name="description" content="例：/dev/null 2&amp;gt;&amp;amp;1 这句话的含义及使用的意义？
 一般在linux的shell包括windows的dos下都可能会这样使用。null是一个名叫null小桶的东西，将输出重定向到它的好处是不会因为输出的内容过多而导致文件大小不断的增加。其实，可以把null认为是什么都没有，也就是将命令的输出抛弃掉。
-1表示标准输出，2表示标准错误输出，2&amp;gt;&amp;amp;1表示将标准">
+1表示标准输出，2表示标准错误输出，2&amp;gt;&amp;amp;1表示将标准错误输">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux错误和标准输出重定向">
 <meta property="og:url" content="http://jellybins.github.io/2015/04/12/Linux错误和标准输出重定向/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
-<meta property="og:description" content="问题由来：/dev/null 2&amp;gt;&amp;amp;1 这句话的含义及使用的意义？
+<meta property="og:description" content="例：/dev/null 2&amp;gt;&amp;amp;1 这句话的含义及使用的意义？
 一般在linux的shell包括windows的dos下都可能会这样使用。null是一个名叫null小桶的东西，将输出重定向到它的好处是不会因为输出的内容过多而导致文件大小不断的增加。其实，可以把null认为是什么都没有，也就是将命令的输出抛弃掉。
-1表示标准输出，2表示标准错误输出，2&amp;gt;&amp;amp;1表示将标准">
-<meta property="og:updated_time" content="2016-06-14T07:20:31.022Z">
+1表示标准输出，2表示标准错误输出，2&amp;gt;&amp;amp;1表示将标准错误输">
+<meta property="og:updated_time" content="2016-06-14T07:32:04.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux错误和标准输出重定向">
-<meta name="twitter:description" content="问题由来：/dev/null 2&amp;gt;&amp;amp;1 这句话的含义及使用的意义？
+<meta name="twitter:description" content="例：/dev/null 2&amp;gt;&amp;amp;1 这句话的含义及使用的意义？
 一般在linux的shell包括windows的dos下都可能会这样使用。null是一个名叫null小桶的东西，将输出重定向到它的好处是不会因为输出的内容过多而导致文件大小不断的增加。其实，可以把null认为是什么都没有，也就是将命令的输出抛弃掉。
-1表示标准输出，2表示标准错误输出，2&amp;gt;&amp;amp;1表示将标准">
+1表示标准输出，2表示标准错误输出，2&amp;gt;&amp;amp;1表示将标准错误输">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -250,11 +250,11 @@
       
 
       
-        <span itemprop="articleBody"><p>问题由来：/dev/null 2&gt;&amp;1 这句话的含义及使用的意义？</p>
+        <span itemprop="articleBody"><p>例：/dev/null 2&gt;&amp;1 这句话的含义及使用的意义？</p>
 <p>一般在linux的shell包括windows的dos下都可能会这样使用。null是一个名叫null小桶的东西，将输出重定向到它的好处是不会因为输出的内容过多而导致文件大小不断的增加。其实，可以把null认为是什么都没有，也就是将命令的输出抛弃掉。</p>
 <p>1表示标准输出，2表示标准错误输出，2&gt;&amp;1表示将标准错误输出重定向到标准输出，这样，程序或者命令的正常输出和错误输出就可以在标准输出中输出。</p>
 <a id="more"></a>
-<p>一般来讲标准输出和标准错误输出都是屏幕，那为什么还要这么用呢？原因是标准输出的重定向。你的例子是重定向到了null，如果重定向到文件则为<code>dir &gt; out.txt</code>，表示标准输出重定向到out.txt文件。此时如果dir命令出错，那么错误信息不会输出到out.txt文件，错误信息仍然会输出到屏幕—标准错误输出。为了使正确的信息和错误的信息都重定向到out.txt文件，那么需要将错误信息的标准错误输出重定向到标准输出。即命令如下：<code>dir &gt; out.txt 2&gt;&amp;1</code>，重定向到null是一个道理:<code>dir &gt; null 2&gt;&amp;1</code>。</p>
+<p>一般来讲，标准输出和标准错误输出都是屏幕，那为什么还要这么用呢？原因是标准输出的重定向。例子是重定向到了null，如果重定向到文件则为<code>dir &gt; out.txt</code>，表示标准输出重定向到out.txt文件。此时如果dir命令出错，那么错误信息不会输出到out.txt文件，错误信息仍然会输出到屏幕—标准错误输出。为了使正确的信息和错误的信息都重定向到out.txt文件，那么需要将错误信息的标准错误输出重定向到标准输出。即命令如下：<code>dir &gt; out.txt 2&gt;&amp;1</code>，重定向到null是一个道理:<code>dir &gt; null 2&gt;&amp;1</code>。</p>
 </span>
       
     </div>

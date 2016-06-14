@@ -37,16 +37,28 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY12345678select * from (select * from tab where ID&amp;gt;20 order by userID desc) as a order by date desc``` 那么可能会遇到下面的错误提示：&amp;gt;除非另外还指定了 TOP 或 FOR XML，否则，ORDER BY 子句在视图、内联函">
+<meta name="description" content="默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY，如：
+1select * from (select * from tab where ID&amp;gt;20 order by userID desc) as a order by date desc
+可能会遇到下面的错误提示：
+
+除非另外还指定了 TOP 或 FOR XML，否则，ORDER BY 子句在视图、内联函数、派生表、子查询和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL视图、子查询中使用ORDER BY报错">
 <meta property="og:url" content="http://jellybins.github.io/2014/07/15/SQL视图、子查询中使用ORDER-BY报错/index.html">
 <meta property="og:site_name" content="JellyBin's博客">
-<meta property="og:description" content="默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY12345678select * from (select * from tab where ID&amp;gt;20 order by userID desc) as a order by date desc``` 那么可能会遇到下面的错误提示：&amp;gt;除非另外还指定了 TOP 或 FOR XML，否则，ORDER BY 子句在视图、内联函">
-<meta property="og:updated_time" content="2016-06-14T07:08:29.688Z">
+<meta property="og:description" content="默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY，如：
+1select * from (select * from tab where ID&amp;gt;20 order by userID desc) as a order by date desc
+可能会遇到下面的错误提示：
+
+除非另外还指定了 TOP 或 FOR XML，否则，ORDER BY 子句在视图、内联函数、派生表、子查询和">
+<meta property="og:updated_time" content="2016-06-14T07:36:29.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL视图、子查询中使用ORDER BY报错">
-<meta name="twitter:description" content="默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY12345678select * from (select * from tab where ID&amp;gt;20 order by userID desc) as a order by date desc``` 那么可能会遇到下面的错误提示：&amp;gt;除非另外还指定了 TOP 或 FOR XML，否则，ORDER BY 子句在视图、内联函">
+<meta name="twitter:description" content="默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY，如：
+1select * from (select * from tab where ID&amp;gt;20 order by userID desc) as a order by date desc
+可能会遇到下面的错误提示：
+
+除非另外还指定了 TOP 或 FOR XML，否则，ORDER BY 子句在视图、内联函数、派生表、子查询和">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -244,9 +256,16 @@
       
 
       
-        <span itemprop="articleBody"><p>默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> (<span class="keyword">select</span> * <span class="keyword">from</span> tab <span class="keyword">where</span> ID&gt;<span class="number">20</span> <span class="keyword">order</span> <span class="keyword">by</span> userID <span class="keyword">desc</span>) <span class="keyword">as</span> a <span class="keyword">order</span> <span class="keyword">by</span> date <span class="keyword">desc</span></span><br><span class="line">``` </span><br><span class="line">那么可能会遇到下面的错误提示：</span><br><span class="line">&gt;除非另外还指定了 TOP 或 <span class="keyword">FOR</span> XML，否则，<span class="keyword">ORDER</span> <span class="keyword">BY</span> 子句在视图、内联函数、派生表、子查询和公用表表达式中无效。</span><br><span class="line"></span><br><span class="line">- 上述错误产生的原因：针对一个表的<span class="keyword">SELECT</span>其实并不是返回一个表，而是一个游标。</span><br><span class="line"> </span><br><span class="line">- 如果一定要用怎么办呢,答案就是配合TOP <span class="number">100</span> PERCENT：</span><br></pre></td></tr></table></figure></p>
-<p>select <em> from (select top 100 percent </em> from tab where ID&gt;20 order by userID desc) as a order by date desc<br>```</p>
-</span>
+        <span itemprop="articleBody"><p>默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> (<span class="keyword">select</span> * <span class="keyword">from</span> tab <span class="keyword">where</span> ID&gt;<span class="number">20</span> <span class="keyword">order</span> <span class="keyword">by</span> userID <span class="keyword">desc</span>) <span class="keyword">as</span> a <span class="keyword">order</span> <span class="keyword">by</span> <span class="built_in">date</span> <span class="keyword">desc</span></span></span><br></pre></td></tr></table></figure>
+<p>可能会遇到下面的错误提示：</p>
+<blockquote>
+<p>除非另外还指定了 TOP 或 FOR XML，否则，ORDER BY 子句在视图、内联函数、派生表、子查询和公用表表达式中无效。</p>
+</blockquote>
+<ul>
+<li>上述错误产生的原因：针对一个表的SELECT其实并不是返回一个表，而是一个游标。如果一定要则要配合<code>TOP 100 PERCENT</code>：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">100</span> percent * <span class="keyword">from</span> tab <span class="keyword">where</span> ID&gt;<span class="number">20</span> <span class="keyword">order</span> <span class="keyword">by</span> userID <span class="keyword">desc</span>) <span class="keyword">as</span> a <span class="keyword">order</span> <span class="keyword">by</span> <span class="built_in">date</span> <span class="keyword">desc</span></span></span><br></pre></td></tr></table></figure></span>
       
     </div>
 
