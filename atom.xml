@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://jellybins.github.io//"/>
-  <updated>2016-05-31T08:58:28.194Z</updated>
+  <updated>2016-06-14T07:25:17.157Z</updated>
   <id>http://jellybins.github.io//</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[路由器OpenWrt定制相关]]></title>
+    <link href="http://jellybins.github.io/2016/06/14/%E8%B7%AF%E7%94%B1%E5%99%A8OpenWrt%E5%AE%9A%E5%88%B6%E7%9B%B8%E5%85%B3/"/>
+    <id>http://jellybins.github.io/2016/06/14/路由器OpenWrt定制相关/</id>
+    <published>2016-06-14T07:21:54.000Z</published>
+    <updated>2016-06-14T07:25:17.157Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li>国内较快速的软件源：</li>
+</ul>
+<blockquote>
+<p>src/gz chaos_calmer_base <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/base" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/base</a><br>src/gz chaos_calmer_luci <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/luci" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/luci</a><br>src/gz chaos_calmer_packages <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/packages" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/packages</a><br>src/gz chaos_calmer_routing <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/routing" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/routing</a><br>src/gz chaos_calmer_telephony <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/telephony" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/telephony</a><br>src/gz chaos_calmer_management <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/management" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/management</a></p>
+</blockquote>
+<ul>
+<li>openwrt降级安装ipk</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg <span class="operator"><span class="keyword">install</span> ipkname.ipk <span class="comment">--force-downgrade</span></span></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<ul>
+<li>国内较快速的软件源：</li>
+</ul>
+<blockquote>
+<p>src/gz chaos_calmer_base <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar7]]>
+    </summary>
+    
+      <category term="系统定制" scheme="http://jellybins.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%AE%9A%E5%88%B6/"/>
+    
+      <category term="路由器" scheme="http://jellybins.github.io/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+      <category term="OpenWrt" scheme="http://jellybins.github.io/categories/OpenWrt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[spring security命名空间配置]]></title>
+    <link href="http://jellybins.github.io/2016/06/14/spring-security%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E9%85%8D%E7%BD%AE/"/>
+    <id>http://jellybins.github.io/2016/06/14/spring-security命名空间配置/</id>
+    <published>2016-06-14T06:43:52.000Z</published>
+    <updated>2016-06-14T06:47:55.747Z</updated>
+    <content type="html"><![CDATA[<hr>
+<p>applicationContext-security.xml命名空间配置，官方提供了两种配置方案</p>
+<ul>
+<li>第一种、命名空间用beans开头，但是在配置中一直需要用<security:*>来配置。</security:*></li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;beans <span class="variable">xmlns=</span><span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">  xmlns:<span class="variable">security=</span><span class="string">"http://www.springframework.org/schema/security"</span></span><br><span class="line">  xmlns:<span class="variable">xsi=</span><span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">  xsi:<span class="variable">schemaLocation=</span><span class="string">"http://www.springframework.org/schema/beans</span><br><span class="line">          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd</span><br><span class="line">          http://www.springframework.org/schema/security</span><br><span class="line">          http://www.springframework.org/schema/security/spring-security.xsd"</span>&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>第二种、命名空间用security开头，在配置中不需要security前缀，但是bean的配置需要用<beans:bean>配置。</beans:bean></li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;beans:beans <span class="variable">xmlns=</span><span class="string">"http://www.springframework.org/schema/security"</span></span><br><span class="line">  xmlns:<span class="variable">beans=</span><span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">  xmlns:<span class="variable">xsi=</span><span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">  xsi:<span class="variable">schemaLocation=</span><span class="string">"http://www.springframework.org/schema/beans</span><br><span class="line">           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd</span><br><span class="line">           http://www.springframework.org/schema/security</span><br><span class="line">           http://www.springframework.org/schema/security/spring-security.xsd"</span>&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/beans:beans&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>第一行的xmlns=”<a href="http://www.springframework.org/schema/security&quot;决定此配置文件默认schema为security,故涉及security命名空间元素都可省略前缀security。同理，当xmlns=&quot;http://www.springframework.org/schema/beans&quot;时，则配置文件默认schema为beans，故可省略beans前缀，直接使用" target="_blank" rel="external">http://www.springframework.org/schema/security&quot;决定此配置文件默认schema为security,故涉及security命名空间元素都可省略前缀security。同理，当xmlns=&quot;http://www.springframework.org/schema/beans&quot;时，则配置文件默认schema为beans，故可省略beans前缀，直接使用</a><bean>定义beans命名空间元素。</bean></p>
+</blockquote>
+<p>PS:schemaLocation里的URI可在对应的类库包的META-INF的*.schemas文件中查看。</p>
+<p><a href="http://docs.spring.io/spring-security/site/docs/3.2.0.RELEASE/reference/htmlsingle/#ns-config" target="_blank" rel="external">官方链接</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<hr>
+<p>applicationContext-security.xml命名空间配置，官方提供了两种配置方案</p>
+<ul>
+<li>第一种、命名空间用beans开头，但是在配置中一直需要用<security:*>来配置。</li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;beans <span class="variable">xmlns=</span><span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">  xmlns:<span class="variable">security=</span><span class="string">"http://www.springframework.org/schema/security"</span></span><br><span class="line">  xmlns:<span class="variable">xsi=</span><span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">  xsi:<span class="variable">schemaLocation=</span><span class="string">"http://www.springframework.org/schema/beans</span><br><span class="line">          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd</span><br><span class="line">          http://www.springframework.org/schema/security</span><br><span class="line">          http://www.springframework.org/schema/security/spring-security.xsd"</span>&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>]]>
+    
+    </summary>
+    
+      <category term="Spring Security 3" scheme="http://jellybins.github.io/tags/Spring-Security-3/"/>
+    
+      <category term="命名空间" scheme="http://jellybins.github.io/tags/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/"/>
+    
+      <category term="权限框架" scheme="http://jellybins.github.io/tags/%E6%9D%83%E9%99%90%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="Spring" scheme="http://jellybins.github.io/categories/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[html中button元素type属性默认值问题]]></title>
@@ -45,7 +120,7 @@
     <link href="http://jellybins.github.io/2016/04/23/Spring-Security3%E4%BD%BF%E7%94%A8SecurityContextHolder%E5%8F%96%E4%B8%8D%E5%88%B0%E7%94%A8%E6%88%B7/"/>
     <id>http://jellybins.github.io/2016/04/23/Spring-Security3使用SecurityContextHolder取不到用户/</id>
     <published>2016-04-23T10:35:15.000Z</published>
-    <updated>2016-05-31T08:57:35.882Z</updated>
+    <updated>2016-06-14T06:47:39.131Z</updated>
     <content type="html"><![CDATA[<h2 id="在Java中取用户信息的代码：">在Java中取用户信息的代码：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Object principal = SecurityContextHolder.getContext()</span><br><span class="line">		.getAuthentication().getPrincipal();</span><br><span class="line"><span class="keyword">if</span> (principal <span class="keyword">instanceof</span> UserDetails) &#123;</span><br><span class="line">	username = ((UserDetails) principal).getUsername();</span><br><span class="line">	Iterator it = ((UserDetails) principal).getAuthorities().iterator();</span><br><span class="line">	String authority = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">		authority = ((GrantedAuthority) it.next()).getAuthority();</span><br><span class="line">		System.out.println(<span class="string">"Authority:"</span> + authority);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="spring_security_3的配置示例：applicationContext-security-xml">spring security 3的配置示例：applicationContext-security.xml</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/dwr/**"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/css/**"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/images/**"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/scripts/**"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/index.html*"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="title">intercept-url</span> <span class="attribute">pattern</span>=<span class="value">"/mydefault/**"</span> <span class="attribute">filters</span>=<span class="value">"none"</span>/&gt;</span>  </span><br><span class="line"><span class="comment">&lt;!-- </span><br><span class="line">&lt;intercept-url pattern="/admin/**" filters="none"/&gt; </span><br><span class="line">--&gt;</span></span><br></pre></td></tr></table></figure>
@@ -68,9 +143,9 @@
     
       <category term="Spring Security 3" scheme="http://jellybins.github.io/tags/Spring-Security-3/"/>
     
-      <category term="安全框架" scheme="http://jellybins.github.io/tags/%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6/"/>
+      <category term="权限框架" scheme="http://jellybins.github.io/tags/%E6%9D%83%E9%99%90%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="Java" scheme="http://jellybins.github.io/categories/Java/"/>
+      <category term="Spring" scheme="http://jellybins.github.io/categories/Spring/"/>
     
   </entry>
   
@@ -539,6 +614,33 @@
   </entry>
   
   <entry>
+    <title><![CDATA[Linux错误和标准输出重定向]]></title>
+    <link href="http://jellybins.github.io/2015/04/12/Linux%E9%94%99%E8%AF%AF%E5%92%8C%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/"/>
+    <id>http://jellybins.github.io/2015/04/12/Linux错误和标准输出重定向/</id>
+    <published>2015-04-12T07:18:20.000Z</published>
+    <updated>2016-06-14T07:20:31.022Z</updated>
+    <content type="html"><![CDATA[<p>问题由来：/dev/null 2&gt;&amp;1 这句话的含义及使用的意义？</p>
+<p>一般在linux的shell包括windows的dos下都可能会这样使用。null是一个名叫null小桶的东西，将输出重定向到它的好处是不会因为输出的内容过多而导致文件大小不断的增加。其实，可以把null认为是什么都没有，也就是将命令的输出抛弃掉。</p>
+<p>1表示标准输出，2表示标准错误输出，2&gt;&amp;1表示将标准错误输出重定向到标准输出，这样，程序或者命令的正常输出和错误输出就可以在标准输出中输出。</p>
+<a id="more"></a>
+<p>一般来讲标准输出和标准错误输出都是屏幕，那为什么还要这么用呢？原因是标准输出的重定向。你的例子是重定向到了null，如果重定向到文件则为<code>dir &gt; out.txt</code>，表示标准输出重定向到out.txt文件。此时如果dir命令出错，那么错误信息不会输出到out.txt文件，错误信息仍然会输出到屏幕—标准错误输出。为了使正确的信息和错误的信息都重定向到out.txt文件，那么需要将错误信息的标准错误输出重定向到标准输出。即命令如下：<code>dir &gt; out.txt 2&gt;&amp;1</code>，重定向到null是一个道理:<code>dir &gt; null 2&gt;&amp;1</code>。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>问题由来：/dev/null 2&gt;&amp;1 这句话的含义及使用的意义？</p>
+<p>一般在linux的shell包括windows的dos下都可能会这样使用。null是一个名叫null小桶的东西，将输出重定向到它的好处是不会因为输出的内容过多而导致文件大小不断的增加。其实，可以把null认为是什么都没有，也就是将命令的输出抛弃掉。</p>
+<p>1表示标准输出，2表示标准错误输出，2&gt;&amp;1表示将标准错误输出重定向到标准输出，这样，程序或者命令的正常输出和错误输出就可以在标准输出中输出。</p>]]>
+    
+    </summary>
+    
+      <category term="脚本语法" scheme="http://jellybins.github.io/tags/%E8%84%9A%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="重定向" scheme="http://jellybins.github.io/tags/%E9%87%8D%E5%AE%9A%E5%90%91/"/>
+    
+      <category term="Linux" scheme="http://jellybins.github.io/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[王自如罗永浩舌战观后感]]></title>
     <link href="http://jellybins.github.io/2014/08/28/%E7%8E%8B%E8%87%AA%E5%A6%82%E7%BD%97%E6%B0%B8%E6%B5%A9%E8%88%8C%E6%88%98%E8%A7%82%E5%90%8E%E6%84%9F/"/>
     <id>http://jellybins.github.io/2014/08/28/王自如罗永浩舌战观后感/</id>
@@ -580,6 +682,52 @@
       <category term="SQLServer" scheme="http://jellybins.github.io/tags/SQLServer/"/>
     
       <category term="创建用户错误" scheme="http://jellybins.github.io/tags/%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E9%94%99%E8%AF%AF/"/>
+    
+      <category term="数据库" scheme="http://jellybins.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[SQL视图、子查询中使用ORDER BY报错]]></title>
+    <link href="http://jellybins.github.io/2014/07/15/SQL%E8%A7%86%E5%9B%BE%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%B8%AD%E4%BD%BF%E7%94%A8ORDER-BY%E6%8A%A5%E9%94%99/"/>
+    <id>http://jellybins.github.io/2014/07/15/SQL视图、子查询中使用ORDER-BY报错/</id>
+    <published>2014-07-15T06:57:59.000Z</published>
+    <updated>2016-06-14T07:08:29.688Z</updated>
+    <content type="html"><![CDATA[<p>默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> (<span class="keyword">select</span> * <span class="keyword">from</span> tab <span class="keyword">where</span> ID&gt;<span class="number">20</span> <span class="keyword">order</span> <span class="keyword">by</span> userID <span class="keyword">desc</span>) <span class="keyword">as</span> a <span class="keyword">order</span> <span class="keyword">by</span> date <span class="keyword">desc</span></span><br><span class="line">``` </span><br><span class="line">那么可能会遇到下面的错误提示：</span><br><span class="line">&gt;除非另外还指定了 TOP 或 <span class="keyword">FOR</span> XML，否则，<span class="keyword">ORDER</span> <span class="keyword">BY</span> 子句在视图、内联函数、派生表、子查询和公用表表达式中无效。</span><br><span class="line"></span><br><span class="line">- 上述错误产生的原因：针对一个表的<span class="keyword">SELECT</span>其实并不是返回一个表，而是一个游标。</span><br><span class="line"> </span><br><span class="line">- 如果一定要用怎么办呢,答案就是配合TOP <span class="number">100</span> PERCENT：</span><br></pre></td></tr></table></figure></p>
+<p>select <em> from (select top 100 percent </em> from tab where ID&gt;20 order by userID desc) as a order by date desc<br>```</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>默认情况下，如果在子查询，函数，视图中尝试去使用ORDER BY<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><]]>
+    </summary>
+    
+      <category term="SQL语法" scheme="http://jellybins.github.io/tags/SQL%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="数据库" scheme="http://jellybins.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[SQL中and与or优先级比较]]></title>
+    <link href="http://jellybins.github.io/2014/06/14/SQL%E4%B8%ADand%E4%B8%8Eor%E4%BC%98%E5%85%88%E7%BA%A7%E6%AF%94%E8%BE%83/"/>
+    <id>http://jellybins.github.io/2014/06/14/SQL中and与or优先级比较/</id>
+    <published>2014-06-14T06:49:34.000Z</published>
+    <updated>2016-06-14T07:07:58.872Z</updated>
+    <content type="html"><![CDATA[<p>sql 语句中 and 和or的优先级比较</p>
+<p>例:<br>select <em> from test where condition1 or condition2 and condition3;<br>其执行效果与下面的sql等价：<br>select </em> from test where condition1 or (condition2 and condition3);</p>
+<blockquote>
+<p>故可以得出结论：and级别高于or</p>
+</blockquote>
+<p>多个and 和 or 混用也是这个道理，相当于把 and 看成乘号(*), 把or看成加号(+)，这样sql的执行顺序就一目了然了。</p>
+<p>最后还是建议大家严格按照业务逻辑写sql，必要的时候毫不吝啬使用括号，就像上面的情况，如果逻辑是：condition1 且 condition2 或者 condition3，那么请写成：<code>select * from test where (condition1 and condition2) or condition3</code>这样既不会出错，也方便以后查看代码。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>sql 语句中 and 和or的优先级比较</p>
+<p>例:<br>select <em> from test where condition1 or condition2 and condition3;<br>其执行效果与下面的sql等价：<br>select </em]]>
+    </summary>
+    
+      <category term="SQL语法" scheme="http://jellybins.github.io/tags/SQL%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="运算符优先级" scheme="http://jellybins.github.io/tags/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7/"/>
     
       <category term="数据库" scheme="http://jellybins.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
@@ -834,289 +982,6 @@
       <category term="引用传递" scheme="http://jellybins.github.io/tags/%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/"/>
     
       <category term="Java" scheme="http://jellybins.github.io/categories/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[原码，反码，补码详解（转）]]></title>
-    <link href="http://jellybins.github.io/2013/09/21/%E5%8E%9F%E7%A0%81%EF%BC%8C%E5%8F%8D%E7%A0%81%EF%BC%8C%E8%A1%A5%E7%A0%81%E8%AF%A6%E8%A7%A3%EF%BC%88%E8%BD%AC%EF%BC%89/"/>
-    <id>http://jellybins.github.io/2013/09/21/原码，反码，补码详解（转）/</id>
-    <published>2013-09-21T08:34:59.000Z</published>
-    <updated>2015-09-14T00:14:43.831Z</updated>
-    <content type="html"><![CDATA[<p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当字长选择字节后转换为十进制，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。<br><a id="more"></a></p>
-<h2 id="一-_机器数和真值">一. 机器数和真值</h2><p>在学习原码, 反码和补码之前， 需要先了解机器数和真值的概念。</p>
-<ol>
-<li><p>机器数</p>
-<p>一个数在计算机中的二进制表示形式， 叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号，正数为0，负数为1。</p>
-<p>比如，十进制中的数 +3 ，计算机字长为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011。</p>
-<p>那么，这里的 00000011 和 10000011 就是机器数。</p>
-</li>
-<li><p>真值</p>
-<blockquote>
-<p>因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 10000011，其最高位1代表负，其真正数值是 -3 而不是形式值131（10000011转换成十进制等于131）。所以，为区别起见，将带符号位的机器数对应的真正数值称为机器数的真值。</p>
-</blockquote>
-<p>例：0000 0001的真值 = +000 0001 = +1，1000 0001的真值 = –000 0001 = –1</p>
-</li>
-</ol>
-<h2 id="二-_原码，反码，补码的基础概念和计算方法">二. 原码，反码，补码的基础概念和计算方法</h2><p>在探求为何机器要使用补码之前, 让我们先了解原码, 反码和补码的概念.对于一个数, 计算机要使用一定的编码方式进行存储. 原码, 反码, 补码是机器存储一个具体数字的编码方式.</p>
-<ol>
-<li><p>原码</p>
-<p> 原码就是符号位加上真值的绝对值，即用第一位表示符号，其余位表示值。比如如果是8位二进制:</p>
-<blockquote>
-<p>[+1]<sub>原</sub> = 0000 0001</p>
-<p>[-1]<sub>原</sub>  = 1000 0001</p>
-</blockquote>
-<p> 第一位是符号位。因为第一位是符号位，所以8位二进制数的取值范围就是：</p>
-<p> [1111 1111 , 0111 1111] 即 [-127 , 127]</p>
-<p> 原码是人脑最容易理解和计算的表示方式。</p>
-</li>
-<li><p>反码</p>
-<p> 反码的表示方法是:</p>
-<ul>
-<li><p>正数的反码是其本身</p>
-</li>
-<li><p>负数的反码是在其原码的基础上，符号位不变，其余各个位取反。</p>
-<blockquote>
-<p>[+1] = [00000001]<sub>原</sub> = [00000001]<sub>反</sub></p>
-<p>[-1] = [10000001]<sub>原</sub> = [11111110]<sub>反</sub></p>
-</blockquote>
-<p>可见如果一个反码表示的是负数，人脑无法直观的看出来它的数值。 通常要将其转换成原码再计算。</p>
-</li>
-</ul>
-</li>
-<li><p>补码</p>
-<p> 补码的表示方法是:</p>
-<ul>
-<li><p>正数的补码就是其本身</p>
-</li>
-<li><p>负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</p>
-<blockquote>
-<p>[+1] = [00000001]<sub>原</sub> = [00000001]<sub>反</sub> = [00000001]<sub>补</sub></p>
-<p>[-1] = [10000001]<sub>原</sub> = [11111110]<sub>反</sub> = [11111111]<sub>补</sub></p>
-</blockquote>
-<p>对于负数, 补码表示方式也是人脑无法直观看出其数值的. 通常也需要转换成原码在计算其数值.</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="三-_为何要使用原码，反码和补码">三. 为何要使用原码，反码和补码</h2><p>在开始深入学习前, 我的学习建议是先”死记硬背”上面的原码, 反码和补码的表示方式以及计算方法.</p>
-<p>现在我们知道了计算机可以有三种编码方式表示一个数. 对于正数因为三种编码方式的结果都相同:</p>
-<blockquote>
-<p>[+1] = [00000001]<sub>原</sub> = [00000001]<sub>反</sub> = [00000001]<sub>补</sub></p>
-</blockquote>
-<p>所以不需要过多解释. 但是对于负数:</p>
-<blockquote>
-<p>[-1] = [10000001]<sub>原</sub> = [11111110]<sub>反</sub> = [11111111]<sub>补</sub></p>
-</blockquote>
-<p>可见原码, 反码和补码是完全不同的. 既然原码才是被人脑直接识别并用于计算表示方式, 为何还会有反码和补码呢?</p>
-<p>首先, 因为人脑可以知道第一位是符号位, 在计算的时候我们会根据符号位, 选择对真值区域的加减. (真值的概念在本文最开头). 但是对于计算机, 加减乘数已经是最基础的运算, 要设计的尽量简单. 计算机辨别”符号位”显然会让计算机的基础电路设计变得十分复杂! 于是人们想出了将符号位也参与运算的方法. 我们知道, 根据运算法则减去一个正数等于加上一个负数, 即: 1-1 = 1 + (-1) = 0 , 所以机器可以只有加法而没有减法, 这样计算机运算的设计就更简单了.</p>
-<p>于是人们开始探索 将符号位参与运算, 并且只保留加法的方法. 首先来看原码:</p>
-<p>计算十进制的表达式: 1-1=0</p>
-<blockquote>
-<p>1 - 1 = 1 + (-1) = [00000001]<sub>原</sub> + [10000001]<sub>原</sub> = [10000010]<sub>原</sub> = -2</p>
-</blockquote>
-<p>如果用原码表示, 让符号位也参与计算, 显然对于减法来说, 结果是不正确的.这也就是为何计算机内部不使用原码表示一个数.</p>
-<p>为了解决原码做减法的问题, 出现了反码:</p>
-<p>计算十进制的表达式: 1-1=0</p>
-<blockquote>
-<p>1 - 1 = 1 + (-1) = [0000 0001]<sub>原</sub> + [1000 0001]<sub>原</sub>= [0000 0001]<sub>反</sub> + [1111 1110]<sub>反</sub> = [1111 1111]<sub>反</sub> = [1000 0000]<sub>原</sub> = -0</p>
-</blockquote>
-<p>发现用反码计算减法, 结果的真值部分是正确的. 而唯一的问题其实就出现在”0”这个特殊的数值上. 虽然人们理解上+0和-0是一样的, 但是0带符号是没有任何意义的. 而且会有[0000 0000]<sub>原</sub>和[1000 0000]<sub>原</sub>两个编码表示0.</p>
-<p>于是补码的出现, 解决了0的符号以及两个编码的问题:</p>
-<blockquote>
-<p>1-1 = 1 + (-1) = [0000 0001]<sub>原</sub> + [1000 0001]<sub>原</sub> = [0000 0001]<sub>补</sub> + [1111 1111]<sub>补</sub> = [0000 0000]<sub>补</sub>=[0000 0000]<sub>原</sub></p>
-</blockquote>
-<p>这样0用[0000 0000]表示, 而以前出现问题的-0则不存在了.而且可以用[1000 0000]表示-128:</p>
-<blockquote>
-<p>(-1) + (-127) = [1000 0001]<sub>原</sub> + [1111 1111]<sub>原</sub> = [1111 1111]<sub>补</sub> + [1000 0001]<sub>补</sub> = [1000 0000]<sub>补</sub></p>
-</blockquote>
-<p>-1-127的结果应该是-128, 在用补码运算的结果中, [1000 0000]<sub>补</sub> 就是-128. 但是注意因为实际上是使用以前的-0的补码来表示-128, 所以-128并没有原码和反码表示.(对-128的补码表示[1000 0000]<sub>补</sub>算出来的原码是[0000 0000]<sub>原</sub>, 这是不正确的)</p>
-<p>使用补码, 不仅仅修复了0的符号以及存在两个编码的问题, 而且还能够多表示一个最低数. 这就是为什么8位二进制, 使用原码或反码表示的范围为[-127, +127], 而使用补码表示的范围为[-128, 127].</p>
-<p>因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-231, 231-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值.</p>
-<p>PS：<a href="http://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html" target="_blank" rel="external">原文</a> 下面还有讲解原反补码的再深入的第四部分这里就不做摘要了。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当字长选择字节后转换为十进制，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。<br>]]>
-    
-    </summary>
-    
-      <category term="二进制" scheme="http://jellybins.github.io/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
-    
-      <category term="原反补码" scheme="http://jellybins.github.io/tags/%E5%8E%9F%E5%8F%8D%E8%A1%A5%E7%A0%81/"/>
-    
-      <category term="计算机基础" scheme="http://jellybins.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[SetTimeout，SetInterval传参]]></title>
-    <link href="http://jellybins.github.io/2013/09/15/SetTimeout%EF%BC%8CSetInterval%E4%BC%A0%E5%8F%82/"/>
-    <id>http://jellybins.github.io/2013/09/15/SetTimeout，SetInterval传参/</id>
-    <published>2013-09-15T07:16:18.000Z</published>
-    <updated>2015-08-21T07:47:54.027Z</updated>
-    <content type="html"><![CDATA[<h2 id="方法一：">方法一：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用字符串形式,函数及变量必须为全局作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(“hello(userName)”,<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="方法二：">方法二：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个函数，用于返回一个无参数函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        hello(_name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值为函数形式，变量名及调用的函数可以是局部作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(_hello(userName),<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="方法三：">方法三：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//*=============================================================</span></span><br><span class="line"><span class="comment">//*   功能： 修改 window.setInterval ，使之可以传递参数和对象参数</span></span><br><span class="line"><span class="comment">//*   方法： setInterval (回调函数,时间,参数1,,参数n)  参数可为对象(如数组等)</span></span><br><span class="line"><span class="comment">//*=============================================================</span></span><br><span class="line"><span class="keyword">var</span> __sto = setInterval;</span><br><span class="line"></span><br><span class="line"><span class="comment">//更改setTimeout,setInterval方法原型</span></span><br><span class="line"><span class="built_in">window</span>.setInterval = <span class="function"><span class="keyword">function</span>(<span class="params">callback,timeout,param</span>)</span>&#123;     </span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>,<span class="number">2</span>);     </span><br><span class="line">    <span class="keyword">var</span> _cb = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;     </span><br><span class="line">        callback.apply(<span class="literal">null</span>,args);     </span><br><span class="line">    &#125;     </span><br><span class="line">    __sto(_cb,timeout);     </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.setInterval(hello,<span class="number">3000</span>,userName);</span><br></pre></td></tr></table></figure>
-<h2 id="关于“this”">关于“this”</h2><blockquote>
-<p>当你向setTimeout()(或者其他函数也行)传递一个函数时,该函数中的this会指向一个错误的值。由于setTimeout()调用的代码运行在与所在函数完全分离的执行环境上，这会导致，这些代码中包含的 this 关键字会指向 window (全局对象)对象，这和所期望的this的值是不一样的。</p>
-</blockquote>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h2 id="方法一：">方法一：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用字符串形式,函数及变量必须为全局作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(“hello(userName)”,<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="方法二：">方法二：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个函数，用于返回一个无参数函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        hello(_name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值为函数形式，变量名及调用的函数可以是局部作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(_hello(userName),<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>]]>
-    
-    </summary>
-    
-      <category term="SetInterval" scheme="http://jellybins.github.io/tags/SetInterval/"/>
-    
-      <category term="SetTimeout" scheme="http://jellybins.github.io/tags/SetTimeout/"/>
-    
-      <category term="JavaScript" scheme="http://jellybins.github.io/categories/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[查看Ubuntu版本号]]></title>
-    <link href="http://jellybins.github.io/2013/08/19/%E6%9F%A5%E7%9C%8BUbuntu%E7%89%88%E6%9C%AC%E5%8F%B7/"/>
-    <id>http://jellybins.github.io/2013/08/19/查看Ubuntu版本号/</id>
-    <published>2013-08-19T07:04:45.000Z</published>
-    <updated>2015-08-20T02:40:00.544Z</updated>
-    <content type="html"><![CDATA[<h2 id="方法一：">方法一：</h2><p>在终端中执行下列指令：</p>
-<blockquote>
-<p><strong>cat /etc/issue</strong></p>
-</blockquote>
-<p>可以查看当前正在运行的 Ubuntu 的版本号。其输出结果类似下面的内容：</p>
-<blockquote>
-<p>Ubuntu 14.04.2 LTS</p>
-</blockquote>
-<h2 id="方法二：">方法二：</h2><p>使用 lsb_release 命令也可以查看 Ubuntu 的版本号，与方法一相比，内容更为详细。执行指令如下：</p>
-<blockquote>
-<p><strong>lsb_release -a</strong></p>
-</blockquote>
-<p>将输出结果：</p>
-<blockquote>
-<p>Distributor ID: Ubuntu<br>Description: Ubuntu 14.04.2 LTS<br>Release: 14.04<br>Codename: trusty</p>
-</blockquote>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h2 id="方法一：">方法一：</h2><p>在终端中执行下列指令：</p>
-<blockquote>
-<p><strong>cat /etc/issue</strong></p>
-</blockquote>
-<p>可以查看当前正在运行的 Ubuntu 的版本号。其输出结果]]>
-    </summary>
-    
-      <category term="Ubuntu" scheme="http://jellybins.github.io/tags/Ubuntu/"/>
-    
-      <category term="版本号查看" scheme="http://jellybins.github.io/tags/%E7%89%88%E6%9C%AC%E5%8F%B7%E6%9F%A5%E7%9C%8B/"/>
-    
-      <category term="Linux" scheme="http://jellybins.github.io/categories/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[apt-get upgrade和dist-upgrade的区别]]></title>
-    <link href="http://jellybins.github.io/2013/08/18/apt-get-upgrade%E5%92%8Cdist-upgrade%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>http://jellybins.github.io/2013/08/18/apt-get-upgrade和dist-upgrade的区别/</id>
-    <published>2013-08-18T07:24:41.000Z</published>
-    <updated>2015-08-20T02:41:08.812Z</updated>
-    <content type="html"><![CDATA[<p>Debian/Ubuntu Linux使用apt升级时都是执行如下命令:</p>
-<blockquote>
-<p><strong>apt-get update<br>apt-get upgrade（或）apt-get dist-upgrade</strong></p>
-</blockquote>
-<p>但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.<br><a id="more"></a> </p>
-<ul>
-<li><p><strong>upgrade</strong>：系统将现有的Package升级，如果有相依性的问题，而此相依性需要安装其它新的Package或影响到其它Package的相依性时，此Package就不会被升级，会保留下来。</p>
-</li>
-<li><p><strong>dist-upgrade</strong>：可以聪明的解决相依性的问题，如果有相依性问题，需要安装/移除新的Package，就会试着去安装/移除它(所以通常这个会被认为是有点风险的升级)。</p>
-</li>
-<li><p><strong>总结</strong>：apt-get upgrade 和 apt-get dist-upgrade 本质上是没有什么不同的。只不过，dist-upgrade会识别出当依赖关系改变的情形并作出处理，而upgrade对此情形不处理。</p>
-</li>
-<li><p><strong>示例</strong>：如软件包 a 原先依赖 b c d，但是在源里面可能已经升级了，现在是 a 依赖 b c e。这种情况下，dist-upgrade 会删除 d 安装 e，并把 a 软件包升级，而 upgrade 会认为<br>依赖关系改变而拒绝升级 a 软件包。</p>
-</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>Debian/Ubuntu Linux使用apt升级时都是执行如下命令:</p>
-<blockquote>
-<p><strong>apt-get update<br>apt-get upgrade（或）apt-get dist-upgrade</strong></p>
-</blockquote>
-<p>但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.<br>]]>
-    
-    </summary>
-    
-      <category term="Ubuntu" scheme="http://jellybins.github.io/tags/Ubuntu/"/>
-    
-      <category term="命令行" scheme="http://jellybins.github.io/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
-    
-      <category term="系统升级" scheme="http://jellybins.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7/"/>
-    
-      <category term="Linux" scheme="http://jellybins.github.io/categories/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Hibernate实体关系判断]]></title>
-    <link href="http://jellybins.github.io/2013/08/17/Hibernate%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E5%88%A4%E6%96%AD/"/>
-    <id>http://jellybins.github.io/2013/08/17/Hibernate实体关系判断/</id>
-    <published>2013-08-17T07:01:41.000Z</published>
-    <updated>2015-08-20T02:37:54.501Z</updated>
-    <content type="html"><![CDATA[<p>在使用hibernate配置实体间关系时，对于我总有个解不开的魔咒——思考两个实体间到底是一对一、一对多还是多对多的时候我总爱从指定的唯一个体出发来思考。比如学生和班级是很明显的一对多关系，但是从具体的个体出发，具体的某个学生只有一个具体的班级跟他相对应，变成了一对一关系然后就配置错误了，每次配置的时候都会跟自己强调千万要注意，但还是不长脑子，然后就在我要放弃治疗的时候突然在草稿上摸索出了这个关系总结的表格（让头脑比较清醒的淫们贱笑了哈，就当这是还算正确的歪理邪说好了），都是从固定个体出发，经我初步验证是正确的。<br><a id="more"></a><br>比如还是上面的例子——（学生和班级）</p>
-<ol>
-<li>固定的学生到班级 （正向） 一对一 （固定学生存在一个班级）</li>
-<li>固定班级到学生 （反向） 多对一 （固定班级有多个学生）</li>
-<li>学生到班级 （关系配置） 一对多</li>
-</ol>
-<p>再举一个例子——（学生和课程）</p>
-<ol>
-<li>固定学生到课程 （正向） 一对多（固定学生可选多门课）</li>
-<li>固定课程到学生（反向） 一对多 （固定课程可供多个学生选）</li>
-<li>学生到课程 （关系配置） 多对多</li>
-</ol>
-<hr>
-<h2 id="关系总结">关系总结</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">正向</th>
-<th style="text-align:center">反向</th>
-<th style="text-align:center">关系配置</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">一对一</td>
-<td style="text-align:center">多对一</td>
-<td style="text-align:center">一对多</td>
-</tr>
-<tr>
-<td style="text-align:center">一对多</td>
-<td style="text-align:center">一对多</td>
-<td style="text-align:center">多对多</td>
-</tr>
-<tr>
-<td style="text-align:center">一对一</td>
-<td style="text-align:center">一对一</td>
-<td style="text-align:center">一对一</td>
-</tr>
-<tr>
-<td style="text-align:center">多对一</td>
-<td style="text-align:center">一对一</td>
-<td style="text-align:center">多对一</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>在使用hibernate配置实体间关系时，对于我总有个解不开的魔咒——思考两个实体间到底是一对一、一对多还是多对多的时候我总爱从指定的唯一个体出发来思考。比如学生和班级是很明显的一对多关系，但是从具体的个体出发，具体的某个学生只有一个具体的班级跟他相对应，变成了一对一关系然后就配置错误了，每次配置的时候都会跟自己强调千万要注意，但还是不长脑子，然后就在我要放弃治疗的时候突然在草稿上摸索出了这个关系总结的表格（让头脑比较清醒的淫们贱笑了哈，就当这是还算正确的歪理邪说好了），都是从固定个体出发，经我初步验证是正确的。<br>]]>
-    
-    </summary>
-    
-      <category term="Hibernate" scheme="http://jellybins.github.io/tags/Hibernate/"/>
-    
-      <category term="ORM配置" scheme="http://jellybins.github.io/tags/ORM%E9%85%8D%E7%BD%AE/"/>
-    
-      <category term="Hibernate" scheme="http://jellybins.github.io/categories/Hibernate/"/>
     
   </entry>
   

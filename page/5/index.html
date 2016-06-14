@@ -195,8 +195,8 @@
           
           
             
-              <a class="post-title-link" href="/2013/08/15/从Ubuntu-LTS版本升级至普通版本/" itemprop="url">
-                从Ubuntu LTS版本升级至普通版本
+              <a class="post-title-link" href="/2013/09/21/原码，反码，补码详解（转）/" itemprop="url">
+                原码，反码，补码详解（转）
               </a>
             
           
@@ -206,8 +206,185 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2013-08-15T15:08:45+08:00" content="2013-08-15">
-            2013-08-15
+          <time itemprop="dateCreated" datetime="2013-09-21T16:34:59+08:00" content="2013-09-21">
+            2013-09-21
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/计算机基础/" itemprop="url" rel="index">
+                  <span itemprop="name">计算机基础</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/09/21/原码，反码，补码详解（转）/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/09/21/原码，反码，补码详解（转）/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>说起要转载的这篇文章还有个故事，开发工作中涉及通讯协议的部分，一直在用Windows系统自带的计算器（程序员模式）计算各种标志位掩码的真实值，偶然的机会同事问我有个二进制值为什么转换出来是负数而不是想要的值，而我转换的过程从来没有发现这个问题，结果不同之处就是在字长的选择上，同样的二进制10000000，当字长选择字节后转换为十进制，结果是-128，而在其它字长（如字，双字，四字）的情况下就是128，然后就惊奇的发现了一个错了好多年的认知 ——“Windows计算器里的二进制表示是原码显示”（补码显示才对），然后就想起了大学时好多课程里提到的原反补码，于是也就找到了这篇简明扼要的介绍原反补码的文章。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/09/21/原码，反码，补码详解（转）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2013/09/15/SetTimeout，SetInterval传参/" itemprop="url">
+                SetTimeout，SetInterval传参
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-09-15T15:16:18+08:00" content="2013-09-15">
+            2013-09-15
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaScript</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/09/15/SetTimeout，SetInterval传参/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/09/15/SetTimeout，SetInterval传参/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="方法一：">方法一：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用字符串形式,函数及变量必须为全局作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(“hello(userName)”,<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="方法二：">方法二：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userName=”jack”;</span><br><span class="line"><span class="comment">//根据用户名显示欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    alert(“hello,”+_name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个函数，用于返回一个无参数函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_hello</span>(<span class="params">_name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        hello(_name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值为函数形式，变量名及调用的函数可以是局部作用域</span></span><br><span class="line"><span class="built_in">window</span>.setTimeout(_hello(userName),<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/09/15/SetTimeout，SetInterval传参/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2013/08/19/查看Ubuntu版本号/" itemprop="url">
+                查看Ubuntu版本号
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-08-19T15:04:45+08:00" content="2013-08-19">
+            2013-08-19
           </time>
         </span>
 
@@ -232,8 +409,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2013/08/15/从Ubuntu-LTS版本升级至普通版本/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/15/从Ubuntu-LTS版本升级至普通版本/" itemprop="commentsCount"></span>
+              <a href="/2013/08/19/查看Ubuntu版本号/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/19/查看Ubuntu版本号/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -248,20 +425,21 @@
 
       
         
-          <span itemprop="articleBody"><h2 id="以Ubuntu_14-04_LTS版本升级至14-10_普通版本为例">以Ubuntu 14.04 LTS版本升级至14.10 普通版本为例</h2><ol>
-<li><p>首先更新一下系统：</p>
+          <span itemprop="articleBody"><h2 id="方法一：">方法一：</h2><p>在终端中执行下列指令：</p>
 <blockquote>
-<p><strong>sudo apt-get update<br>sudo apt-get dist-upgrade</strong></p>
+<p><strong>cat /etc/issue</strong></p>
 </blockquote>
-</li>
-<li><p>接下来，需要安装更新管理器的核心：</p>
+<p>可以查看当前正在运行的 Ubuntu 的版本号。其输出结果类似下面的内容：</p>
 <blockquote>
-<p><strong>sudo apt-get install update-manager-core<br>sudo do-release-upgrade -d</strong></p>
+<p>Ubuntu 14.04.2 LTS</p>
 </blockquote>
-</li>
-</ol>
+<h2 id="方法二：">方法二：</h2><p>使用 lsb_release 命令也可以查看 Ubuntu 的版本号，与方法一相比，内容更为详细。执行指令如下：</p>
 <blockquote>
-<p>命令解释：do-release-upgrade 命令是帮助我们寻找最新的稳定版本，而 -d 参数意思是包括非稳定版本。</p>
+<p><strong>lsb_release -a</strong></p>
+</blockquote>
+<p>将输出结果：</p>
+<blockquote>
+<p>Distributor ID: Ubuntu<br>Description: Ubuntu 14.04.2 LTS<br>Release: 14.04<br>Codename: trusty</p>
 </blockquote>
 </span>
         
@@ -293,8 +471,8 @@
           
           
             
-              <a class="post-title-link" href="/2013/07/28/Hibernate配置inverse与cascade详解/" itemprop="url">
-                Hibernate配置inverse与cascade详解
+              <a class="post-title-link" href="/2013/08/18/apt-get-upgrade和dist-upgrade的区别/" itemprop="url">
+                apt-get upgrade和dist-upgrade的区别
               </a>
             
           
@@ -304,8 +482,100 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2013-07-28T19:57:18+08:00" content="2013-07-28">
-            2013-07-28
+          <time itemprop="dateCreated" datetime="2013-08-18T15:24:41+08:00" content="2013-08-18">
+            2013-08-18
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Linux/" itemprop="url" rel="index">
+                  <span itemprop="name">Linux</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/08/18/apt-get-upgrade和dist-upgrade的区别/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/18/apt-get-upgrade和dist-upgrade的区别/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>Debian/Ubuntu Linux使用apt升级时都是执行如下命令:</p>
+<blockquote>
+<p><strong>apt-get update<br>apt-get upgrade（或）apt-get dist-upgrade</strong></p>
+</blockquote>
+<p>但是常常有人会问，upgrade和dist-upgrade有何不同，仔细查查，似乎大家对upgrade和dist-upgrade的解释都有点不同,在此也记录下自己的看法.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/08/18/apt-get-upgrade和dist-upgrade的区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2013/08/17/Hibernate实体关系判断/" itemprop="url">
+                Hibernate实体关系判断
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-08-17T15:01:41+08:00" content="2013-08-17">
+            2013-08-17
           </time>
         </span>
 
@@ -330,8 +600,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2013/07/28/Hibernate配置inverse与cascade详解/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/28/Hibernate配置inverse与cascade详解/" itemprop="commentsCount"></span>
+              <a href="/2013/08/17/Hibernate实体关系判断/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/17/Hibernate实体关系判断/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -346,302 +616,9 @@
 
       
         
-          <h2 id="inverse配置">inverse配置</h2><p>inverse决定是否把对对象中集合的改动反映到数据库中，所以inverse只对集合起作用，也就是只对one-to-many或many-to-many有效（因为只有这两种关联关系包含集合，而one-to-one和many-to-one只含有关系对方的一个引用）。inverse默认值为false，即多的一方默认不放弃维护关系。</p>
-<h2 id="cascade配置">cascade配置</h2><p>cascade决定是否把对对象的改动反映到数据库中，所以cascade对所有的关联关系都起作用（因为关联关系就是指对象之间的关联关系）即对一方的CRUD操作，是否级联到相关联的一方。<br>在一对多关系中，通常设置为由多方维护关系，一方设置为放弃维护关系。同时对一方的操作，如删除，应级联引用的多方。</p>
-<h2 id="例(学生与班级)">例(学生与班级)</h2>
+          <p>在使用hibernate配置实体间关系时，对于我总有个解不开的魔咒——思考两个实体间到底是一对一、一对多还是多对多的时候我总爱从指定的唯一个体出发来思考。比如学生和班级是很明显的一对多关系，但是从具体的个体出发，具体的某个学生只有一个具体的班级跟他相对应，变成了一对一关系然后就配置错误了，每次配置的时候都会跟自己强调千万要注意，但还是不长脑子，然后就在我要放弃治疗的时候突然在草稿上摸索出了这个关系总结的表格（让头脑比较清醒的淫们贱笑了哈，就当这是还算正确的歪理邪说好了），都是从固定个体出发，经我初步验证是正确的。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2013/07/28/Hibernate配置inverse与cascade详解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/07/23/关于Java线程两种同步方法的理解/" itemprop="url">
-                关于Java线程两种同步方法的理解
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2013-07-23T17:14:26+08:00" content="2013-07-23">
-            2013-07-23
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Java/" itemprop="url" rel="index">
-                  <span itemprop="name">Java</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/07/23/关于Java线程两种同步方法的理解/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/23/关于Java线程两种同步方法的理解/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>在阅读李兴华老师java开发实战经典一书，在java代码块级及方法级同步方法，起初讲解还是很清楚，但在讲解到模拟java多线程死锁时，使用上述代码块级同步方法让我对代码块级同步方法中同步对象的设置产生了较大的疑惑。</p>
-<h2 id="模拟死锁">模拟死锁</h2><p>有张三，李四两人，张三对李四说：“你给我画，我就给你书”，李四对张三说：“你给我你的书，我就给你画”。模拟代码如下：</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/07/23/关于Java线程两种同步方法的理解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/07/21/Html中引入JS文件乱码问题/" itemprop="url">
-                Html中引入JS文件乱码问题
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2013-07-21T17:59:11+08:00" content="2013-07-21">
-            2013-07-21
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                  <span itemprop="name">JavaScript</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/07/21/Html中引入JS文件乱码问题/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/21/Html中引入JS文件乱码问题/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="乱码问题">乱码问题</h2><p>在JS框架学习时，碰到了如下问题，在Html页面中引入的JS文件出现乱码，一开始以为是未指定默认的Html页面编码格式造成，但是通过head标签中<code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</code> charset属性设置Html页面编码格式后，引入JS文件还是乱码，按照原本的理解如果JS是直接写在Html页面中，会按照页面编码的格式对其进行编解码，所以猜测如果是引用的话，也应该是按照这样的方式对JS文件进行编解码，但事实是如果未对引入的JS文件指定正确编码（默认JS文件编码方式与HTML页面编码不同情况下），则JS会按照其真正的文本存储编码方式进行编码，但解码时却是按照指定的HTML页面的编码进行解码，从而出现乱码问题。</p>
-<h2 id="解决方法">解决方法</h2><p>一番尝试后发现上述问题的出现是由于在引入JS文件时忽略了其中的一个charset属性，<code>&lt;script type=&quot;text/javascript&quot; src=&quot;#&quot; charset=&quot;gbk&quot;&gt;</code>，如要引入的JS文件的文本存储编码格式为GBK，Html页面指定的页面编码设置（采用如上文设置方式）为UTF-8，但是引入JS处指定编码charset属性为GBK则不会有乱码问题出现。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/07/21/Html中引入JS文件乱码问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/07/16/使用Hexo在GitHub上搭建静态博客/" itemprop="url">
-                使用Hexo在GitHub上搭建静态博客
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2013-07-16T16:32:23+08:00" content="2013-07-16">
-            2013-07-16
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/杂文/" itemprop="url" rel="index">
-                  <span itemprop="name">杂文</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/07/16/使用Hexo在GitHub上搭建静态博客/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/16/使用Hexo在GitHub上搭建静态博客/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。</p>
-<h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><ol>
-<li><p>Git客户端(博客部署)</p>
-<p><a href="https://windows.github.com/">GitHub for Windows（已更名为GitHub Desktop） 下载</a></p>
-<blockquote>
-<p>GitHub for Windows是先下载安装器，然后运行安装器在线安装，如果在线安装过程中出现下载进度不动或下载不成功的情况，恭喜你被墙了，请自行查找科学上网方法，设置为系统全局代理后再尝试。</p>
-</blockquote>
-</li>
-<li><p>Node.js(Hexo依赖)</p>
-<p><a href="https://nodejs.org/">Node.js 下载</a></p>
-<blockquote>
-<p>Node.js安装完成后会自动添加环境变量，如果在步骤3中使用npm命令提示不存在，则请自行在环境变量Path中添加如下内容（默认Node.js安装目录为C:\Program Files\nodejs）：<br><strong>;C:\Program Files\nodejs\node_modules\npm</strong></p>
-</blockquote>
-</li>
-<li><p>Hexo(博客框架，使用Markdown解析文章)</p>
-<p><a href="https://hexo.io/zh-cn/">Hexo 官网（无需下载）</a></p>
-<blockquote>
-<p>完成上述步骤后，双击桌面上的Git Shell，输入如下npm命令回车执行等待安装完成即可：<br><strong>npm install -g hexo-cli</strong></p>
-</blockquote>
-</li>
-<li><p>创建Hexo工作空间</p>
-<blockquote>
-<p>安装 Hexo 完成后，在磁盘任意位置建立文件夹比如D:/hexo,双击桌面上Git Shell，通过CD命令切换到该目录后执行如下两行命令初始化该工作空间并安装hexo所有插件：<br><strong>hexo init</strong><br><strong>npm install</strong></p>
-</blockquote>
-</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/07/16/使用Hexo在GitHub上搭建静态博客/#more" rel="contents">
+            <a class="btn" href="/2013/08/17/Hibernate实体关系判断/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -667,7 +644,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
   </nav>
 
  </div>
@@ -701,21 +678,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

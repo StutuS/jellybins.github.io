@@ -195,6 +195,191 @@
           
           
             
+              <a class="post-title-link" href="/2016/06/14/路由器OpenWrt定制相关/" itemprop="url">
+                路由器OpenWrt定制相关
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-06-14T15:21:54+08:00" content="2016-06-14">
+            2016-06-14
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/OpenWrt/" itemprop="url" rel="index">
+                  <span itemprop="name">OpenWrt</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/06/14/路由器OpenWrt定制相关/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/14/路由器OpenWrt定制相关/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><ul>
+<li>国内较快速的软件源：</li>
+</ul>
+<blockquote>
+<p>src/gz chaos_calmer_base <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/base" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/base</a><br>src/gz chaos_calmer_luci <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/luci" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/luci</a><br>src/gz chaos_calmer_packages <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/packages" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/packages</a><br>src/gz chaos_calmer_routing <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/routing" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/routing</a><br>src/gz chaos_calmer_telephony <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/telephony" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/telephony</a><br>src/gz chaos_calmer_management <a href="http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/management" target="_blank" rel="external">http://openwrt.mirrors.ustc.edu.cn/chaos_calmer/15.05.1/ar71xx/nand/packages/management</a></p>
+</blockquote>
+<ul>
+<li>openwrt降级安装ipk</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg <span class="operator"><span class="keyword">install</span> ipkname.ipk <span class="comment">--force-downgrade</span></span></span><br></pre></td></tr></table></figure></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/06/14/spring-security命名空间配置/" itemprop="url">
+                spring security命名空间配置
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-06-14T14:43:52+08:00" content="2016-06-14">
+            2016-06-14
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Spring/" itemprop="url" rel="index">
+                  <span itemprop="name">Spring</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/06/14/spring-security命名空间配置/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/14/spring-security命名空间配置/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <hr>
+<p>applicationContext-security.xml命名空间配置，官方提供了两种配置方案</p>
+<ul>
+<li>第一种、命名空间用beans开头，但是在配置中一直需要用<security:*>来配置。</li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;beans <span class="variable">xmlns=</span><span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">  xmlns:<span class="variable">security=</span><span class="string">"http://www.springframework.org/schema/security"</span></span><br><span class="line">  xmlns:<span class="variable">xsi=</span><span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">  xsi:<span class="variable">schemaLocation=</span><span class="string">"http://www.springframework.org/schema/beans</span><br><span class="line">          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd</span><br><span class="line">          http://www.springframework.org/schema/security</span><br><span class="line">          http://www.springframework.org/schema/security/spring-security.xsd"</span>&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/14/spring-security命名空间配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/05/26/html中button元素type属性默认值问题/" itemprop="url">
                 html中button元素type属性默认值问题
               </a>
@@ -304,8 +489,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Java/" itemprop="url" rel="index">
-                  <span itemprop="name">Java</span>
+                <a href="/categories/Spring/" itemprop="url" rel="index">
+                  <span itemprop="name">Spring</span>
                 </a>
               </span>
 
@@ -448,189 +633,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/03/21/OpenWrt使用crontab执行定时任务说明/" itemprop="url">
-                OpenWrt使用crontab执行定时任务说明
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-03-21T11:32:16+08:00" content="2016-03-21">
-            2016-03-21
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/Linux/" itemprop="url" rel="index">
-                  <span itemprop="name">Linux</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/03/21/OpenWrt使用crontab执行定时任务说明/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/21/OpenWrt使用crontab执行定时任务说明/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>列出当前的默认计划任务列表：<code>crontab -l</code><br>删除当前的默认计划任务列表：<code>crontab -r</code><br>修改当前的默认计划任务列表：<code>crontab -e</code></p>
-<p>计划任务列表的格式：</p>
-<p><code>[minute] [hour] [day of month] [month] [day of week] [program to be run]</code></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/21/OpenWrt使用crontab执行定时任务说明/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/02/13/以MIME为application-json方式提交参数示例/" itemprop="url">
-                以MIME为application-json方式提交参数示例
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-02-13T15:36:20+08:00" content="2016-02-13">
-            2016-02-13
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                  <span itemprop="name">JavaScript</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/13/以MIME为application-json方式提交参数示例/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/13/以MIME为application-json方式提交参数示例/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>以 application/json作为请求头格式可以提交json字符串作为request参数。。服务端直接读取request的输入流即可拿到该完整字符串再使用jsonlib库转化为JSON对象，示例代码如下：</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/13/以MIME为application-json方式提交参数示例/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
  </div>
@@ -664,21 +671,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

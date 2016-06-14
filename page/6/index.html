@@ -195,8 +195,8 @@
           
           
             
-              <a class="post-title-link" href="/2013/07/13/hello-world/" itemprop="url">
-                Hello World
+              <a class="post-title-link" href="/2013/08/15/从Ubuntu-LTS版本升级至普通版本/" itemprop="url">
+                从Ubuntu LTS版本升级至普通版本
               </a>
             
           
@@ -206,8 +206,374 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2013-07-13T20:46:25+08:00" content="2013-07-13">
-            2013-07-13
+          <time itemprop="dateCreated" datetime="2013-08-15T15:08:45+08:00" content="2013-08-15">
+            2013-08-15
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Linux/" itemprop="url" rel="index">
+                  <span itemprop="name">Linux</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/08/15/从Ubuntu-LTS版本升级至普通版本/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/15/从Ubuntu-LTS版本升级至普通版本/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h2 id="以Ubuntu_14-04_LTS版本升级至14-10_普通版本为例">以Ubuntu 14.04 LTS版本升级至14.10 普通版本为例</h2><ol>
+<li><p>首先更新一下系统：</p>
+<blockquote>
+<p><strong>sudo apt-get update<br>sudo apt-get dist-upgrade</strong></p>
+</blockquote>
+</li>
+<li><p>接下来，需要安装更新管理器的核心：</p>
+<blockquote>
+<p><strong>sudo apt-get install update-manager-core<br>sudo do-release-upgrade -d</strong></p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>命令解释：do-release-upgrade 命令是帮助我们寻找最新的稳定版本，而 -d 参数意思是包括非稳定版本。</p>
+</blockquote>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2013/07/28/Hibernate配置inverse与cascade详解/" itemprop="url">
+                Hibernate配置inverse与cascade详解
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-07-28T19:57:18+08:00" content="2013-07-28">
+            2013-07-28
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Hibernate/" itemprop="url" rel="index">
+                  <span itemprop="name">Hibernate</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/07/28/Hibernate配置inverse与cascade详解/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/28/Hibernate配置inverse与cascade详解/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="inverse配置">inverse配置</h2><p>inverse决定是否把对对象中集合的改动反映到数据库中，所以inverse只对集合起作用，也就是只对one-to-many或many-to-many有效（因为只有这两种关联关系包含集合，而one-to-one和many-to-one只含有关系对方的一个引用）。inverse默认值为false，即多的一方默认不放弃维护关系。</p>
+<h2 id="cascade配置">cascade配置</h2><p>cascade决定是否把对对象的改动反映到数据库中，所以cascade对所有的关联关系都起作用（因为关联关系就是指对象之间的关联关系）即对一方的CRUD操作，是否级联到相关联的一方。<br>在一对多关系中，通常设置为由多方维护关系，一方设置为放弃维护关系。同时对一方的操作，如删除，应级联引用的多方。</p>
+<h2 id="例(学生与班级)">例(学生与班级)</h2>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/07/28/Hibernate配置inverse与cascade详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2013/07/23/关于Java线程两种同步方法的理解/" itemprop="url">
+                关于Java线程两种同步方法的理解
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-07-23T17:14:26+08:00" content="2013-07-23">
+            2013-07-23
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Java/" itemprop="url" rel="index">
+                  <span itemprop="name">Java</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/07/23/关于Java线程两种同步方法的理解/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/23/关于Java线程两种同步方法的理解/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>在阅读李兴华老师java开发实战经典一书，在java代码块级及方法级同步方法，起初讲解还是很清楚，但在讲解到模拟java多线程死锁时，使用上述代码块级同步方法让我对代码块级同步方法中同步对象的设置产生了较大的疑惑。</p>
+<h2 id="模拟死锁">模拟死锁</h2><p>有张三，李四两人，张三对李四说：“你给我画，我就给你书”，李四对张三说：“你给我你的书，我就给你画”。模拟代码如下：</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/07/23/关于Java线程两种同步方法的理解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2013/07/21/Html中引入JS文件乱码问题/" itemprop="url">
+                Html中引入JS文件乱码问题
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-07-21T17:59:11+08:00" content="2013-07-21">
+            2013-07-21
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                  <span itemprop="name">JavaScript</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/07/21/Html中引入JS文件乱码问题/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/21/Html中引入JS文件乱码问题/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="乱码问题">乱码问题</h2><p>在JS框架学习时，碰到了如下问题，在Html页面中引入的JS文件出现乱码，一开始以为是未指定默认的Html页面编码格式造成，但是通过head标签中<code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</code> charset属性设置Html页面编码格式后，引入JS文件还是乱码，按照原本的理解如果JS是直接写在Html页面中，会按照页面编码的格式对其进行编解码，所以猜测如果是引用的话，也应该是按照这样的方式对JS文件进行编解码，但事实是如果未对引入的JS文件指定正确编码（默认JS文件编码方式与HTML页面编码不同情况下），则JS会按照其真正的文本存储编码方式进行编码，但解码时却是按照指定的HTML页面的编码进行解码，从而出现乱码问题。</p>
+<h2 id="解决方法">解决方法</h2><p>一番尝试后发现上述问题的出现是由于在引入JS文件时忽略了其中的一个charset属性，<code>&lt;script type=&quot;text/javascript&quot; src=&quot;#&quot; charset=&quot;gbk&quot;&gt;</code>，如要引入的JS文件的文本存储编码格式为GBK，Html页面指定的页面编码设置（采用如上文设置方式）为UTF-8，但是引入JS处指定编码charset属性为GBK则不会有乱码问题出现。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/07/21/Html中引入JS文件乱码问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2013/07/16/使用Hexo在GitHub上搭建静态博客/" itemprop="url">
+                使用Hexo在GitHub上搭建静态博客
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2013-07-16T16:32:23+08:00" content="2013-07-16">
+            2013-07-16
           </time>
         </span>
 
@@ -232,8 +598,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2013/07/13/hello-world/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/13/hello-world/" itemprop="commentsCount"></span>
+              <a href="/2013/07/16/使用Hexo在GitHub上搭建静态博客/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/16/使用Hexo在GitHub上搭建静态博客/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -248,9 +614,37 @@
 
       
         
-          <span itemprop="articleBody"><h2 id="你好_世界！">你好 世界！</h2><p>这个静态博客搭起来好久了，但是还从来没动过，本来准备抽个非常空闲的时间来整理一下，把之前WordPress的博文都转移过来，看来现在比较是时候了。</p>
-<h2 id="JellyBins来历">JellyBins来历</h2><p>作为一个码农，第一篇博客的标题当然该是Hello World，就像那个码农转行书法家的笑话一样。之前有用京东云擎部署WordPress搭了个博客，但是没怎么打理。前些天看到新闻说京东云要正式运营关闭试用了，然后对于我等屌丝来说只能另寻其它免费之所，所以也自然而然的选择了真正的WordPress网站，虽然被GFW墙掉了。随之而来的就是站点的名称问题，其实一直想用Jelly，但是无奈已被注册或者名字过短等种种原因只能放弃。后来午休的时候突发奇想，码农应该和Binary（二进制码）有关。然后就想到了JellyBin，还跟谷歌的安卓果冻豆系统JellyBean谐音，瞬间感觉高大上，结果要注册的时候提示是保留名称，纠结了，再后来想到这一生应该跟很多Binary有关，于是就有了现在JellyBins（还可以变作JellyBin’s，简直perfect，请原谅我的放荡不羁爱自由）。之后再搭建这个静态博客的时候也就延续使用了这个名字，所以现在的站点链接是：<a href="http://jellybins.github.io">http://jellybins.github.io</a> 。</p>
-</span>
+          <p>当初搭建这个静态博客参考了好几篇文章，但是还是碰到了不少问题，想想应该整理一下让后来人少走点弯路，我就是这么伟大，请给我点32个赞（此处应有掌声）。</p>
+<h2 id="工欲善其事_必先利其器">工欲善其事 必先利其器</h2><ol>
+<li><p>Git客户端(博客部署)</p>
+<p><a href="https://windows.github.com/">GitHub for Windows（已更名为GitHub Desktop） 下载</a></p>
+<blockquote>
+<p>GitHub for Windows是先下载安装器，然后运行安装器在线安装，如果在线安装过程中出现下载进度不动或下载不成功的情况，恭喜你被墙了，请自行查找科学上网方法，设置为系统全局代理后再尝试。</p>
+</blockquote>
+</li>
+<li><p>Node.js(Hexo依赖)</p>
+<p><a href="https://nodejs.org/">Node.js 下载</a></p>
+<blockquote>
+<p>Node.js安装完成后会自动添加环境变量，如果在步骤3中使用npm命令提示不存在，则请自行在环境变量Path中添加如下内容（默认Node.js安装目录为C:\Program Files\nodejs）：<br><strong>;C:\Program Files\nodejs\node_modules\npm</strong></p>
+</blockquote>
+</li>
+<li><p>Hexo(博客框架，使用Markdown解析文章)</p>
+<p><a href="https://hexo.io/zh-cn/">Hexo 官网（无需下载）</a></p>
+<blockquote>
+<p>完成上述步骤后，双击桌面上的Git Shell，输入如下npm命令回车执行等待安装完成即可：<br><strong>npm install -g hexo-cli</strong></p>
+</blockquote>
+</li>
+<li><p>创建Hexo工作空间</p>
+<blockquote>
+<p>安装 Hexo 完成后，在磁盘任意位置建立文件夹比如D:/hexo,双击桌面上Git Shell，通过CD命令切换到该目录后执行如下两行命令初始化该工作空间并安装hexo所有插件：<br><strong>hexo init</strong><br><strong>npm install</strong></p>
+</blockquote>
+</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2013/07/16/使用Hexo在GitHub上搭建静态博客/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -273,7 +667,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">&raquo;</a>
   </nav>
 
  </div>
@@ -307,21 +701,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
